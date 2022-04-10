@@ -1,0 +1,53 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.6'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+	id 'idea'
+	id 'eclipse'
+}
+
+eclipseJdt{
+	doLast {
+		ant.propertyfile(file: ".settings/org.eclipse.core.resource.prefs") {
+			ant.entry(key: "eclipse.preferences.version", value: "1")
+			ant.entry(key: "encoding/<project>", value: "utf-8")
+		}
+	}
+}
+
+compileJava.options.encoding = 'utf-8'
+compileTestJava.options.encoding = 'utf-8'
+
+
+group = 'ar.edu.unq.desapp.grupo-n'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
+repositories {
+	mavenCentral()
+	jcenter()
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.h2database:h2'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
