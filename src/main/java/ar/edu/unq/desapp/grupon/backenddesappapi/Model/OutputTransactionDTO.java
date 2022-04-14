@@ -1,11 +1,10 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-import Transaction.Operation;
 import java.util.Objects;
-import java.util.DateTime;
+import java.time.LocalDateTime;
 
 
-public class InputTransactionDTO() {
+public class OutputTransactionDTO {
 
     private String cryptoactive;
     private Float amount;
@@ -13,7 +12,7 @@ public class InputTransactionDTO() {
     private Float prizePesos;
     private String userName;
     private Operation operation;
-    private DateTime date;
+    private LocalDateTime date;
 
     public String getCryptoactive() {
         return cryptoactive;
@@ -63,11 +62,11 @@ public class InputTransactionDTO() {
         this.operation = operation;
     }
 
-    public DateTime getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(DateTime date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

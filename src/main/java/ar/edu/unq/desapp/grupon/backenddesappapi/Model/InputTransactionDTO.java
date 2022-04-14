@@ -1,11 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-import Transaction.Operation;
-import java.util.Objects;
-import java.util.DateTime;
-
-
-public class InputTransactionDTO() {
+public class InputTransactionDTO {
 
     private String cryptoactive;
     private Float amount;
@@ -72,8 +67,8 @@ public class InputTransactionDTO() {
         this.sendAddress = sendAddress;
     }
 
-    """
+    /*
     public void acceptTransaction(){}
     public void cancel(){}
-    """
+    */
 }
