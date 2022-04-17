@@ -9,7 +9,7 @@ public class User {
     private String surname;
     private String email; //TODO: va a ser unique
     private String address;
-    private String password; //TODO: agregar regex: al menos 1 minuscula, 1 mayuscula, 1 carac especial y min 6
+    private String password;
     private Long cvu;
     private Float reputation;
     private Long walletAddress;
