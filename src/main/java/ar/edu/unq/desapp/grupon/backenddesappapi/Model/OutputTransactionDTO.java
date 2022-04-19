@@ -1,6 +1,5 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-import java.util.Objects;
 import java.time.LocalDateTime;
 
 

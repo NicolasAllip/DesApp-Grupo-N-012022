@@ -1,9 +1,2 @@
 Manifest-Version: 1.0
-Spring-Boot-Layers-Index: WEB-INF/layers.idx
-Start-Class: ar.edu.unq.desapp.grupon.backenddesappapi.BackendDesappAp
- iApplication
-Spring-Boot-Classes: WEB-INF/classes/
-Spring-Boot-Lib: WEB-INF/lib/
-Spring-Boot-Version: 2.6.6
-Main-Class: org.springframework.boot.loader.WarLauncher
 

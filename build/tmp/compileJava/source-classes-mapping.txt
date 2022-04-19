@@ -1,4 +1,28 @@
+ar/edu/unq/desapp/grupon/backenddesappapi/Model/NewUserDTO.java
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.NewUserDTO
+ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.User
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$1
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder
+ar/edu/unq/desapp/grupon/backenddesappapi/Model/CryptoactiveName.java
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName
+ar/edu/unq/desapp/grupon/backenddesappapi/Model/Cryptoactive.java
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive$1
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive$CryptoactiveBuilder
+ar/edu/unq/desapp/grupon/backenddesappapi/Model/OutputTransactionDTO.java
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.OutputTransactionDTO
+ar/edu/unq/desapp/grupon/backenddesappapi/Model/InputTransactionDTO.java
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.InputTransactionDTO
+ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.java
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction$1
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction$TransactionBuilder
 ar/edu/unq/desapp/grupon/backenddesappapi/ServletInitializer.java
  ar.edu.unq.desapp.grupon.backenddesappapi.ServletInitializer
 ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java
  ar.edu.unq.desapp.grupon.backenddesappapi.BackendDesappApiApplication
+ar/edu/unq/desapp/grupon/backenddesappapi/Utils/RegexValues.java
+ ar.edu.unq.desapp.grupon.backenddesappapi.Utils.RegexValues
+ar/edu/unq/desapp/grupon/backenddesappapi/Model/Operation.java
+ ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation
