@@ -4,6 +4,11 @@ install: skip
 os: linux
 dist: trusty
 jdk: oraclejdk8
-
+addons:
+  sonarcloud:
+    organization: devapps-grupo
+    token:
+      secure: "yCjxgg6mQ9lyV2bpxMQY1Xmw1i+hAB3vG8nfliYIOBd7d3x0Nc3UoeDhIFAp4hFbCA7bXUZ11z5DxRCkBvn66C1GdM1DXzJukCgH0GC24tQF3fIE0vCaoozdZ0ii50Bdap+kquoiPFmTq0KVLCgM9p5PbPY7YwBRGg9CzzOU6UhnTf/CNa4cFu+ikxdX7UJZb30wlOXRdoEHeEdZiwluZ3H6uipKP2zwgqdzAphBLOnCaUBm+s8eHW+LRaV3FuMLTyyF4AP6g36JPFhCY+oedn0Ilanlnj5HUPw9u289A5ZBjNeFHDXFBnMKUc5VXNl+OXV8gXTNkygV+8HKAXxvG81HoltFAXkNlx6L6ehrpH8pkZN8jdvZM2hefZMToDo7WObZiA8e2kWtvLP4bjVmK4+PZXBZXOnIUwhf33x8AZ2zZ70lHpUljZUc3koUnbNV4Nc4NqmVqCycK0HjZCY0dTmAvG53gbkCxY7L/i0TrHxGfr+dzT6ZIEIQQn7VMhI1nCkfFDu23ky+Vm6Psb2rOO9de/14XJoa0wRy1iHpT1jp+WNMovVQF8n21Nk0tqKsXL+MlRWfwpVly3UTuV7DFJIo4jWHXv7RSezifVUA6NeOAK3lOi2MdXB2Kuu9ZPA0ku84dkWbfCPMrIOtsB3W5e+zyEdgCF61EnO0PAoYgUU="
 script:
-  - ./gradlew build --scan -s
+- "./gradlew sonarqube"
+- "./gradlew build"
