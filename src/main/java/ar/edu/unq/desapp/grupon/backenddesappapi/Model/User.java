@@ -1,10 +1,23 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class User {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="users")
+public class User implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
     private String surname;
     private String email; //TODO: va a ser unique
@@ -12,6 +25,8 @@ public class User {
     private String password;
     private Long cvu;
     private Float reputation;
+    
+    @Column(name="wallet_address")
     private Long walletAddress;
 
     public Long getId() {
@@ -45,7 +60,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public String getAddress() {
         return address;
     }
@@ -97,6 +112,8 @@ public class User {
     public static UserBuilder builder() {
         return new UserBuilder();
     }
+
+    private static final long serialVersionUID = 1L;
 
     public static final class UserBuilder {
         private User user;
@@ -150,4 +167,3 @@ public class User {
         }
     }
 }
-

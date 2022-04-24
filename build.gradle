@@ -11,8 +11,11 @@ plugins {
 sonarqube {
   properties {
     property "sonar.projectKey", "NicolasAllip_DesApp-Grupo-N-012022"
+		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.organization", "devapps-grupo"
   }
 }
+
 
 eclipseJdt{
 	doLast {
@@ -52,7 +55,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'io.springfox:springfox-swagger2:2.7.0'
@@ -61,7 +64,7 @@ dependencies {
 	runtimeOnly 'com.h2database:h2:1.4.197'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+	//testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
