@@ -1,8 +1,5 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Utils.RegexValues;
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.validation.constraints.*;
 
 public class NewUserDTO {
@@ -25,7 +22,7 @@ public class NewUserDTO {
     private String surname;
 
     @NotBlank(message = "User must have an e-mail")
-    //TODO: regex para email
+    @Pattern(regexp = "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]|[\\w-]{2,}))@((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9]))|([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$", message = "Must be valid email")
     private String email; //TODO: va a ser unique
 
     @NotBlank(message = "User must have an address")
@@ -33,13 +30,17 @@ public class NewUserDTO {
     private String address;
 
     @NotBlank(message = "User must have a password")
+    @Size(min = 6, message = "Password must contain at least 6 characters")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]*$", message = "The password must contain at least one uppercase letter, one lowercase letter and one special character")
     private String password; //TODO: agregar regex: al menos 1 minuscula, 1 mayuscula, 1 carac especial y min 6
 
     @NotBlank(message = "User must have a CVU")
     @Size(min = 22, max = 22, message = "User's CVU must be 22 characters")
-    private Long cvu;
+    @Pattern(regexp = "^[0-9]*$", message = "")
+    private String cvu;
 
     @NotBlank(message = "User must have a wallet address")
     @Size(min = 8, max = 8, message = "User's wallet address must be 8 characters")
-    private Long walletAddress;
+    @Pattern(regexp = "^[0-9]*$", message = "")
+    private String walletAddress;
 }
