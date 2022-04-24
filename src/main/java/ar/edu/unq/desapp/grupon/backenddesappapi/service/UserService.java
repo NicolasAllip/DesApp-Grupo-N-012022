@@ -14,6 +14,7 @@ public class UserService implements IUserService {
     
     @Autowired
     private IUserDao userDao;
+    
     @Transactional(readOnly = true)
     @Override
     public List<User> findAll(){

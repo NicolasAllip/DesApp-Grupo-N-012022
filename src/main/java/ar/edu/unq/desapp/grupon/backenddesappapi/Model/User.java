@@ -13,20 +13,33 @@ import javax.persistence.Table;
 @Entity
 @Table(name="users")
 public class User implements Serializable {
-    
+    /*
+    Nombre, Obligatorio, Min:3, Max:30
+    Apellido, Obligatorio, Min:3, Max:30
+    Email, Obligatorio, Formato de email
+    Dirección, Obligatorio, Min:10, Max:30
+    Contraseña
+    CVU MercadoPago, Obligatorio (22 digitos)
+    Dirección Billetera de CriptoActivos, Obligatorio (8 dígitos)
+    */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String surname;
-    private String email; //TODO: va a ser unique
+    @Column(nullable = false, unique = true)
+    private String email;
+    @Column(nullable = false)
     private String address;
     private String password;
+    @Column(nullable = false)
     private Long cvu;
     private Float reputation;
     
-    @Column(name="wallet_address")
+    @Column(name="wallet_address", nullable = false)
     private Long walletAddress;
 
     public Long getId() {
