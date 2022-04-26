@@ -99,4 +99,55 @@ public class NewUserDTO {
     public void setWalletAddress(String walletAddress) {
         this.walletAddress = walletAddress;
     }
+
+    public static NewUserDTOBuilder builder() {
+        return new NewUserDTOBuilder();
+    }
+
+    public static final class NewUserDTOBuilder {
+        private NewUserDTO newUserDTO;
+
+        private NewUserDTOBuilder() {
+            newUserDTO = new NewUserDTO();
+        }
+
+        public NewUserDTOBuilder name(String name) {
+            newUserDTO.setName(name);
+            return this;
+        }
+
+        public NewUserDTOBuilder surname(String surname) {
+            newUserDTO.setSurname(surname);
+            return this;
+        }
+
+        public NewUserDTOBuilder email(String email) {
+            newUserDTO.setEmail(email);
+            return this;
+        }
+
+        public NewUserDTOBuilder address(String address) {
+            newUserDTO.setAddress(address);
+            return this;
+        }
+
+        public NewUserDTOBuilder password(String password) {
+            newUserDTO.setPassword(password);
+            return this;
+        }
+
+        public NewUserDTOBuilder cvu(String cvu) {
+            newUserDTO.setCvu(cvu);
+            return this;
+        }
+
+        public NewUserDTOBuilder walletAddress(String walletAddress) {
+            newUserDTO.setWalletAddress(walletAddress);
+            return this;
+        }
+
+        public NewUserDTO build() {
+            return newUserDTO;
+        }
+    }
 }

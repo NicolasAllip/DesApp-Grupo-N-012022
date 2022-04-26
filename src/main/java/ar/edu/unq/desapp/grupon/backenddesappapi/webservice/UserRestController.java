@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
@@ -54,7 +56,7 @@ public class UserRestController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<?> create(@RequestBody NewUserDTO newUserDTO){
+    public ResponseEntity<?> create(@Valid @RequestBody NewUserDTO newUserDTO){
 
         User userN = null;
         Map<String, Object> response = new HashMap<>();
