@@ -4,25 +4,18 @@ plugins {
 	id 'java'
 	id 'war'
 	id 'idea'
-	id "jacoco"
 	id 'eclipse'
 	id "org.sonarqube" version "3.3"
 }
 
 sonarqube {
   properties {
-    	property "sonar.projectKey", "NicolasAllip_DesApp-Grupo-N-012022"
+    property "sonar.projectKey", "NicolasAllip_DesApp-Grupo-N-012022"
 		property "sonar.host.url", "https://sonarcloud.io"
 		property "sonar.organization", "devapps-grupo"
-		property "sonar.login", "9435b0e37e8693670b833f38dda3854532db756d"
   }
 }
 
-jacocoTestReport {
-    reports {
-        xml.enabled true
-    }
-}
 
 eclipseJdt{
 	doLast {
@@ -45,7 +38,7 @@ if (hasProperty('buildScan')) {
 
 group = 'ar.edu.unq.desapp.grupo-n'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 configurations {
 	developmentOnly
@@ -63,7 +56,6 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
-	//implementation 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'io.springfox:springfox-swagger2:2.7.0'
