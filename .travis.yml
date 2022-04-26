@@ -5,6 +5,7 @@ os: linux
 dist: trusty
 jdk: oraclejdk11
 
+
 addons:
   sonarcloud:
     organization: "devapps-grupo"
