@@ -35,12 +35,12 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String address;
     private String password;
-    @Column(nullable = false)
-    private Long cvu;
+    @Column(nullable = false, unique = true)
+    private String cvu;
     private Float reputation;
     
-    @Column(name="wallet_address", nullable = false)
-    private Long walletAddress;
+    @Column(name="wallet_address", nullable = false, unique = true)
+    private String walletAddress;
 
     public Long getId() {
         return id;
@@ -90,11 +90,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Long getCvu() {
+    public String getCvu() {
         return cvu;
     }
 
-    public void setCvu(Long cvu) {
+    public void setCvu(String cvu) {
         this.cvu = cvu;
     }
 
@@ -106,11 +106,11 @@ public class User implements Serializable {
         this.reputation = reputation;
     }
 
-    public Long getWalletAddress() {
+    public String getWalletAddress() {
         return walletAddress;
     }
 
-    public void setWalletAddress(Long walletAddress) {
+    public void setWalletAddress(String walletAddress) {
         this.walletAddress = walletAddress;
     }
 
@@ -160,7 +160,7 @@ public class User implements Serializable {
             return this;
         }
 
-        public UserBuilder cvu(Long cvu) {
+        public UserBuilder cvu(String cvu) {
             user.setCvu(cvu);
             return this;
         }
@@ -170,7 +170,7 @@ public class User implements Serializable {
             return this;
         }
 
-        public UserBuilder walletAddress(Long walletAddress) {
+        public UserBuilder walletAddress(String walletAddress) {
             user.setWalletAddress(walletAddress);
             return this;
         }

@@ -32,7 +32,7 @@ public class NewUserDTO {
     @NotBlank(message = "User must have a password")
     @Size(min = 6, message = "Password must contain at least 6 characters")
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]*$", message = "The password must contain at least one uppercase letter, one lowercase letter and one special character")
-    private String password; //TODO: agregar regex: al menos 1 minuscula, 1 mayuscula, 1 carac especial y min 6
+    private String password;
 
     @NotBlank(message = "User must have a CVU")
     @Size(min = 22, max = 22, message = "User's CVU must be 22 characters")
@@ -43,4 +43,60 @@ public class NewUserDTO {
     @Size(min = 8, max = 8, message = "User's wallet address must be 8 characters")
     @Pattern(regexp = "^[0-9]*$", message = "")
     private String walletAddress;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCvu() {
+        return cvu;
+    }
+
+    public void setCvu(String cvu) {
+        this.cvu = cvu;
+    }
+
+    public String getWalletAddress() {
+        return walletAddress;
+    }
+
+    public void setWalletAddress(String walletAddress) {
+        this.walletAddress = walletAddress;
+    }
 }
