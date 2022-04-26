@@ -8,8 +8,14 @@ public class InputTransactionDTO {
     private Float prizePesos;
     private String userName;
     private Operation operation;
-    private Float reputation;
+    private Float reputation = user.getReputation();
     private Integer sendAddress;
+
+    if(transaction.getOperation() == Operation.VENTA) {
+        transaction.setSendAddress(user.getCvu())
+    } else {
+        transaction.setSendAddress(user.getSendAddress())
+    }
 
     public String getCryptoactive() {
         return cryptoactive;
@@ -66,9 +72,4 @@ public class InputTransactionDTO {
     public void setSendAddress(Integer sendAddress) {
         this.sendAddress = sendAddress;
     }
-
-    /*
-    public void acceptTransaction(){}
-    public void cancel(){}
-    */
 }

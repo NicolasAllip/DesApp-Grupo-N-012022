@@ -4,14 +4,15 @@ import java.time.LocalDateTime;
 
 
 public class OutputTransactionDTO {
-
+    //intencion de transaccion
+    
     private String cryptoactive;
     private Float amount;
     private Float prize;
     private Float prizePesos;
     private String userName;
     private Operation operation;
-    private LocalDateTime date;
+    private LocalDateTime date = LocalDateTime.now();
 
     public String getCryptoactive() {
         return cryptoactive;

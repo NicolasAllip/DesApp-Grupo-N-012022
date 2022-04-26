@@ -3,12 +3,22 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 import java.util.Objects;
 
 public class Transaction {
+    private Float id;
     private Cryptoactive cryptoactive;
     private Float amount;
     private Float prize;
     private Float prizePesos;
     private User user;
     private Operation operation;
+    //private State state;
+
+    public Float getId() {
+        return id;
+    }
+
+    public void setId(Float id) {
+        this.id = id;
+    }
 
     public Cryptoactive getCryptoactive() {
         return cryptoactive;
@@ -58,6 +68,28 @@ public class Transaction {
         this.operation = operation;
     }
 
+    public Float getReputation() {
+        return reputation;
+    }
+    public void setReputation(Float reputation) {
+        this.reputation = reputation;
+    }
+
+    public Integer getSendAddress() {
+        return sendAddress;
+    }
+    public void setSendAddress(Integer sendAddress) {
+        this.sendAddress = sendAddress;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,6 +136,21 @@ public class Transaction {
 
         public TransactionBuilder operation(Operation operation) {
             transaction.setOperation(operation);
+            return this;
+        }
+
+        public TransactionBuilder reputation(Operation operation) {
+            transaction.setReputation(operation);
+            return this;
+        }
+
+        public TransactionBuilder sendAddress(Operation operation) {
+            transaction.setSendAddress(operation);
+            return this;
+        }
+
+        public TransactionBuilder date(Operation operation) {
+            transaction.setDate(operation);
             return this;
         }
 
