@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.NewUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -53,13 +56,13 @@ public class UserRestController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<?> create(@RequestBody User user){
+    public ResponseEntity<?> create(@Valid @RequestBody NewUserDTO newUserDTO){
 
         User userN = null;
         Map<String, Object> response = new HashMap<>();
 
         try {
-            userN = userService.save(user);
+            userN = userService.save(newUserDTO);
         } catch (DataAccessException e) {
             response.put("message", "Error to save the user in the bd");
             response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
