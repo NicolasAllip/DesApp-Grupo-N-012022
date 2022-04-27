@@ -12,9 +12,7 @@ public interface ITransactionService {
 
     public Transaction findById(Long id);
 
-    public Transaction saveInputTransaction(InputTransactionDTO inputTransactionDTO);
-
-    public Transaction saveOutputTransaction(OutputTransactionDTO outputTransactionDTO);
+    public Transaction save(TransactionIntent transactionIntent, User user);
 
     public void delete(Long id);
     

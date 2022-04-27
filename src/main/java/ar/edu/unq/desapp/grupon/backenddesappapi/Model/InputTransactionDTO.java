@@ -6,7 +6,7 @@ public class InputTransactionDTO {
     private Float amount;
     private Float prize;
     private Float prizePesos;
-    private String userName;
+    private User user;
     private Operation operation;
     private Float reputation = user.getReputation();
     private Integer sendAddress;
@@ -45,11 +45,11 @@ public class InputTransactionDTO {
         this.prizePesos = prizePesos;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUser() {
+        return userNam;
     }
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Operation getOperation() {
