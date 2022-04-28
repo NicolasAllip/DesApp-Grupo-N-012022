@@ -22,18 +22,19 @@ public class TransactionService implements ITransactionService {
         return (List<Transaction>) transactionDao.findAll();
     }
 
-    @Override
     @Transactional(readOnly = true)
+    @Override
     public Transaction findById(Long id) {
         return transactionDao.findById(id).orElse(null);
     }
-    
-    @Override
+
     @Transactional
+    @Override
     public Transaction save(TransactionIntent transactionIntent, User user) {
         Transaction transaction = Transaction.builder()
                 .transaction(transactionIntent)
                 .user(user)
+                .state(PENDING)
                 .build();
 
         return transactionDao.save(transaction);
@@ -45,9 +46,45 @@ public class TransactionService implements ITransactionService {
         transactionDao.deleteById(id);
     }
 
-    /*
-    public void acceptTransaction(){}
-    public void cancel(){}
-    public void cancelByPrize(){}
+
+    @Transactional
+    @Override
+    public void acceptTransaction(Long id){
+        val transaction  = transactionDao.findById(id);
+        val senderUser   = transaction.getTransaction().getUser();
+        val receiverUser = transaction.getUser();
+        val transactionDate = transaction.getTransaction().getDate();
+        if(transaction.getOperation() == Operation.SELL) {
+            senderUser.removeCryptoactives(transaction.amount(), transaction.getCryptoactive());
+            receiverUser.addCryptoactives(transaction.amount(), transaction.getCryptoactive())
+        } else {
+            receiverUser.removeCryptoactives(transaction.amount(), transaction.getCryptoactive());
+            senderUser.addCryptoactives(transaction.amount(), transaction.getCryptoactive())
+        }
+        if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
+            senderUser.increaseReputationBy(10);
+            receiverUser.increaseReputationBy(10);
+        } else {
+            senderUser.increaseReputationBy(5);
+            receiverUser.increaseReputationBy(5);
+        }
+    }
+
+    @Transactional
+    @Override
+    public void cancel(Long id){
+        val transaction  = transactionDao.findById(id);
+        val senderUser   = transaction.getTransaction().getUser();
+        val receiverUser = transaction.getUser();
+        transaction.setState(TransactionState.CANCELED);
+        senderUser.lowerReputationBy(20);
+        receiverUser.lowerReputationBy(20);
+    }
+    @Transactional
+    @Override
+    public void cancelByPrize(Long id){
+        val transaction  = transactionDao.findById(id);
+        transaction.setState(TransactionState.CANCELED);
+    }
     */
 }

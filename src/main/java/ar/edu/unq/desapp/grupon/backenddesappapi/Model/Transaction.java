@@ -23,7 +23,7 @@ public class Transaction {
     private Float prizePesos = transaction.getPrizePesos();
     private User user;
     private Operation operation = transaction.getOperation();
-    //private State state;
+    private TransactionState state;
 
     public TransasctionIntent getTransaction() {
         return transaction;
@@ -89,26 +89,12 @@ public class Transaction {
         this.operation = operation;
     }
 
-    public Float getReputation() {
-        return reputation;
-    }
-    public void setReputation(Float reputation) {
-        this.reputation = reputation;
+    public TransactionState getState() {
+        return state;
     }
 
-    public Integer getSendAddress() {
-        return sendAddress;
-    }
-    public void setSendAddress(Integer sendAddress) {
-        this.sendAddress = sendAddress;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setState(TransactionState state) {
+        this.state = state;
     }
 
     @Override
@@ -169,18 +155,8 @@ public class Transaction {
             return this;
         }
 
-        public TransactionBuilder reputation(Operation operation) {
-            transaction.setReputation(operation);
-            return this;
-        }
-
-        public TransactionBuilder sendAddress(Operation operation) {
-            transaction.setSendAddress(operation);
-            return this;
-        }
-
-        public TransactionBuilder date(Operation operation) {
-            transaction.setDate(operation);
+        public TransactionBuilder state(TransactionState state) {
+            transaction.setState(state);
             return this;
         }
 

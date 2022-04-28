@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class TransactionIntent {
 
-    private String cryptoactive;
+    private Cryptoactive cryptoactive;
     private Float amount;
     private Float prize;
     private Float prizePesos;
@@ -13,11 +13,11 @@ public class TransactionIntent {
     private Operation operation;
     private LocalDateTime date = LocalDateTime.now();
 
-    public String getCryptoactive() {
+    public Cryptoactive getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(String cryptoactive) {
+    public void setCryptoactive(Cryptoactive cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
