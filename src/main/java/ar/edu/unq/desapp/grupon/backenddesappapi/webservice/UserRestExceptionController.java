@@ -28,7 +28,7 @@ public class UserRestExceptionController {
     public ResponseEntity<Map<String, Object>> handleDataAccessExceptions(DataAccessException e) {
         Map<String, Object> response = new HashMap<>();
 
-        response.put("message", "Error querying bd");
+        response.put("message", "Error querying db");
         response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -39,7 +39,7 @@ public class UserRestExceptionController {
         Map<String, Object> response = new HashMap<>();
 
         response.put("error", e.getMessage());
-        response.put("message", "User does not exist in the db");
+        response.put("message", "User " + e.getUserId() + " does not exist in the db");
 
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }

@@ -35,39 +35,15 @@ public class UserRestController {
 
     @GetMapping("/users/{id}")
     public ResponseEntity<?> showUser(@PathVariable Long id){
-        
-        User user = null;
-        Map<String, Object> response = new HashMap<>();
-        
-        try {
-            user = userService.findById(id);
-            
-        } catch (DataAccessException e) {
-            response.put("message", "Error querying bd");
-            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        
-        if (user == null){
-            response.put("message", "User ID: ".concat(id.toString().concat(" not exist in the bd")));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        User user = userService.findById(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/users")
     public ResponseEntity<?> create(@Valid @RequestBody NewUserDTO newUserDTO){
 
-        User userN = null;
+        User userN = userService.save(newUserDTO);
         Map<String, Object> response = new HashMap<>();
-
-        try {
-            userN = userService.save(newUserDTO);
-        } catch (DataAccessException e) {
-            response.put("message", "Error to save the user in the bd");
-            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
 
         response.put("mensaje", "The user has been created succefully");
         response.put("User: ", userN);
