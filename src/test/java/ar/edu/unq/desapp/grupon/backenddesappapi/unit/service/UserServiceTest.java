@@ -114,4 +114,15 @@ public class UserServiceTest {
         // assert
         verify(iUserDaoMock, atLeastOnce()).save(expectedUser);
     }
+
+    @Test
+    public void deleteUserById() {
+        // arrange
+
+        // act
+        userService.delete(1L);
+
+        // assert
+        verify(iUserDaoMock, atLeastOnce()).deleteById(1L);
+    }
 }
