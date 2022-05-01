@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.unit.service;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.NewUserDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
+import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.IUserDao;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.UserService;
 import org.junit.jupiter.api.Assertions;
@@ -73,15 +74,14 @@ public class UserServiceTest {
     @Test
     public void getUserByIdWhenUserDoesntExist_returnsNull() {
         // arrange
-        //when(iUserDaoMock.findById(1L)).thenReturn(null);
 
-        // act
-        User actualUser = userService.findById(1L);
+        // act & assert
+        Assertions.assertThrows(
+                UserDoesNotExistException.class,
+                () -> userService.findById(1L)
+        );
 
-        // assert
         verify(iUserDaoMock, atLeastOnce()).findById(1L);
-
-        Assertions.assertNull(actualUser);
     }
 
     @Test
@@ -108,11 +108,15 @@ public class UserServiceTest {
                 .walletAddress(newUserDTO.getWalletAddress())
                 .build();
 
+        when(userService.save(newUserDTO)).thenReturn(expectedUser);
+
         // act
-        userService.save(newUserDTO);
+        User actualUser = userService.save(newUserDTO);
 
         // assert
         verify(iUserDaoMock, atLeastOnce()).save(expectedUser);
+
+        Assertions.assertEquals(expectedUser, actualUser);
     }
 
     @Test

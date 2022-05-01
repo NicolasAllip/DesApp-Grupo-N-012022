@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.NewUserDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestController;
@@ -9,12 +10,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.mockito.Mockito.*;
 
@@ -73,18 +75,30 @@ public class UserRestControllerTest {
     }
 
     @Test
-    public void getUserById_throwsErrors() {
+    public void postNewUser_savesUser() {
         // arrange
         Long expectedId = 1L;
+        NewUserDTO newUserDTO = NewUserDTO.builder()
+                .name("TestUser")
+                .email("test@gtest.com")
+                .build();
+        User expectedUser = User.builder()
+                .id(expectedId)
+                .name("TestUser")
+                .email("test@gtest.com")
+                .build();
+
+        Map<String, Object> expectedResponse = new HashMap<>();
+        expectedResponse.put("message", "The user has been succefully created");
+        expectedResponse.put("User: ", expectedUser);
+
+        when(userServiceMock.save(newUserDTO)).thenReturn(expectedUser);
 
         // act
-        //when(userServiceMock.findById(1L)).thenThrow(DataAccessException.class);
+        ResponseEntity<?> actualResponse = userRestController.create(newUserDTO);
 
-        // assert
-        ResponseEntity<?> response = userRestController.showUser(1L);
-
-        verify(userServiceMock, atLeastOnce()).findById(expectedId);
-
-        Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        // arrange
+        Assertions.assertEquals(expectedResponse, actualResponse.getBody());
+        Assertions.assertEquals(HttpStatus.CREATED, actualResponse.getStatusCode());
     }
 }

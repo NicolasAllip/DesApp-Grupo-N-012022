@@ -45,8 +45,8 @@ public class UserRestController {
         User userN = userService.save(newUserDTO);
         Map<String, Object> response = new HashMap<>();
 
-        response.put("mensaje", "The user has been created succefully");
+        response.put("message", "The user has been succefully created");
         response.put("User: ", userN);
-        return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED );
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
