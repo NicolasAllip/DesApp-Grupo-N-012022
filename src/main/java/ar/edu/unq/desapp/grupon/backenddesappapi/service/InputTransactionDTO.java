@@ -1,20 +1,29 @@
-package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
+package ar.edu.unq.desapp.grupon.backenddesappapi.Service;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 public class InputTransactionDTO {
 
-    private String cryptoactive;
+    private Cryptoactive cryptoactive;
     private Float amount;
     private Float prize;
     private Float prizePesos;
-    private String userName;
+    private User user;
     private Operation operation;
-    private Float reputation;
+    private Float reputation = user.getReputation();
     private Integer sendAddress;
 
-    public String getCryptoactive() {
+    if(transaction.getOperation() == Operation.SELL) {
+        transaction.setSendAddress(user.getCvu())
+    } else {
+        transaction.setSendAddress(user.getSendAddress())
+    }
+
+    public Cryptoactive getCryptoactive() {
         return cryptoactive;
     }
-    public void setCryptoactive(String cryptoactive) {
+    public void setCryptoactive(Cryptoactive cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
@@ -39,11 +48,11 @@ public class InputTransactionDTO {
         this.prizePesos = prizePesos;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUser() {
+        return userNam;
     }
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Operation getOperation() {
@@ -66,9 +75,4 @@ public class InputTransactionDTO {
     public void setSendAddress(Integer sendAddress) {
         this.sendAddress = sendAddress;
     }
-
-    /*
-    public void acceptTransaction(){}
-    public void cancel(){}
-    */
 }

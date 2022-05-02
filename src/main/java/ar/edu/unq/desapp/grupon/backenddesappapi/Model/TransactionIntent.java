@@ -3,21 +3,21 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 import java.time.LocalDateTime;
 
 
-public class OutputTransactionDTO {
+public class TransactionIntent {
 
-    private String cryptoactive;
+    private Cryptoactive cryptoactive;
     private Float amount;
     private Float prize;
     private Float prizePesos;
-    private String userName;
+    private User user;
     private Operation operation;
-    private LocalDateTime date;
+    private LocalDateTime date = LocalDateTime.now();
 
-    public String getCryptoactive() {
+    public Cryptoactive getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(String cryptoactive) {
+    public void setCryptoactive(Cryptoactive cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
@@ -45,12 +45,12 @@ public class OutputTransactionDTO {
         this.prizePesos = prizePesos;
     }
 
-    public String getUserName() {
-        return userName;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Operation getOperation() {

@@ -2,13 +2,44 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="transactions")
 public class Transaction {
-    private Cryptoactive cryptoactive;
-    private Float amount;
-    private Float prize;
-    private Float prizePesos;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Float id;
+    @Column(nullable = false)
+    private TransasctionIntent transaction;
+    private Cryptoactive cryptoactive = transaction.getCryptoactive();
+    private Float amount = transaction.getAmount();
+    private Float prize = transaction.getPrize();
+    private Float prizePesos = transaction.getPrizePesos();
     private User user;
-    private Operation operation;
+    private Operation operation = transaction.getOperation();
+    private TransactionState state;
+
+    public TransasctionIntent getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(TransasctionIntent transaction) {
+        this.transaction = transaction;
+    }
+
+    public Float getId() {
+        return id;
+    }
+
+    public void setId(Float id) {
+        this.id = id;
+    }
 
     public Cryptoactive getCryptoactive() {
         return cryptoactive;
@@ -58,6 +89,14 @@ public class Transaction {
         this.operation = operation;
     }
 
+    public TransactionState getState() {
+        return state;
+    }
+
+    public void setState(TransactionState state) {
+        this.state = state;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,6 +114,15 @@ public class Transaction {
 
         private TransactionBuilder() {
             transaction = new Transaction();
+        }
+        public TransactionBuilder id(Float id) {
+            transaction.setId(id);
+            return this;
+        }
+
+        public TransactionBuilder transaction(TransasctionIntent transaction) {
+            transaction.setTransaction(transaction);
+            return this;
         }
 
         public TransactionBuilder cryptoactive(Cryptoactive cryptoactive) {
@@ -104,6 +152,11 @@ public class Transaction {
 
         public TransactionBuilder operation(Operation operation) {
             transaction.setOperation(operation);
+            return this;
+        }
+
+        public TransactionBuilder state(TransactionState state) {
+            transaction.setState(state);
             return this;
         }
 

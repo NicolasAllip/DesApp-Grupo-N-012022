@@ -23,8 +23,8 @@ public class UserService implements IUserService {
         return (List<User>) userDao.findAll();
     }
 
-    @Override
     @Transactional(readOnly = true)
+    @Override
     public User findById(Long id) {
         User user = userDao.findById(id).orElse(null);
 
@@ -34,9 +34,9 @@ public class UserService implements IUserService {
 
         return user;
     }
-    
-    @Override
+
     @Transactional
+    @Override
     public User save(NewUserDTO newUserDTO) {
         User user = User.builder()
                 .name(newUserDTO.getName())
