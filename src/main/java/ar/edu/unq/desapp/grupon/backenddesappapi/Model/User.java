@@ -130,13 +130,6 @@ public class User implements Serializable {
         this.reputation += x
     }
 
-    public void removeCryptoactives(Long x, Cryptoactive c) {
-
-    }
-    public void addCryptoactives(Long x, Cryptoactive c) {
-
-    }
-
     public static UserBuilder builder() {
         return new UserBuilder();
     }

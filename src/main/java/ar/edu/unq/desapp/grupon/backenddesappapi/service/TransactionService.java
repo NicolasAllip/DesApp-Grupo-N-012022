@@ -54,13 +54,6 @@ public class TransactionService implements ITransactionService {
         val senderUser   = transaction.getTransaction().getUser();
         val receiverUser = transaction.getUser();
         val transactionDate = transaction.getTransaction().getDate();
-        if(transaction.getOperation() == Operation.SELL) {
-            senderUser.removeCryptoactives(transaction.amount(), transaction.getCryptoactive());
-            receiverUser.addCryptoactives(transaction.amount(), transaction.getCryptoactive())
-        } else {
-            receiverUser.removeCryptoactives(transaction.amount(), transaction.getCryptoactive());
-            senderUser.addCryptoactives(transaction.amount(), transaction.getCryptoactive())
-        }
         if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
             senderUser.increaseReputationBy(10);
             receiverUser.increaseReputationBy(10);
