@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupon.backenddesappapi.Service;
+package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
 import javax.validation.constraints.*;
 

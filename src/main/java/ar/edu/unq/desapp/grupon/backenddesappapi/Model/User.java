@@ -123,11 +123,11 @@ public class User implements Serializable {
     }
 
     public void lowerReputationBy(Long x) {
-        this.reputation -= x
+        this.reputation -= x;
     }
 
     public void increaseReputationBy(Long x) {
-        this.reputation += x
+        this.reputation += x;
     }
 
     public static UserBuilder builder() {

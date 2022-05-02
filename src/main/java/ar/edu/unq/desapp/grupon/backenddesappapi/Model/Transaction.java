@@ -16,7 +16,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Float id;
     @Column(nullable = false)
-    private TransasctionIntent transaction;
+    private TransactionIntent transaction;
     private Cryptoactive cryptoactive = transaction.getCryptoactive();
     private Float amount = transaction.getAmount();
     private Float prize = transaction.getPrize();
@@ -25,11 +25,11 @@ public class Transaction {
     private Operation operation = transaction.getOperation();
     private TransactionState state;
 
-    public TransasctionIntent getTransaction() {
+    public TransactionIntent getTransaction() {
         return transaction;
     }
 
-    public void setTransaction(TransasctionIntent transaction) {
+    public void setTransaction(TransactionIntent transaction) {
         this.transaction = transaction;
     }
 
@@ -120,8 +120,8 @@ public class Transaction {
             return this;
         }
 
-        public TransactionBuilder transaction(TransasctionIntent transaction) {
-            transaction.setTransaction(transaction);
+        public TransactionBuilder transaction(TransactionIntent transactionIntent) {
+            transaction.setTransaction(transactionIntent);
             return this;
         }
 

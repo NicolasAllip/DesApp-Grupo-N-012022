@@ -2,7 +2,6 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
 import java.util.List;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.InputTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +12,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ITransactionDao;
 @Service
 public class TransactionService implements ITransactionService {
     
-    @Autowired
+    /*@Autowired
     private ITransactionDao transactionDao;
     
     @Transactional(readOnly = true)
@@ -50,7 +49,7 @@ public class TransactionService implements ITransactionService {
     @Transactional
     @Override
     public void acceptTransaction(Long id){
-        val transaction  = transactionDao.findById(id);
+        Transaction transaction  = transactionDao.findById(id);
         val senderUser   = transaction.getTransaction().getUser();
         val receiverUser = transaction.getUser();
         val transactionDate = transaction.getTransaction().getDate();

@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.NewUserDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.NewUserDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestController;
