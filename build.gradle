@@ -46,7 +46,7 @@ if (hasProperty('buildScan')) {
 
 group = 'ar.edu.unq.desapp.grupo-n'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 configurations {
 	developmentOnly
