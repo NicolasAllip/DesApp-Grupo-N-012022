@@ -24,6 +24,7 @@ jacocoTestReport {
     }
 }
 
+
 eclipseJdt{
 	doLast {
 		ant.propertyfile(file: ".settings/org.eclipse.core.resource.prefs") {
