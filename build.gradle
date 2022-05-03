@@ -14,7 +14,7 @@ sonarqube {
     	property "sonar.projectKey", "NicolasAllip_DesApp-Grupo-N-012022"
 		property "sonar.host.url", "https://sonarcloud.io"
 		property "sonar.organization", "devapps-grupo"
-		//property "sonar.login", "9435b0e37e8693670b833f38dda3854532db756d"
+		property "sonar.login", "9435b0e37e8693670b833f38dda3854532db756d"
   }
 }
 
@@ -45,7 +45,7 @@ if (hasProperty('buildScan')) {
 
 group = 'ar.edu.unq.desapp.grupo-n'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '11'
 
 configurations {
 	developmentOnly
