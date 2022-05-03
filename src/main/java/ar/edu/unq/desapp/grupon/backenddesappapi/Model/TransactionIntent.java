@@ -2,9 +2,19 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+//@Entity
+//@Table(name="transaction_intents")
 public class TransactionIntent {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Float id;
     private Cryptoactive cryptoactive;
     private Float amount;
     private Float prize;
