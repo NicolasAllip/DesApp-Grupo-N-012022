@@ -1,0 +1,21 @@
+
+_ar.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestController#index()Ljava/util/List;™
+Ž/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestController.java! !("1*‡
+1™
+Ž/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestController.java" "(É
+Æ
+™
+Ž/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestController.java" "(D
+%0>ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService"__id*\*ZI
+Gar.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestController"
+userServiceâß
+™
+Ž/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestController.java" "($
+%1java.util.List"Xar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService#findAll()Ljava/util/List;*F
+D
+%0>ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService2	findAll()"´
+™
+Ž/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestController.java" "(%
+
+%1java.util.ListBKI
+Gar.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestController

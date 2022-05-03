@@ -1,0 +1,106 @@
+
+√ar.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestExceptionController#handleDataAccessExceptions(Lorg/springframework/dao/DataAccessException;)Lorg/springframework/http/ResponseEntity;¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java/ (I"startingBlock*›
+startingBlock¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.javaI (`≠
+™
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java (0
+%12"
+__annotate*<:
+8org.springframework.web.bind.annotation.ExceptionHandler*2
+0
+e+org.springframework.dao.DataAccessExceptionÒ
+Ó
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java^ (_0
+e+org.springframework.dao.DataAccessException"__annotation*
+
+%12*
+1*æ 
+1¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java' (6‘—
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java+ (4
+%0java.util.HashMap"java.util.HashMapÊ
+„
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java' (6
+%1"java.util.HashMap#<init>()V*
+
+%0java.util.HashMap‰
+·
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java (7
+responsejava.util.Map"__id*
+
+%0java.util.HashMapã
+à
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java (4
+%2java.lang.Object"__mapSet*
+
+responsejava.util.Map*	
+message*
+Error querying db“œ
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java   (,
+%3java.lang.String"Norg.springframework.core.NestedRuntimeException#getMessage()Ljava/lang/String;*2
+0
+e+org.springframework.dao.DataAccessException2getMessage()Ω∫
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java   (9
+%4java.lang.String"=java.lang.String#concat(Ljava/lang/String;)Ljava/lang/String;*
+
+%3java.lang.String*
+: 2concat(Ljava/lang/String;)ÏÈ
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java A  (Y
+%5java.lang.Throwable"[org.springframework.core.NestedRuntimeException#getMostSpecificCause()Ljava/lang/Throwable;*2
+0
+e+org.springframework.dao.DataAccessException2getMostSpecificCause()üú
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java A  (f
+%6java.lang.String"2java.lang.Throwable#getMessage()Ljava/lang/String;*
+
+%5java.lang.Throwable2getMessage()œÃ
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java   (g
+%7java.lang.String"=java.lang.String#concat(Ljava/lang/String;)Ljava/lang/String;*
+
+%4java.lang.String*
+
+%6java.lang.String2concat(Ljava/lang/String;)å
+â
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java   (h
+%8java.lang.Object"__mapSet*
+
+responsejava.util.Map*	
+error*
+
+%7java.lang.String·
+ﬁ
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java". "(N)
+%9#org.springframework.http.HttpStatus"__id*
+""Å˛
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java" "(#.
+%10'org.springframework.http.ResponseEntity"'org.springframework.http.ResponseEntityï
+í
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java" "(O
+%11"horg.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatus;)V*0
+.
+%10'org.springframework.http.ResponseEntity*
+
+responsejava.util.Map*+
+)
+%9#org.springframework.http.HttpStatus"◊
+¢
+ó/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/webservice/UserRestExceptionController.java" "(P0
+.
+%10'org.springframework.http.ResponseEntity:0
+e+org.springframework.dao.DataAccessExceptionBTR
+Par.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestExceptionController

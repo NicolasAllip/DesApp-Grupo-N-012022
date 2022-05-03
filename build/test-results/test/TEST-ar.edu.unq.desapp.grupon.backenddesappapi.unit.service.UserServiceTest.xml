@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-05-03T01:09:16" hostname="ubuntu-nico" time="0.137">
+  <properties/>
+  <testcase name="getUserByIdWhenUserDoesntExist_returnsNull()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.115"/>
+  <testcase name="getUserById_returnsUser()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.006"/>
+  <testcase name="getAllUsers_returnsUserList()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.005"/>
+  <testcase name="saveUser_transformsDtoIntoModelObject()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.004"/>
+  <testcase name="deleteUserById()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

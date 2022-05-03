@@ -1,0 +1,41 @@
+
+¾ar.edu.unq.desapp.grupon.backenddesappapi.ServletInitializer#configure(Lorg/springframework/boot/builder/SpringApplicationBuilder;)Lorg/springframework/boot/builder/SpringApplicationBuilder;Ž
+ƒ/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/ServletInitializer.java	$ 	(-"startingBlock*©
+startingBlockŽ
+ƒ/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/ServletInitializer.java	- 	(SŠ
+‡
+Ž
+ƒ/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/ServletInitializer.java (
+
+%1"
+__annotate*
+java.lang.Override*J
+H
+application9org.springframework.boot.builder.SpringApplicationBuilderô
+ñ
+Ž
+ƒ/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/ServletInitializer.java	G 	(RH
+application9org.springframework.boot.builder.SpringApplicationBuilder"__annotation*
+
+%1*
+1*Ç
+1Ž
+ƒ/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/ServletInitializer.java
+	 
+(ÙÖ
+Ž
+ƒ/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/ServletInitializer.java
+	 
+(??
+%09org.springframework.boot.builder.SpringApplicationBuilder"org.springframework.boot.builder.SpringApplicationBuilder#sources([Ljava/lang/Class;)Lorg/springframework/boot/builder/SpringApplicationBuilder;*J
+H
+application9org.springframework.boot.builder.SpringApplicationBuilder*
+""2sources([Ljava/lang/Class;)"Ô
+Ž
+ƒ/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/ServletInitializer.java
+ 
+(@A
+?
+%09org.springframework.boot.builder.SpringApplicationBuilder:H
+application9org.springframework.boot.builder.SpringApplicationBuilderB@>
+<ar.edu.unq.desapp.grupon.backenddesappapi.ServletInitializer
