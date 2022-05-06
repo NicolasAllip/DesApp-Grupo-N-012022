@@ -12,5 +12,5 @@ addons:
     token:
       secure: "GsNvAvTZy1vBGTukiaHJTxs9xMEjqPrULq3W77V1BwtLvVzbyoxueuYAAGSluH710lA+7LyvoN/a+oBE818tHmDOb52qu9FcN0B+0XMwXxyFEIxe/ZeHzW+Pq6Jy5z9Fa1QWP5IxJkrFzeyv/TJo00QUcYghIwMLngk2laSIh3MVcEscB+OKgYR2fkLKKSOc+2K1gWVXw2wkTbK6PZLM2ctckD8hLO64WLQjQ/M+mziXaSxxrD9AYFQI6F7JkJ5Qi1OA/M6THTbtPDrbpoGE3cDrBobOQGN9MTS8CQaT9+fvvENWDptUY1AK6SN835RxUIetPGD04wt6Q8Zs8oxSLxdJ4sPnFCVRNyV4TtsLtvzjEjEK7Ua3bY9R+0x3IIvQP/RtgS+2/Vzia0oQm5g2mjvcA+4nK+rHyflztjRB+n8KQ/wRSTXw8oaPOsCoopuCiw/9H1Rm5WsvPC7IaeF6UXFRB2TKUe5On39E1fItuaLMVPtoaaIf5QEiqByU+x4BwMdDKrU/Ii2uUMx3igVlrZz4NzI9UqBNAnWgpn1ih+mKt4p0jpKJrR1Yc/rorKH793MO0xWBvzTID3a5W4GAAx/+ItC3uDi0qbRET10v04Z8ECzf1e4uDaAZwrMMfG/WfOJEhc+2aS9/eSUTet6bM72CoxxFIMCbU2zhJOJbjs0="
 script:
-  - sonar-scanner
+  - ./sonar-scanner
   - ./gradlew build 
