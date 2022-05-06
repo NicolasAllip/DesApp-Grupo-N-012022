@@ -3,6 +3,7 @@ install: skip
 os: linux
 dist: trusty
 jdk: oraclejdk11
+sudo: required
 
 addons:
   sonarcloud:
@@ -13,6 +14,10 @@ script:
   # other script steps might be done before running the actual analysis
   - sonar-scanner
   - "./gradlew build"
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
 
 #env:
 #  global:
