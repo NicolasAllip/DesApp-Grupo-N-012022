@@ -15,6 +15,13 @@ jacocoTestReport {
     }
 }
 
+sonarqube {
+    properties {
+        property "sonar.projectName", "backend-desapp-api"
+        property "sonar.projectKey", "NicolasAllip_DesApp-Grupo-N-012022"
+    }
+}
+
 
 eclipseJdt{
 	doLast {
