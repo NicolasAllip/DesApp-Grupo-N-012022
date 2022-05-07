@@ -20,6 +20,7 @@ sonarqube {
     property 'sonar.host.url', 'https://sonarcloud.io'
     property 'sonar.organization', 'devapps-grupo'
     property 'sonar.projectKey', 'grupo-n-012022'
+	property 'sonar.login','af3ca8ade2ad63905f78d0044d8f3bbba4b6412e'
   }
 }
 
