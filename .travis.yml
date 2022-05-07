@@ -4,9 +4,17 @@ os: linux
 dist: trusty
 jdk: oraclejdk11
 sudo: required
+
+addons:
+  sonarcloud:
+    organization: "devapps-grupo" # the key of the org you chose at step #3
+    token:
+      secure: "DpSQmFjfdy8qqQuXW9vZTEM7ki/aUpmLk+MNSTSnfMJFxHfn/YUL/twHLOH97tC/1JVdUi8tFvwK7axFmFgQO9LowvjxUH0XSLKoWqUI5fLr7tJ7YLpCnA4S7NmYECM/YauDMbCKxV4qclmd5LkF2I59dkNjeguQ/OeOKrEoSM8cRxfhmz44d+X1DnJT/6+d1w9nDlfFdxh95CWzfCpIGaIZsXXlGbBvRbZOTrBb/HU+2oSLczTWas6du2v1gS035EkfNax5nDj/l5M3uMafTuIIK9bOicTOp4jbqZFvlQzzHmN08j4fY49egAzxLq2qsMaAy4c/yYT3/tJnBxlLpEKRuOY/CSdCVW5cVMUvuBj5xVHTI3/ThkUVbNxxek9xJlQdA73rfO48sieaXHn+IbAgM10hpN6Ylea96rgH28jJfFvc7f1snCj9PJiaUag/ZT6fuyUiWVP0l1DtEtoAaEg8Rh7Z4w9Lg/3PvIxSGKONdbsCU1MTrntWxrYcvra3CARyMy1za7GI60tDWBB1lsNKISqJhBQTyBSM6KvZLt8CBhCVpYDgdJeHx1EuVciFxvXRlU6dCgtyMYnteiQI7rOfMQvvKwnwDxRdwaPx7sxDAkVBxzBe4cLCStqqa7RV/OP91/qs3dtsHpNmGjakI/Dog5OkDmuS9CnSuxXD120=" # encrypted value of your token
+
 script:
   - sonar-scanner
-  - "./gradlew build"
+  - ./gradlew build
+
 env:
   global:
     secure: DpSQmFjfdy8qqQuXW9vZTEM7ki/aUpmLk+MNSTSnfMJFxHfn/YUL/twHLOH97tC/1JVdUi8tFvwK7axFmFgQO9LowvjxUH0XSLKoWqUI5fLr7tJ7YLpCnA4S7NmYECM/YauDMbCKxV4qclmd5LkF2I59dkNjeguQ/OeOKrEoSM8cRxfhmz44d+X1DnJT/6+d1w9nDlfFdxh95CWzfCpIGaIZsXXlGbBvRbZOTrBb/HU+2oSLczTWas6du2v1gS035EkfNax5nDj/l5M3uMafTuIIK9bOicTOp4jbqZFvlQzzHmN08j4fY49egAzxLq2qsMaAy4c/yYT3/tJnBxlLpEKRuOY/CSdCVW5cVMUvuBj5xVHTI3/ThkUVbNxxek9xJlQdA73rfO48sieaXHn+IbAgM10hpN6Ylea96rgH28jJfFvc7f1snCj9PJiaUag/ZT6fuyUiWVP0l1DtEtoAaEg8Rh7Z4w9Lg/3PvIxSGKONdbsCU1MTrntWxrYcvra3CARyMy1za7GI60tDWBB1lsNKISqJhBQTyBSM6KvZLt8CBhCVpYDgdJeHx1EuVciFxvXRlU6dCgtyMYnteiQI7rOfMQvvKwnwDxRdwaPx7sxDAkVBxzBe4cLCStqqa7RV/OP91/qs3dtsHpNmGjakI/Dog5OkDmuS9CnSuxXD120=
