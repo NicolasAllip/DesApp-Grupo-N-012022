@@ -15,12 +15,15 @@ jacocoTestReport {
     }
 }
 
+jacoco {
+    toolVersion = "0.8.5"
+}
+
 sonarqube {
 	properties {
 		property 'sonar.projectKey', "NicolasAllip_DesApp-Grupo-N-012022"
 		}
 }
-
 
 eclipseJdt{
 	doLast {
@@ -76,6 +79,22 @@ dependencies {
 	testImplementation('org.mockito:mockito-core:3.+')
 }
 
+
+
+
+test.finalizedBy jacocoTestReport
+
+
 test {
 	useJUnitPlatform()
 }
+
+
+
+/*
+test {
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    dependsOn test
+}*/
