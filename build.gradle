@@ -18,7 +18,6 @@ jacocoTestReport {
 sonarqube {
 	properties {
 		property 'sonar.projectKey', "NicolasAllip_DesApp-Grupo-N-012022"
-		property 'sonar.java.binaries', "*/build/classes/java"
 		}
 }
 
