@@ -3,15 +3,15 @@ install: skip
 os: linux
 dist: trusty
 jdk: oraclejdk11
-sudo: required
+sudo: false
+
 addons:
   sonarcloud:
-    organization: devapps-grupo
+    organization: "devapps-grupo"
     token:
       secure: uf5+l3MnYBGzt4Wgx/1gpWdRhFnBc8fhaNVxCLV4++sSI5jjUiO0oLptSP6aNBdhuOgOdrvUImCWLS3jwwr2N9nGnmfDUHXHRDIr5QiLTkmFv9eF84Fls0qbne1DvzPVlc14Ntq4uyhbGug+e+N7QmVLcDVUXFNmuyNeeWf72Y1Y/QIubNxSSSEcI9xVcb68Eqa4W+UI3XxFdsBvTJdiO7InnUYIc7wNYQXurmElTA8mLg9z8k/iOnQFeydXyy/5GHS6aBIjVNcKKmEyhUkQejpOrRetm2aO1m23TkZbZOPL8XRwhBh/JAkfK6w/TB4lRvS1uKBnBz1GwERnsV8GsR2G1pbTAhOZ0UUExCbFnOExMEPdUO84Zs2w5cg75k5ZP/CWhgIaUY/HJFIRHFROjnLx4xcNhrbI0DlFWkxZ/JQ/AcKEP+imETdNxx2+DOsuI1iZahD0p9e74ASlotUyaT3SVb3vEGfyExYw9rJHhSiSHZrXY1TYRN3odKFHP53b8OKS5tvc4S9RCPf/d6i0cA2NRI2OeX/BZL1fP+tB1q2jTfWaHMjjqn41hguCJaY548jQTcTaIlQCy+8VFDcc9wj0En0t/BHgZxRm4oe9k0EGG5PtBYU+Cg22eqI+OsQnTUIBZidrgXjbhvl90BVn9ytUMT48UqyLWDxaPMY6rUs=
+
 script:
   - sonar-scanner
-  - "./gradlew build"
-env:
-  global:
-  - secure: uf5+l3MnYBGzt4Wgx/1gpWdRhFnBc8fhaNVxCLV4++sSI5jjUiO0oLptSP6aNBdhuOgOdrvUImCWLS3jwwr2N9nGnmfDUHXHRDIr5QiLTkmFv9eF84Fls0qbne1DvzPVlc14Ntq4uyhbGug+e+N7QmVLcDVUXFNmuyNeeWf72Y1Y/QIubNxSSSEcI9xVcb68Eqa4W+UI3XxFdsBvTJdiO7InnUYIc7wNYQXurmElTA8mLg9z8k/iOnQFeydXyy/5GHS6aBIjVNcKKmEyhUkQejpOrRetm2aO1m23TkZbZOPL8XRwhBh/JAkfK6w/TB4lRvS1uKBnBz1GwERnsV8GsR2G1pbTAhOZ0UUExCbFnOExMEPdUO84Zs2w5cg75k5ZP/CWhgIaUY/HJFIRHFROjnLx4xcNhrbI0DlFWkxZ/JQ/AcKEP+imETdNxx2+DOsuI1iZahD0p9e74ASlotUyaT3SVb3vEGfyExYw9rJHhSiSHZrXY1TYRN3odKFHP53b8OKS5tvc4S9RCPf/d6i0cA2NRI2OeX/BZL1fP+tB1q2jTfWaHMjjqn41hguCJaY548jQTcTaIlQCy+8VFDcc9wj0En0t/BHgZxRm4oe9k0EGG5PtBYU+Cg22eqI+OsQnTUIBZidrgXjbhvl90BVn9ytUMT48UqyLWDxaPMY6rUs=
+  - ./gradlew build
+
