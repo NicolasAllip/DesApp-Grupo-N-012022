@@ -81,20 +81,14 @@ dependencies {
 
 
 
-
-test.finalizedBy jacocoTestReport
-
-
-test {
-	useJUnitPlatform()
-}
+//test {
+//	useJUnitPlatform()
+//}
 
 
-
-/*
 test {
     finalizedBy jacocoTestReport
 }
 jacocoTestReport {
     dependsOn test
-}*/
+}
