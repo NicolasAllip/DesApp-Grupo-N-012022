@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
+import java.lang.runtime.SwitchBootstraps;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -29,6 +30,22 @@ public class Transaction {
     private User user;
     private Operation operation = transaction.getOperation();
     private TransactionState state;
+    private String sendAddress;
+    
+    private void findAddress() {
+        switch(operation) {
+            case SELL:
+                sendAddress = user.getCvu();
+                break;
+            case BUY:
+                sendAddress = user.getWalletAddress();
+                break;
+        }
+    }
+
+    private Transaction() {
+        findAddress();
+    }
 
     public TransactionIntent getTransaction() {
         return transaction;
@@ -100,6 +117,14 @@ public class Transaction {
 
     public void setState(TransactionState state) {
         this.state = state;
+    }
+    
+    public String getSendAddress() {
+        return sendAddress;
+    }
+
+    public void setSendAddress(String sendAddress) {
+        this.sendAddress = sendAddress;
     }
 
     @Override
