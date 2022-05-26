@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
+//import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
-import ar.edu.unq.desapp.grupon.backenddesappapi.service.NewUserDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.ITransactionService;
 
 import javax.validation.Valid;
@@ -33,20 +34,23 @@ public class TransactionRestController {
         return transactionService.findAll();
     }
 
-    /*@GetMapping("/transactions/{id}")
+    @GetMapping("/transactions/{id}")
     public ResponseEntity<?> showUser(@PathVariable Long id){
-        Transaction user = transactionService.findById(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        Transaction transaction = transactionService.findById(id);
+        return new ResponseEntity<>(transaction, HttpStatus.OK);
     }
 
     @PostMapping("/transactions")
-    public ResponseEntity<?> create(@Valid @RequestBody NewUserDTO newUserDTO){
+    public ResponseEntity<?> create(@Valid @RequestBody TransactionIntent transaction, 
+                                    @Valid @RequestBody User user) {
+                                    //la anotacion RequestBody es necesaria en user?
 
-        Transaction userN = transactionService.save(newUserDTO);
+
+        Transaction transactionN = transactionService.save(transaction, user);
         Map<String, Object> response = new HashMap<>();
 
-        response.put("message", "The user has been succefully created");
-        response.put("User: ", userN);
+        response.put("message", "The transaction has been succefully created");
+        response.put("Transaction: ", transactionN);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }*/
+    }
 }

@@ -9,8 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name="crypto_actives")
+@Entity
+@Table(name="crypto_actives")
 public class Cryptoactive {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

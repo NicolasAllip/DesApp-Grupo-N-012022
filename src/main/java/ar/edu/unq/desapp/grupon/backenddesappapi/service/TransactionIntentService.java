@@ -1,43 +1,41 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionState;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
-import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ITransactionDao;
+import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ITransactionIntentDao;
 
 @Service
-public class TransactionService implements ITransactionService {
+public class TransactionIntentService implements ITransactionIntentService {
     
     @Autowired
-    private ITransactionDao transactionDao;
+    private ITransactionIntentDao transactionDao;
     
     @Transactional(readOnly = true)
     @Override
-    public List<Transaction> findAll(){
-        return (List<Transaction>) transactionDao.findAll();
+    public List<TransactionIntent> findAll(){
+        return (List<TransactionIntent>) transactionDao.findAll();
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Transaction findById(Long id) {
+    public TransactionIntent findById(Long id) {
         return transactionDao.findById(id).orElse(null);
     }
 
     @Transactional
     @Override
-    public Transaction save(TransactionIntent transactionIntent, User user) {
-        Transaction transaction = Transaction.builder()
-                .transaction(transactionIntent)
+    public TransactionIntent save(Cryptoactive cryptoactive, Float amount, User user) {
+        TransactionIntent transaction = TransactionIntent.builder()
+                .cryptoactive(cryptoactive)
+                .amount(amount)
                 .user(user)
-                .state(TransactionState.PENDING)
                 .build();
 
         return transactionDao.save(transaction);
@@ -47,40 +45,6 @@ public class TransactionService implements ITransactionService {
     @Override
     public void delete(Long id) {
         transactionDao.deleteById(id);
-    }
-
-
-    @Transactional
-    @Override
-    public void acceptTransaction(Long id){
-        Transaction transaction = transactionDao.findById(id).orElse(null);
-        User senderUser   = transaction.getTransaction().getUser();
-        User receiverUser = transaction.getUser();
-        LocalDateTime transactionDate = transaction.getTransaction().getDate();
-        if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
-            senderUser.increaseReputationBy(10L);
-            receiverUser.increaseReputationBy(10L);
-        } else {
-            senderUser.increaseReputationBy(5L);
-            receiverUser.increaseReputationBy(5L);
-        }
-    }
-
-    @Transactional
-    @Override
-    public void cancel(Long id){
-        Transaction transaction  = transactionDao.findById(id).orElse(null);
-        User senderUser   = transaction.getTransaction().getUser();
-        User receiverUser = transaction.getUser();
-        transaction.setState(TransactionState.CANCELED);
-        senderUser.lowerReputationBy(20L);
-        receiverUser.lowerReputationBy(20L);
-    }
-    @Transactional
-    @Override
-    public void cancelByPrize(Long id){
-        Transaction transaction  = transactionDao.findById(id).orElse(null);
-        transaction.setState(TransactionState.CANCELED);
     }
     
 }
