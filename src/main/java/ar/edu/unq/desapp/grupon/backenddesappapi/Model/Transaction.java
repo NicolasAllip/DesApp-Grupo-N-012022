@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name="transactions")
+@Entity
+@Table(name="transactions")
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Transaction {
     @OneToOne
     private TransactionIntent transaction;
     @ManyToOne
-    private Cryptoactive cryptoactive; // = transaction.getCryptoactive();
+    private Cryptoactive cryptoactive = transaction.getCryptoactive();
     private Float amount = transaction.getAmount();
     private Float prize = transaction.getPrize();
     private Float prizePesos = transaction.getPrizePesos();
