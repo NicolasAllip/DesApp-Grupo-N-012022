@@ -88,13 +88,13 @@ public class TransactionIntent {
         this.date = date;
     }
 
-    @Override
+    /*@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransactionIntent that = (TransactionIntent) o;
         return Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation;
-    }
+    }*/
 
     public static TransactionIntentBuilder builder() {
         return new TransactionIntentBuilder();

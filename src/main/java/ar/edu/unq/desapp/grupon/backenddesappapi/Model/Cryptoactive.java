@@ -47,13 +47,13 @@ public class Cryptoactive {
         this.date = date;
     }
 
-    @Override
+    /*@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cryptoactive that = (Cryptoactive) o;
         return name == that.name && Objects.equals(price, that.price) && Objects.equals(date, that.date);
-    }
+    }*/
 
     public static CryptoactiveBuilder builder() {
         return new CryptoactiveBuilder();
