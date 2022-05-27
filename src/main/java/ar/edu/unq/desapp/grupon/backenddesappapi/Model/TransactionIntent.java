@@ -24,69 +24,37 @@ public class TransactionIntent {
     private Operation operation;
     private LocalDateTime date = LocalDateTime.now();
 
-    public Float getId() {
-        return id;
-    }
+    public Float getId() { return id; }
 
-    public void setId(Float id) {
-        this.id = id;
-    }
+    public void setId(Float id) { this.id = id; }
 
-    public Cryptoactive getCryptoactive() {
-        return cryptoactive;
-    }
+    public Cryptoactive getCryptoactive() { return cryptoactive; }
 
-    public void setCryptoactive(Cryptoactive cryptoactive) {
-        this.cryptoactive = cryptoactive;
-    }
+    public void setCryptoactive(Cryptoactive cryptoactive) { this.cryptoactive = cryptoactive; }
 
-    public Float getAmount() {
-        return amount;
-    }
+    public Float getAmount() { return amount; }
 
-    public void setAmount(Float amount) {
-        this.amount = amount;
-    }
+    public void setAmount(Float amount) { this.amount = amount; }
 
-    public Float getPrize() {
-        return prize;
-    }
+    public Float getPrize() { return prize; }
 
-    public void setPrize(Float prize) {
-        this.prize = prize;
-    }
+    public void setPrize(Float prize) { this.prize = prize; }
 
-    public Float getPrizePesos() {
-        return prizePesos;
-    }
+    public Float getPrizePesos() { return prizePesos; }
 
-    public void setPrizePesos(Float prizePesos) {
-        this.prizePesos = prizePesos;
-    }
+    public void setPrizePesos(Float prizePesos) { this.prizePesos = prizePesos; }
 
-    public User getUser() {
-        return user;
-    }
+    public User getUser() { return user; }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    public void setUser(User user) { this.user = user; }
 
-    public Operation getOperation() {
-        return operation;
-    }
+    public Operation getOperation() { return operation; }
 
-    public void setOperation(Operation operation) {
-        this.operation = operation;
-    }
+    public void setOperation(Operation operation) { this.operation = operation; }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
+    public LocalDateTime getDate() { return date; }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
+    public void setDate(LocalDateTime date) { this.date = date; }
 
     /*@Override
     public boolean equals(Object o) {
@@ -96,9 +64,7 @@ public class TransactionIntent {
         return Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation;
     }*/
 
-    public static TransactionIntentBuilder builder() {
-        return new TransactionIntentBuilder();
-    }
+    public static TransactionIntentBuilder builder() { return new TransactionIntentBuilder(); }
 
     public static final class TransactionIntentBuilder {
         private TransactionIntent transaction;
