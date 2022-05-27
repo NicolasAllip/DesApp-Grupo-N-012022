@@ -44,65 +44,35 @@ public class NewUserDTO {
     @Pattern(regexp = "^[0-9]*$", message = "")
     private String walletAddress;
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public String getSurname() {
-        return surname;
-    }
+    public String getSurname() { return surname; }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+    public void setSurname(String surname) { this.surname = surname; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() { return email; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getAddress() {
-        return address;
-    }
+    public String getAddress() { return address; }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public void setAddress(String address) { this.address = address; }
 
-    public String getPassword() {
-        return password;
-    }
+    public String getPassword() { return password; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 
-    public String getCvu() {
-        return cvu;
-    }
+    public String getCvu() { return cvu; }
 
-    public void setCvu(String cvu) {
-        this.cvu = cvu;
-    }
+    public void setCvu(String cvu) { this.cvu = cvu; }
 
-    public String getWalletAddress() {
-        return walletAddress;
-    }
+    public String getWalletAddress() { return walletAddress; }
 
-    public void setWalletAddress(String walletAddress) {
-        this.walletAddress = walletAddress;
-    }
+    public void setWalletAddress(String walletAddress) { this.walletAddress = walletAddress; }
 
-    public static NewUserDTOBuilder builder() {
-        return new NewUserDTOBuilder();
-    }
+    public static NewUserDTOBuilder builder() { return new NewUserDTOBuilder(); }
 
     public static final class NewUserDTOBuilder {
         private NewUserDTO newUserDTO;
