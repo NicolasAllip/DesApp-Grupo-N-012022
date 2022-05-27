@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-import java.lang.runtime.SwitchBootstraps;
+//import java.lang.runtime.SwitchBootstraps;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -35,15 +35,15 @@ public class Transaction {
     private void findAddress() {
         switch(operation) {
             case SELL:
-                sendAddress = user.getCvu();
+                setSendAddress(user.getCvu());
                 break;
             case BUY:
-                sendAddress = user.getWalletAddress();
+                setSendAddress(user.getWalletAddress());
                 break;
         }
     }
 
-    private Transaction() {
+    public Transaction() {
         findAddress();
     }
 

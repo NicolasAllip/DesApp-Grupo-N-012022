@@ -42,6 +42,8 @@ public class User implements Serializable {
     @Column(name="wallet_address", nullable = false, unique = true)
     private String walletAddress;
 
+    private Integer operationAmount = 0;
+
     public Long getId() {
         return id;
     }
@@ -114,6 +116,15 @@ public class User implements Serializable {
         this.walletAddress = walletAddress;
     }
 
+    public Integer getOperationAmount() {
+        return operationAmount;
+    }
+
+    public void setOperationAmount(Integer operationAmount) {
+        this.operationAmount = operationAmount;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -128,6 +139,10 @@ public class User implements Serializable {
 
     public void increaseReputationBy(Long x) {
         this.reputation += x;
+    }
+
+    public void increaseOperationAmount() {
+        this.operationAmount += 1;
     }
 
     public static UserBuilder builder() {

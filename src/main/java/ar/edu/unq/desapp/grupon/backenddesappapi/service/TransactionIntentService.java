@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ITransactionIntentDao;
@@ -19,8 +21,13 @@ public class TransactionIntentService implements ITransactionIntentService {
     
     @Transactional(readOnly = true)
     @Override
-    public List<TransactionIntent> findAll(){
-        return (List<TransactionIntent>) transactionDao.findAll();
+    public List<ActiveTransactionDTO> findAll(){
+        List<TransactionIntent> transactionIntents = (List<TransactionIntent>) transactionDao.findAll();
+        List<ActiveTransactionDTO> ret = new ArrayList<ActiveTransactionDTO>();
+        for(TransactionIntent transaction : transactionIntents) {
+            ret.add(new ActiveTransactionDTO(transaction));
+        }
+        return ret;
     }
 
     @Transactional(readOnly = true)
@@ -31,11 +38,12 @@ public class TransactionIntentService implements ITransactionIntentService {
 
     @Transactional
     @Override
-    public TransactionIntent save(Cryptoactive cryptoactive, Float amount, User user) {
+    public TransactionIntent save(Cryptoactive cryptoactive, Float amount, User user, Operation operation) {
         TransactionIntent transaction = TransactionIntent.builder()
                 .cryptoactive(cryptoactive)
                 .amount(amount)
                 .user(user)
+                .operation(operation)
                 .build();
 
         return transactionDao.save(transaction);

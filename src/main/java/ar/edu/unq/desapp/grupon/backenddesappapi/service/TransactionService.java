@@ -64,6 +64,8 @@ public class TransactionService implements ITransactionService {
             senderUser.increaseReputationBy(5L);
             receiverUser.increaseReputationBy(5L);
         }
+        senderUser.increaseOperationAmount();
+        receiverUser.increaseOperationAmount();
     }
 
     @Transactional

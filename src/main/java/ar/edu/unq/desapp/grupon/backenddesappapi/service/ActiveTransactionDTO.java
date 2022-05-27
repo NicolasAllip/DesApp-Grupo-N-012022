@@ -1,31 +1,46 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
+import net.bytebuddy.dynamic.TypeResolutionStrategy.Active;
 
-public class InputTransactionDTO {
+import java.time.LocalDateTime;
+
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
+
+public class ActiveTransactionDTO {
 
     private Cryptoactive cryptoactive;
+    private LocalDateTime date;
     private Float amount;
     private Float prize;
     private Float prizePesos;
     private User user;
-    private Operation operation;
+    private Integer operations = user.getOperationAmount();
     private Float reputation = user.getReputation();
-    private Integer sendAddress;
 
-    /*if(transaction.getOperation() == Operation.SELL) {
-        transaction.setSendAddress(user.getCvu());
-    } else {
-        transaction.setSendAddress(user.getSendAddress());
-    }*/
+    public ActiveTransactionDTO(TransactionIntent transaction) {
+        cryptoactive = transaction.getCryptoactive();
+        date = transaction.getDate();
+        amount = transaction.getAmount();
+        prize = transaction.getPrize();
+        prizePesos = transaction.getPrizePesos();
+        user = transaction.getUser();
+
+    }
 
     public Cryptoactive getCryptoactive() {
         return cryptoactive;
     }
     public void setCryptoactive(Cryptoactive cryptoactive) {
         this.cryptoactive = cryptoactive;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public Float getAmount() {
@@ -56,11 +71,11 @@ public class InputTransactionDTO {
         this.user = user;
     }
 
-    public Operation getOperation() {
-        return operation;
+    public Integer getOperations() {
+        return operations;
     }
-    public void setOperation(Operation operation) {
-        this.operation = operation;
+    public void setOperations(Integer operations) {
+        this.operations = operations;
     }
 
     public Float getReputation() {
@@ -68,12 +83,5 @@ public class InputTransactionDTO {
     }
     public void setReputation(Float reputation) {
         this.reputation = reputation;
-    }
-
-    public Integer getSendAddress() {
-        return sendAddress;
-    }
-    public void setSendAddress(Integer sendAddress) {
-        this.sendAddress = sendAddress;
     }
 }
