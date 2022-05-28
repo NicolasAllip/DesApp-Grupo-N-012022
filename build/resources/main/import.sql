@@ -1,0 +1,11 @@
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre1','surname1','email1@gmail.com','address1','pass1',87654321,1.0,12345678)
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre2','surname2','email2@gmail.com','address2','pass2',87654322,2.0,12345677)
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre3','surname3','email3@gmail.com','address3','pass3',87654323,3.0,12345676)
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre4','surname4','email4@gmail.com','address4','pass4',87654324,4.0,12345675)
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre5','surname5','email5@gmail.com','address5','pass5',87654325,5.0,12345674)
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre6','surname6','email6@gmail.com','address6','pass6',87654326,6.0,12345673)
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre7','surname7','email7@gmail.com','address7','pass7',87654327,7.0,12345672)
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre8','surname8','email8@gmail.com','address8','pass8',87654328,8.0,12345671)
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre9','surname9','email9@gmail.com','address9','pass9',87654329,9.0,12345679)
+INSERT INTO users (name,surname,email,address,password,cvu,reputation,wallet_address) VALUES ('nombre10','surname10','email10@gmail.com','address10','pass10',87654311,10.0,12345612)
+

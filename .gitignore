@@ -2,4 +2,6 @@
 .vscode
 backend-desapp-api
 bin
-build
+.settings
+.classpath
+.project
