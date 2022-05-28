@@ -4,10 +4,19 @@ os: linux
 dist: trusty
 jdk: oraclejdk11
 
+node_js:  
+  - 9
+  - 8
+  - node
+
 addons:
   sonarcloud:
     organization: "devapps-grupo"
 
 script:
+#  - ./gradlew test jacocoTestReport
   - sonar-scanner -Dproject.settings=sonar-project.properties
   - ./gradlew build
+
+after_success:
+  - ./gradlew test jacocoTestReport

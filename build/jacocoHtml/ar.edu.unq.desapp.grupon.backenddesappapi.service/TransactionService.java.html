@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransactionService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupon.backenddesappapi.service</a> &gt; <span class="el_source">TransactionService.java</span></div><h1>TransactionService.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupon.backenddesappapi.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
+//import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ITransactionDao;
+
+@Service
+<span class="nc" id="L13">public class TransactionService implements ITransactionService {</span>
+    
+    /*@Autowired
+    private ITransactionDao transactionDao;
+    
+    @Transactional(readOnly = true)
+    @Override
+    public List&lt;Transaction&gt; findAll(){
+        return (List&lt;Transaction&gt;) transactionDao.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Transaction findById(Long id) {
+        return transactionDao.findById(id).orElse(null);
+    }
+
+    @Transactional
+    @Override
+    public Transaction save(TransactionIntent transactionIntent, User user) {
+        Transaction transaction = Transaction.builder()
+                .transaction(transactionIntent)
+                .user(user)
+                .state(PENDING)
+                .build();
+
+        return transactionDao.save(transaction);
+    }
+
+    @Transactional
+    @Override
+    public void delete(Long id) {
+        transactionDao.deleteById(id);
+    }
+
+
+    @Transactional
+    @Override
+    public void acceptTransaction(Long id){
+        Transaction transaction  = transactionDao.findById(id);
+        val senderUser   = transaction.getTransaction().getUser();
+        val receiverUser = transaction.getUser();
+        val transactionDate = transaction.getTransaction().getDate();
+        if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
+            senderUser.increaseReputationBy(10);
+            receiverUser.increaseReputationBy(10);
+        } else {
+            senderUser.increaseReputationBy(5);
+            receiverUser.increaseReputationBy(5);
+        }
+    }
+
+    @Transactional
+    @Override
+    public void cancel(Long id){
+        val transaction  = transactionDao.findById(id);
+        val senderUser   = transaction.getTransaction().getUser();
+        val receiverUser = transaction.getUser();
+        transaction.setState(TransactionState.CANCELED);
+        senderUser.lowerReputationBy(20);
+        receiverUser.lowerReputationBy(20);
+    }
+    @Transactional
+    @Override
+    public void cancelByPrize(Long id){
+        val transaction  = transactionDao.findById(id);
+        transaction.setState(TransactionState.CANCELED);
+    }
+    */
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
