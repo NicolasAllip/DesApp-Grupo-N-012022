@@ -1,26 +1,0 @@
-
-†ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder#reputation(Ljava/lang/Float;)Lar/edu/unq/desapp/grupon/backenddesappapi/Model/User$UserBuilder;ê
-É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaµ µ(%"1*õ
-1ê
-É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java∂ ∂(®
-•
-ê
-É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java∂ ∂(:
-%04ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"__id*N*LB
-@ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder"
-user˚¯
-ê
-É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java∂ ∂(*
-
-%1void"Var.edu.unq.desapp.grupon.backenddesappapi.Model.User#setReputation(Ljava/lang/Float;)V*<
-:
-%04ar.edu.unq.desapp.grupon.backenddesappapi.Model.User*
-
-
-reputationjava.lang.Float2 setReputation(Ljava/lang/Float;)"Ÿ
-ê
-É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java∑ ∑(DB
-@ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder:
-
-reputationjava.lang.FloatBDB
-@ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder
