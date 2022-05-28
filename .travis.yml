@@ -1,8 +1,10 @@
 language: java
 install: skip
 os: linux
-dist: trusty
-jdk: oraclejdk11
+dist: xenial
+jdk: openjdk11
+node_js:
+  - lts/*
 
 addons:
   sonarcloud:
