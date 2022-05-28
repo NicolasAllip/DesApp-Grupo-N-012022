@@ -1,0 +1,4 @@
+ar.edu.unq.desapp.grupon.backenddesappapi.BackendDesappApiApplication#productApi()Lspringfox/documentation/spring/web/plugins/Docket;
+springfox.documentation.spring.web.plugins.Docket#instance-init#
+springfox.documentation.spring.web.plugins.Docket#<init>(Lspringfox/documentation/spi/DocumentationType;)V
+springfox.documentation.builders.RequestHandlerSelectors#basePackage(Ljava/lang/String;)Lcom/google/common/base/Predicate;

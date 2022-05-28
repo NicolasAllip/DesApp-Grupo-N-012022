@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-05-28T01:14:12" hostname="ubuntu-nico" time="0.166">
+<testsuite name="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-05-28T13:03:23" hostname="ubuntu-nico" time="0.133">
   <properties/>
-  <testcase name="getUserByIdWhenUserDoesntExist_returnsNull()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.156"/>
-  <testcase name="getUserById_returnsUser()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.002"/>
-  <testcase name="getAllUsers_returnsUserList()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.002"/>
-  <testcase name="saveUser_transformsDtoIntoModelObject()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.003"/>
+  <testcase name="getUserByIdWhenUserDoesntExist_returnsNull()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.114"/>
+  <testcase name="getUserById_returnsUser()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.005"/>
+  <testcase name="getAllUsers_returnsUserList()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.003"/>
+  <testcase name="saveUser_transformsDtoIntoModelObject()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.004"/>
   <testcase name="deleteUserById()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.service.UserServiceTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

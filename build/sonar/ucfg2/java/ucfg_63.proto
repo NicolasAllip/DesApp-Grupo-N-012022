@@ -1,0 +1,325 @@
+
+Par.edu.unq.desapp.grupon.backenddesappapi.Model.User#equals(Ljava/lang/Object;)ZŽ
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javav v("startingBlock*ß
+14Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazQ z(Xù
+ö
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz` z(g
+%8java.lang.String"__id*E*C6
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"	
+surnameÿ
+ü
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazi z(u
+%9java.lang.String"__id*K*I
+<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"	
+surname°
+­
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazQ z(v
+%10boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%8java.lang.String*
+
+%9java.lang.String*
+2
+4
+6
+8
+10
+12
+1*Ü
+16Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz. z(5ö
+ó
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz= z(A
+%5java.lang.String"__id*B*@6
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+nameü
+ù
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazC z(L
+%6java.lang.String"__id*H*F
+<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+name¯
+¬
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz. z(M
+%7boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%5java.lang.String*
+
+%6java.lang.String*
+2
+14
+4
+6
+8
+10
+12
+1*È	
+17Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javay y(ñ
+î
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javay y(<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"__id*
+
+ojava.lang.Objectò
+ï
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz z( 
+%2java.lang.Long"__id*@*>6
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+idø
+õ
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz" z()
+%3java.lang.Long"__id*F*D
+<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+id«
+¨
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz z(*
+%4boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%2java.lang.Long*
+
+%3java.lang.Long*
+2
+14
+4
+16
+6
+8
+10
+12
+1*±
+18Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javax< x(A"™
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javax5 x(B
+""*Â
+19Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javax x(!Ÿœ
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javax x(#
+%0java.lang.Class",java.lang.Object#getClass()Ljava/lang/Class;*86
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User2
+getClass()þû
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javax' x(3
+%1java.lang.Class",java.lang.Object#getClass()Ljava/lang/Class;*
+
+ojava.lang.Object2
+getClass()*
+17
+18*²
+1
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz z(õ"š
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz z(õ
+""*â
+2
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazÃ z(Ê‚
+ÿ
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazÒ z(ß
+%26java.lang.String"__id*K*I6
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+walletAddressˆ
+…
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazá z(ó
+%27java.lang.String"__id*Q*O
+<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+walletAddress´
+±
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazÃ z(ô
+%28boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%26java.lang.String*
+
+%27java.lang.String*
+1*Î
+startingBlockŽ
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javav v(#Ø
+Õ
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javau u(
+%29"
+__annotate*
+java.lang.Override*
+
+ojava.lang.ObjectÂ
+¿
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javav! v("
+ojava.lang.Object"__annotation*
+
+%29*
+18
+19
+21*Û
+4
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz” z(›þ
+û
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz£ z(­
+%23java.lang.Float"__id*H*F6
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+
+reputation„
+
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz¯ z(¾
+%24java.lang.Float"__id*N*L
+<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+
+reputation²
+¯
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz” z(¿
+%25boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%23java.lang.Float*
+
+%24java.lang.Float*
+2
+1*Ô
+6
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazó z(úø
+õ
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz‚ z(…
+%20java.lang.String"__id*A*?6
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+cvuþ
+û
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz‡ z(
+%21java.lang.String"__id*G*E
+<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+cvu´
+±
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazó z(
+%22boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%20java.lang.String*
+
+%21java.lang.String*	
+2
+4
+1*á
+8
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazÈ z(Ïý
+ú
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz× z(ß
+%17java.lang.String"__id*F*D6
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+
+passwordƒ
+€
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazá z(î
+%18java.lang.String"__id*L*J
+<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+
+password´
+±
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazÈ z(ï
+%19boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%17java.lang.String*
+
+%18java.lang.String*
+2
+4
+6
+1*±
+21Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaw w(""™
+Ž
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaw w(#
+""*ã
+10
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazŸ z(¦ü
+ù
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz® z(µ
+%14java.lang.String"__id*E*C6
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"	
+address‚
+ÿ
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz· z(Ã
+%15java.lang.String"__id*K*I
+<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"	
+address´
+±
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazŸ z(Ä
+%16boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%14java.lang.String*
+
+%15java.lang.String*
+2
+4
+6
+8
+1*á
+12
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazz z(ú
+÷
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz‰ z(Ž
+%11java.lang.String"__id*C*A6
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+email€
+ý
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaz z(š
+%12java.lang.String"__id*I*G
+<
+user4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"
+email³
+°
+
+ƒ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javazz z(›
+%13boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%11java.lang.String*
+
+%12java.lang.String*
+2
+4
+6
+8
+10
+1:
+ojava.lang.ObjectB86
+4ar.edu.unq.desapp.grupon.backenddesappapi.Model.User

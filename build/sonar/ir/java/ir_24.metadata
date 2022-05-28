@@ -1,0 +1,3 @@
+ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction#builder()Lar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction$TransactionBuilder;
+ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction$TransactionBuilder#<init>()V
+ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction$TransactionBuilder#instance-init#

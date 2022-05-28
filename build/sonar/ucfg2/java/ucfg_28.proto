@@ -1,0 +1,24 @@
+
+åar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction$TransactionBuilder#operation(Lar/edu/unq/desapp/grupon/backenddesappapi/Model/Operation;)Lar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction$TransactionBuilder;—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javaž" ž(+"1*ë	
+1—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javaŸ Ÿ(Ë
+È
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javaŸ Ÿ(A
+%0;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"__id*c*aP
+Nar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction$TransactionBuilder"
+transactionŒ‰
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javaŸ Ÿ(/
+
+%1void"†ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction#setOperation(Lar/edu/unq/desapp/grupon/backenddesappapi/Model/Operation;)V*C
+A
+%0;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction*H
+F
+	operation9ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation2IsetOperation(Lar/edu/unq/desapp/grupon/backenddesappapi/Model/Operation;)"î
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.java   (RP
+Nar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction$TransactionBuilder:F
+	operation9ar.edu.unq.desapp.grupon.backenddesappapi.Model.OperationBRP
+Nar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction$TransactionBuilder

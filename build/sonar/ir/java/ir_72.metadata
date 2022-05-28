@@ -1,0 +1,4 @@
+ar.edu.unq.desapp.grupon.backenddesappapi.service.UserService#findById(Ljava/lang/Long;)Lar/edu/unq/desapp/grupon/backenddesappapi/Model/User;
+java.util.Optional#orElse(Ljava/lang/Object;)Ljava/lang/Object;
+ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException#instance-init#
+ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException#<init>(Ljava/lang/Long;)V

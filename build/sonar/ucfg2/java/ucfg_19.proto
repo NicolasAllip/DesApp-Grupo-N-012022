@@ -1,0 +1,203 @@
+
+War.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction#equals(Ljava/lang/Object;)Z•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javaj j("startingBlock*Þ
+13•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javal l(!­ª
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javal l(#
+%0java.lang.Class",java.lang.Object#getClass()Ljava/lang/Class;*?=
+;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction2
+getClass()…‚
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javal' l(3
+%1java.lang.Class",java.lang.Object#getClass()Ljava/lang/Class;*
+
+ojava.lang.Object2
+getClass()*
+11
+12*˜
+2—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanà n(éµ
+²
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanà n(é@
+%159ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation"__id*N*L=
+;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+	operation»
+¸
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javaní n(û@
+%169ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation"__id*T*R
+C
+that;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+	operation*
+1*ã
+startingBlock•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javaj j(#ß
+Ü
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javai i(
+%17"
+__annotate*
+java.lang.Override*
+
+ojava.lang.ObjectÉ
+Æ
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javaj! j("
+ojava.lang.Object"__annotation*
+
+%17*
+13
+15
+12*¿
+15•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javak k("" 
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javak k(#
+""*	
+4—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javan½ n(Ä«
+¨
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanÌ n(Ð;
+%124ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"__id*I*G=
+;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+user±
+®
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanÒ n(Û;
+%134ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"__id*O*M
+C
+that;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+userƒ
+€
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javan½ n(Ü
+%14boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*=
+;
+%124ar.edu.unq.desapp.grupon.backenddesappapi.Model.User*=
+;
+%134ar.edu.unq.desapp.grupon.backenddesappapi.Model.User*
+2
+1*†
+6—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanŽ n(•‹
+ˆ
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javan n(§
+%9java.lang.Float"__id*O*M=
+;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+
+prizePesos’
+
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javan© n(¸
+%10java.lang.Float"__id*U*S
+C
+that;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+
+prizePesos¸
+µ
+—
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanŽ n(¹
+%11boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%9java.lang.Float*
+
+%10java.lang.Float*	
+2
+4
+1*ö
+8•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javani n(p„
+
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanx n(}
+%6java.lang.Float"__id*J*H=
+;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+prize‹
+ˆ
+–
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javan n(‰
+%7java.lang.Float"__id*P*N
+C
+that;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+prizeµ
+²
+–
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javani n(Š
+%8boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%6java.lang.Float*
+
+%7java.lang.Float*
+2
+4
+6
+1*ú
+10•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanB n(I…
+‚
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanQ n(W
+%3java.lang.Float"__id*K*I=
+;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+amount‹
+ˆ
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanY n(d
+%4java.lang.Float"__id*Q*O
+C
+that;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"
+amount´
+±
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javanB n(e
+%5boolean"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+
+%3java.lang.Float*
+
+%4java.lang.Float*
+2
+4
+6
+8
+1*¿
+11•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javam) m(*ÿ
+ü
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javam m(+C
+that;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction"__id*
+
+ojava.lang.Object‰
+†
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javan n(>
+%2"?java.util.Objects#equals(Ljava/lang/Object;Ljava/lang/Object;)Z*"
+java.util.Objects*
+""*
+""*
+2
+4
+6
+8
+10
+1*¿
+12•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javal< l(A" 
+•
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javal5 l(B
+""*À
+1–
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javan n(ü"¡
+–
+Š/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/Transaction.javan n(ü
+"":
+ojava.lang.ObjectB?=
+;ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction

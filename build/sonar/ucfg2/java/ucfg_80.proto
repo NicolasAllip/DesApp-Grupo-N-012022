@@ -1,0 +1,21 @@
+
+War.edu.unq.desapp.grupon.backenddesappapi.service.UserService#findAll()Ljava/util/List;—
+Œ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/service/UserService.java ("1*ñ
+1—
+Œ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/service/UserService.java (#¹
+¶
+—
+Œ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/service/UserService.java (#D
+%0>ar.edu.unq.desapp.grupon.backenddesappapi.persistence.IUserDao"__id*N*L?
+=ar.edu.unq.desapp.grupon.backenddesappapi.service.UserService"	
+userDaoÜÙ
+—
+Œ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/service/UserService.java (-
+%1java.lang.Iterable"Porg.springframework.data.repository.CrudRepository#findAll()Ljava/lang/Iterable;*F
+D
+%0>ar.edu.unq.desapp.grupon.backenddesappapi.persistence.IUserDao2	findAll()"¶
+—
+Œ/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/service/UserService.java (.
+
+%1java.lang.IterableBA?
+=ar.edu.unq.desapp.grupon.backenddesappapi.service.UserService

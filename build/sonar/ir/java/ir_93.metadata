@@ -1,0 +1,6 @@
+ar.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestExceptionController#handleDataAccessExceptions(Lorg/springframework/dao/DataAccessException;)Lorg/springframework/http/ResponseEntity;
+java.util.HashMap#<init>()V
+java.lang.String#concat(Ljava/lang/String;)Ljava/lang/String;
+java.util.HashMap#instance-init#
+org.springframework.http.ResponseEntity#instance-init#
+org.springframework.http.ResponseEntity#<init>(Ljava/lang/Object;Lorg/springframework/http/HttpStatus;)V
