@@ -1,10 +1,8 @@
 language: java
 install: skip
 os: linux
-dist: xenial
-jdk: openjdk11
-node_js:
-  - lts/*
+dist: trusty
+jdk: oraclejdk11
 
 addons:
   sonarcloud:
@@ -13,4 +11,3 @@ addons:
 script:
   - sonar-scanner -Dproject.settings=sonar-project.properties
   - ./gradlew build
-
