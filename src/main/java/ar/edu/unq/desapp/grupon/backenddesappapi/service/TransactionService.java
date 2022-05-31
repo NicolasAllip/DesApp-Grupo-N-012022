@@ -54,10 +54,13 @@ public class TransactionService implements ITransactionService {
     @Override
     public void acceptTransaction(Long id){
         Transaction transaction = transactionDao.findById(id).orElse(null);
+        // TODO: generar caso para el null
+        // TODO: generar validacion pending
         User senderUser   = transaction.getTransaction().getUser();
         User receiverUser = transaction.getUser();
+        // TODO: validar precio
         LocalDateTime transactionDate = transaction.getTransaction().getDate();
-        if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
+        if(transactionDate.isBefore(LocalDateTime.now().plusMinutes(30))) {
             senderUser.increaseReputationBy(10L);
             receiverUser.increaseReputationBy(10L);
         } else {
@@ -66,6 +69,7 @@ public class TransactionService implements ITransactionService {
         }
         senderUser.increaseOperationAmount();
         receiverUser.increaseOperationAmount();
+        // TODO: pasar a completada
     }
 
     @Transactional
@@ -79,8 +83,7 @@ public class TransactionService implements ITransactionService {
         receiverUser.lowerReputationBy(20L);
     }
     @Transactional
-    @Override
-    public void cancelByPrize(Long id){
+    private void cancelByPrize(Long id){
         Transaction transaction  = transactionDao.findById(id).orElse(null);
         transaction.setState(TransactionState.CANCELED);
     }

@@ -53,4 +53,6 @@ public class TransactionRestController {
         response.put("Transaction: ", transactionN);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+
+    // TODO: endpoints para aceptar y cancelar
 }

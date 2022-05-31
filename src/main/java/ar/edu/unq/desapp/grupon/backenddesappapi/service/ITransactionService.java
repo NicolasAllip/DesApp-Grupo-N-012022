@@ -20,6 +20,4 @@ public interface ITransactionService {
 
     public void cancel(Long id);
 
-    public void cancelByPrize(Long id);
-
 }

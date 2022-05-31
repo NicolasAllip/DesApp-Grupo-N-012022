@@ -70,6 +70,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Override
     public Cryptoactive update(Long id, Float price) {
         Cryptoactive cryptoactive = cryptoactiveDao.findById(id).orElse(null);
+        // TODO: validar null
         cryptoactive.setPrice(price);
         return cryptoactiveDao.save(cryptoactive);
     }
@@ -92,6 +93,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     }
 
     private Cryptoactive binanceToModelCrypto(BinanceCryptoDTO binanceCryptoDTO) {
+        // TODO: crear CryptoLog
         Cryptoactive cryptoactive = Cryptoactive.builder()
                 .name(CryptoactiveName.valueOf(binanceCryptoDTO.getSymbol()))
                 .price(Float.valueOf(binanceCryptoDTO.getPrice()))

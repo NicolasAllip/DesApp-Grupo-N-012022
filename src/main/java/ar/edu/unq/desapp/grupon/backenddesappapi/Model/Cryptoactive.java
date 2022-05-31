@@ -14,10 +14,10 @@ import javax.persistence.Table;
 public class Cryptoactive {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; //TODO: sacar id, dejar name como ID
     private CryptoactiveName name;
     private Float price;
-    private LocalDateTime date;
+    private LocalDateTime date; //TODO: sacar, dejar para el log
 
     public Long getId() {
         return id;
