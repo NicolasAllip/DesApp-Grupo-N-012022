@@ -19,6 +19,7 @@ jacocoTestReport {
 
 jacoco {
     toolVersion = "0.8.5"
+	reportsDir = file("build/jacoco")
 }
 
 sonarqube {
@@ -29,7 +30,8 @@ sonarqube {
 		property' sonar.projectKey',"NicolasAllip_DesApp-Grupo-N-012022"
 		property 'sonar.java.binaries', "build/classes"
 		property 'sonar.java.coveragePlugin', "jacoco"
-		property 'sonar.coverage.jacoco.xmlReportPaths', "build/reports/jacoco/test/jacocoTestReport.xml"
+		property 'sonar.coverage.jacoco.xmlReportPaths', "build/jacoco/test/jacocoTestReport.xml"
+		//property 'sonar.jacoco.reportPath', "build/jacoco/test.exec"
 		}
 }
 

@@ -9,9 +9,8 @@ addons:
     organization: "devapps-grupo"
 
 script:
-  - ./gradlew test jacocoTestReport
-  - sonar-scanner -Dproject.settings=sonar-project.properties
   - ./gradlew build
-
-after_success:
-  - ./gradlew test 
+  - ./gradlew test
+  - ./gradlew sonarqube
+  #- sonar-scanner -Dproject.settings=sonar-project.properties
+  
