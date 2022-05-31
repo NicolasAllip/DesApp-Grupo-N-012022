@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller.UserRestExceptionControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-31T14:11:35" hostname="ubuntu-nico" time="0.008">
+<testsuite name="ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller.UserRestExceptionControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-31T14:51:10" hostname="ubuntu-nico" time="0.012">
   <properties/>
-  <testcase name="handleDataAccessException()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller.UserRestExceptionControllerTest" time="0.008"/>
+  <testcase name="handleDataAccessException()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller.UserRestExceptionControllerTest" time="0.012"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
