@@ -16,5 +16,6 @@ public interface ICryptoactiveService {
     public Cryptoactive update(Long id, Float price);
 
     public void delete(Long id);
-    
+
+    List<Cryptoactive> getAllCryptos();
 }

@@ -1,8 +1,13 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.IGetPriceForCryptoRestclient;
+import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.BinanceCryptoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +21,26 @@ public class CryptoactiveService implements ICryptoactiveService {
     
     @Autowired
     private ICryptoactiveDao cryptoactiveDao;
+    @Autowired
+    private IGetPriceForCryptoRestclient getPriceForCryptoRestclient;
+
+    private static List<String> AVAILABLE_CRYPTOS = new ArrayList<>();
+    static {
+        AVAILABLE_CRYPTOS.add("ALICEUSDT");
+        AVAILABLE_CRYPTOS.add("MATICUSDT");
+        AVAILABLE_CRYPTOS.add("AXSUSDT");
+        AVAILABLE_CRYPTOS.add("AAVEUSDT");
+        AVAILABLE_CRYPTOS.add("ATOMUSDT");
+        AVAILABLE_CRYPTOS.add("NEOUSDT");
+        AVAILABLE_CRYPTOS.add("DOTUSDT");
+        AVAILABLE_CRYPTOS.add("ETHUSDT");
+        AVAILABLE_CRYPTOS.add("CAKEUSDT");
+        AVAILABLE_CRYPTOS.add("BTCUSDT");
+        AVAILABLE_CRYPTOS.add("BNBUSDT");
+        AVAILABLE_CRYPTOS.add("ADAUSDT");
+        AVAILABLE_CRYPTOS.add("TRXUSDT");
+        AVAILABLE_CRYPTOS.add("AUDIOUSDT");
+    }
     
     @Transactional(readOnly = true)
     @Override
@@ -54,5 +79,24 @@ public class CryptoactiveService implements ICryptoactiveService {
     public void delete(Long id) {
         cryptoactiveDao.deleteById(id);
     }
-    
+
+    @Transactional
+    @Override
+    public List<Cryptoactive> getAllCryptos() {
+        BinanceCryptoDTO[] binanceCryptoDTOS = getPriceForCryptoRestclient.getBatchCryptoPrice(AVAILABLE_CRYPTOS);
+        List<Cryptoactive> cryptoactiveList = new ArrayList<>();
+
+        Arrays.stream(binanceCryptoDTOS).forEach(bcrypto -> cryptoactiveList.add(binanceToModelCrypto(bcrypto)));
+
+        return cryptoactiveList;
+    }
+
+    private Cryptoactive binanceToModelCrypto(BinanceCryptoDTO binanceCryptoDTO) {
+        Cryptoactive cryptoactive = Cryptoactive.builder()
+                .name(CryptoactiveName.valueOf(binanceCryptoDTO.getSymbol()))
+                .price(Float.valueOf(binanceCryptoDTO.getPrice()))
+                .date(LocalDateTime.now())
+                .build();
+        return cryptoactiveDao.save(cryptoactive);
+    }
 }
