@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransactionIntent.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupon.backenddesappapi.Model</a> &gt; <span class="el_source">TransactionIntent.java</span></div><h1>TransactionIntent.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name=&quot;transaction_intents&quot;)
+<span class="nc" id="L13">public class TransactionIntent {</span>
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Float id;
+    private Cryptoactive cryptoactive;
+    private Float amount;
+<span class="nc" id="L20">    private Float prize = cryptoactive.getPrice();</span>
+    private Float prizePesos; //Hay que pegar con la api https://www.dolarsi.com/api/api.php?type=valoresprincipales
+    private User user;
+    private Operation operation;
+<span class="nc" id="L24">    private LocalDateTime date = LocalDateTime.now();</span>
+
+    public Float getId() {
+<span class="nc" id="L27">        return id;</span>
+    }
+
+    public void setId(Float id) {
+<span class="nc" id="L31">        this.id = id;</span>
+<span class="nc" id="L32">    }</span>
+
+    public Cryptoactive getCryptoactive() {
+<span class="nc" id="L35">        return cryptoactive;</span>
+    }
+
+    public void setCryptoactive(Cryptoactive cryptoactive) {
+<span class="nc" id="L39">        this.cryptoactive = cryptoactive;</span>
+<span class="nc" id="L40">    }</span>
+
+    public Float getAmount() {
+<span class="nc" id="L43">        return amount;</span>
+    }
+
+    public void setAmount(Float amount) {
+<span class="nc" id="L47">        this.amount = amount;</span>
+<span class="nc" id="L48">    }</span>
+
+    public Float getPrize() {
+<span class="nc" id="L51">        return prize;</span>
+    }
+
+    public void setPrize(Float prize) {
+<span class="nc" id="L55">        this.prize = prize;</span>
+<span class="nc" id="L56">    }</span>
+
+    public Float getPrizePesos() {
+<span class="nc" id="L59">        return prizePesos;</span>
+    }
+
+    public void setPrizePesos(Float prizePesos) {
+<span class="nc" id="L63">        this.prizePesos = prizePesos;</span>
+<span class="nc" id="L64">    }</span>
+
+    public User getUser() {
+<span class="nc" id="L67">        return user;</span>
+    }
+
+    public void setUser(User user) {
+<span class="nc" id="L71">        this.user = user;</span>
+<span class="nc" id="L72">    }</span>
+
+    public Operation getOperation() {
+<span class="nc" id="L75">        return operation;</span>
+    }
+
+    public void setOperation(Operation operation) {
+<span class="nc" id="L79">        this.operation = operation;</span>
+<span class="nc" id="L80">    }</span>
+
+    public LocalDateTime getDate() {
+<span class="nc" id="L83">        return date;</span>
+    }
+
+    public void setDate(LocalDateTime date) {
+<span class="nc" id="L87">        this.date = date;</span>
+<span class="nc" id="L88">    }</span>
+
+    public static TransactionIntentBuilder builder() {
+<span class="nc" id="L91">        return new TransactionIntentBuilder();</span>
+    }
+
+    public static final class TransactionIntentBuilder {
+        private TransactionIntent transaction;
+
+<span class="nc" id="L97">        private TransactionIntentBuilder() {</span>
+<span class="nc" id="L98">            transaction = new TransactionIntent();</span>
+<span class="nc" id="L99">        }</span>
+        public TransactionIntentBuilder id(Float id) {
+<span class="nc" id="L101">            transaction.setId(id);</span>
+<span class="nc" id="L102">            return this;</span>
+        }
+
+        public TransactionIntentBuilder cryptoactive(Cryptoactive cryptoactive) {
+<span class="nc" id="L106">            transaction.setCryptoactive(cryptoactive);</span>
+<span class="nc" id="L107">            return this;</span>
+        }
+
+        public TransactionIntentBuilder amount(Float amount) {
+<span class="nc" id="L111">            transaction.setAmount(amount);</span>
+<span class="nc" id="L112">            return this;</span>
+        }
+
+        public TransactionIntentBuilder prize(Float prize) {
+<span class="nc" id="L116">            transaction.setPrize(prize);</span>
+<span class="nc" id="L117">            return this;</span>
+        }
+
+        public TransactionIntentBuilder prizePesos(Float prizePesos) {
+<span class="nc" id="L121">            transaction.setPrizePesos(prizePesos);</span>
+<span class="nc" id="L122">            return this;</span>
+        }
+
+        public TransactionIntentBuilder user(User user) {
+<span class="nc" id="L126">            transaction.setUser(user);</span>
+<span class="nc" id="L127">            return this;</span>
+        }
+
+        public TransactionIntentBuilder operation(Operation operation) {
+<span class="nc" id="L131">            transaction.setOperation(operation);</span>
+<span class="nc" id="L132">            return this;</span>
+        }
+
+        public TransactionIntent build() {
+<span class="nc" id="L136">            return transaction;</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

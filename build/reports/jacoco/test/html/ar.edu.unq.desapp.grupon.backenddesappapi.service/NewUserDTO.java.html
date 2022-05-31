@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NewUserDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupon.backenddesappapi.service</a> &gt; <span class="el_source">NewUserDTO.java</span></div><h1>NewUserDTO.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupon.backenddesappapi.service;
+
+import javax.validation.constraints.*;
+
+<span class="fc" id="L5">public class NewUserDTO {</span>
+    /*
+    Nombre, Obligatorio, Min:3, Max:30
+    Apellido, Obligatorio, Min:3, Max:30
+    Email, Obligatorio, Formato de email
+    Dirección, Obligatorio, Min:10, Max:30
+    Contraseña
+    CVU MercadoPago, Obligatorio (22 digitos)
+    Dirección Billetera de CriptoActivos, Obligatorio (8 dígitos)
+     */
+
+    @NotBlank(message = &quot;User must have a name&quot;)
+    @Size(min = 3, max = 30, message = &quot;User's name must be between 3 and 30 characters&quot;)
+    private String name;
+
+    @NotBlank(message = &quot;User must have a surname&quot;)
+    @Size(min = 3, max = 30, message = &quot;User's surname must be between 3 and 30 characters&quot;)
+    private String surname;
+
+    @NotBlank(message = &quot;User must have an e-mail&quot;)
+    @Pattern(regexp = &quot;^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]|[\\w-]{2,}))@((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9]))|([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$&quot;, message = &quot;Must be valid email&quot;)
+    private String email; //TODO: va a ser unique
+
+    @NotBlank(message = &quot;User must have an address&quot;)
+    @Size(min = 10, max = 30, message = &quot;User's address must be between 10 and 30 characters&quot;)
+    private String address;
+
+    @NotBlank(message = &quot;User must have a password&quot;)
+    @Size(min = 6, message = &quot;Password must contain at least 6 characters&quot;)
+    @Pattern(regexp = &quot;^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&amp;])[A-Za-z\\d@$!%*?&amp;]*$&quot;, message = &quot;The password must contain at least one uppercase letter, one lowercase letter and one special character&quot;)
+    private String password;
+
+    @NotBlank(message = &quot;User must have a CVU&quot;)
+    @Size(min = 22, max = 22, message = &quot;User's CVU must be 22 characters&quot;)
+    @Pattern(regexp = &quot;^[0-9]*$&quot;, message = &quot;&quot;)
+    private String cvu;
+
+    @NotBlank(message = &quot;User must have a wallet address&quot;)
+    @Size(min = 8, max = 8, message = &quot;User's wallet address must be 8 characters&quot;)
+    @Pattern(regexp = &quot;^[0-9]*$&quot;, message = &quot;&quot;)
+    private String walletAddress;
+
+    public String getName() {
+<span class="nc" id="L48">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L52">        this.name = name;</span>
+<span class="fc" id="L53">    }</span>
+
+    public String getSurname() {
+<span class="nc" id="L56">        return surname;</span>
+    }
+
+    public void setSurname(String surname) {
+<span class="nc" id="L60">        this.surname = surname;</span>
+<span class="nc" id="L61">    }</span>
+
+    public String getEmail() {
+<span class="nc" id="L64">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="fc" id="L68">        this.email = email;</span>
+<span class="fc" id="L69">    }</span>
+
+    public String getAddress() {
+<span class="nc" id="L72">        return address;</span>
+    }
+
+    public void setAddress(String address) {
+<span class="nc" id="L76">        this.address = address;</span>
+<span class="nc" id="L77">    }</span>
+
+    public String getPassword() {
+<span class="nc" id="L80">        return password;</span>
+    }
+
+    public void setPassword(String password) {
+<span class="nc" id="L84">        this.password = password;</span>
+<span class="nc" id="L85">    }</span>
+
+    public String getCvu() {
+<span class="nc" id="L88">        return cvu;</span>
+    }
+
+    public void setCvu(String cvu) {
+<span class="nc" id="L92">        this.cvu = cvu;</span>
+<span class="nc" id="L93">    }</span>
+
+    public String getWalletAddress() {
+<span class="nc" id="L96">        return walletAddress;</span>
+    }
+
+    public void setWalletAddress(String walletAddress) {
+<span class="nc" id="L100">        this.walletAddress = walletAddress;</span>
+<span class="nc" id="L101">    }</span>
+
+    public static NewUserDTOBuilder builder() {
+<span class="fc" id="L104">        return new NewUserDTOBuilder();</span>
+    }
+
+    public static final class NewUserDTOBuilder {
+        private NewUserDTO newUserDTO;
+
+<span class="fc" id="L110">        private NewUserDTOBuilder() {</span>
+<span class="fc" id="L111">            newUserDTO = new NewUserDTO();</span>
+<span class="fc" id="L112">        }</span>
+
+        public NewUserDTOBuilder name(String name) {
+<span class="fc" id="L115">            newUserDTO.setName(name);</span>
+<span class="fc" id="L116">            return this;</span>
+        }
+
+        public NewUserDTOBuilder surname(String surname) {
+<span class="nc" id="L120">            newUserDTO.setSurname(surname);</span>
+<span class="nc" id="L121">            return this;</span>
+        }
+
+        public NewUserDTOBuilder email(String email) {
+<span class="fc" id="L125">            newUserDTO.setEmail(email);</span>
+<span class="fc" id="L126">            return this;</span>
+        }
+
+        public NewUserDTOBuilder address(String address) {
+<span class="nc" id="L130">            newUserDTO.setAddress(address);</span>
+<span class="nc" id="L131">            return this;</span>
+        }
+
+        public NewUserDTOBuilder password(String password) {
+<span class="nc" id="L135">            newUserDTO.setPassword(password);</span>
+<span class="nc" id="L136">            return this;</span>
+        }
+
+        public NewUserDTOBuilder cvu(String cvu) {
+<span class="nc" id="L140">            newUserDTO.setCvu(cvu);</span>
+<span class="nc" id="L141">            return this;</span>
+        }
+
+        public NewUserDTOBuilder walletAddress(String walletAddress) {
+<span class="nc" id="L145">            newUserDTO.setWalletAddress(walletAddress);</span>
+<span class="nc" id="L146">            return this;</span>
+        }
+
+        public NewUserDTO build() {
+<span class="fc" id="L150">            return newUserDTO;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

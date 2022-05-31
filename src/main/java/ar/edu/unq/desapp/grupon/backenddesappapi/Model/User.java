@@ -1,7 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,15 +12,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="users")
 public class User implements Serializable {
-    /*
-    Nombre, Obligatorio, Min:3, Max:30
-    Apellido, Obligatorio, Min:3, Max:30
-    Email, Obligatorio, Formato de email
-    Dirección, Obligatorio, Min:10, Max:30
-    Contraseña
-    CVU MercadoPago, Obligatorio (22 digitos)
-    Dirección Billetera de CriptoActivos, Obligatorio (8 dígitos)
-    */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -112,14 +102,6 @@ public class User implements Serializable {
 
     public void setWalletAddress(String walletAddress) {
         this.walletAddress = walletAddress;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(password, user.password) && Objects.equals(cvu, user.cvu) && Objects.equals(reputation, user.reputation) && Objects.equals(walletAddress, user.walletAddress);
     }
 
     public void lowerReputationBy(Long x) {

@@ -1,19 +1,16 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name="transactions")
+@Entity
+@Table(name="transactions")
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +19,29 @@ public class Transaction {
     @OneToOne
     private TransactionIntent transaction;
     @ManyToOne
-    private Cryptoactive cryptoactive; // = transaction.getCryptoactive();
+    private Cryptoactive cryptoactive = transaction.getCryptoactive();
     private Float amount = transaction.getAmount();
     private Float prize = transaction.getPrize();
     private Float prizePesos = transaction.getPrizePesos();
     private User user;
     private Operation operation = transaction.getOperation();
     private TransactionState state;
+    private String sendAddress;
+    
+    private void findAddress() {
+        switch(operation) {
+            case SELL:
+                setSendAddress(user.getCvu());
+                break;
+            case BUY:
+                setSendAddress(user.getWalletAddress());
+                break;
+        }
+    }
+
+    public Transaction() {
+        findAddress();
+    }
 
     public TransactionIntent getTransaction() {
         return transaction;
@@ -101,13 +114,13 @@ public class Transaction {
     public void setState(TransactionState state) {
         this.state = state;
     }
+    
+    public String getSendAddress() {
+        return sendAddress;
+    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Transaction that = (Transaction) o;
-        return Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation;
+    public void setSendAddress(String sendAddress) {
+        this.sendAddress = sendAddress;
     }
 
     public static TransactionBuilder builder() {

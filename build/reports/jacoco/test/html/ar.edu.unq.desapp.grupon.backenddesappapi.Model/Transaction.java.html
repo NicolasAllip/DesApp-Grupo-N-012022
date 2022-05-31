@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Transaction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupon.backenddesappapi.Model</a> &gt; <span class="el_source">Transaction.java</span></div><h1>Transaction.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name=&quot;transactions&quot;)
+public class Transaction {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Float id;
+    @Column(nullable = false)
+    @OneToOne
+    private TransactionIntent transaction;
+<span class="nc" id="L21">    @ManyToOne</span>
+<span class="nc" id="L22">    private Cryptoactive cryptoactive = transaction.getCryptoactive();</span>
+<span class="nc" id="L23">    private Float amount = transaction.getAmount();</span>
+<span class="nc" id="L24">    private Float prize = transaction.getPrize();</span>
+<span class="nc" id="L25">    private Float prizePesos = transaction.getPrizePesos();</span>
+    private User user;
+<span class="nc" id="L27">    private Operation operation = transaction.getOperation();</span>
+    private TransactionState state;
+    private String sendAddress;
+    
+    private void findAddress() {
+<span class="nc bnc" id="L32" title="All 3 branches missed.">        switch(operation) {</span>
+            case SELL:
+<span class="nc" id="L34">                setSendAddress(user.getCvu());</span>
+<span class="nc" id="L35">                break;</span>
+            case BUY:
+<span class="nc" id="L37">                setSendAddress(user.getWalletAddress());</span>
+                break;
+        }
+<span class="nc" id="L40">    }</span>
+
+<span class="nc" id="L42">    public Transaction() {</span>
+<span class="nc" id="L43">        findAddress();</span>
+<span class="nc" id="L44">    }</span>
+
+    public TransactionIntent getTransaction() {
+<span class="nc" id="L47">        return transaction;</span>
+    }
+
+    public void setTransaction(TransactionIntent transaction) {
+<span class="nc" id="L51">        this.transaction = transaction;</span>
+<span class="nc" id="L52">    }</span>
+
+    public Float getId() {
+<span class="nc" id="L55">        return id;</span>
+    }
+
+    public void setId(Float id) {
+<span class="nc" id="L59">        this.id = id;</span>
+<span class="nc" id="L60">    }</span>
+
+    public Cryptoactive getCryptoactive() {
+<span class="nc" id="L63">        return cryptoactive;</span>
+    }
+
+    public void setCryptoactive(Cryptoactive cryptoactive) {
+<span class="nc" id="L67">        this.cryptoactive = cryptoactive;</span>
+<span class="nc" id="L68">    }</span>
+
+    public Float getAmount() {
+<span class="nc" id="L71">        return amount;</span>
+    }
+
+    public void setAmount(Float amount) {
+<span class="nc" id="L75">        this.amount = amount;</span>
+<span class="nc" id="L76">    }</span>
+
+    public Float getPrize() {
+<span class="nc" id="L79">        return prize;</span>
+    }
+
+    public void setPrize(Float prize) {
+<span class="nc" id="L83">        this.prize = prize;</span>
+<span class="nc" id="L84">    }</span>
+
+    public Float getPrizePesos() {
+<span class="nc" id="L87">        return prizePesos;</span>
+    }
+
+    public void setPrizePesos(Float prizePesos) {
+<span class="nc" id="L91">        this.prizePesos = prizePesos;</span>
+<span class="nc" id="L92">    }</span>
+
+    public User getUser() {
+<span class="nc" id="L95">        return user;</span>
+    }
+
+    public void setUser(User user) {
+<span class="nc" id="L99">        this.user = user;</span>
+<span class="nc" id="L100">    }</span>
+
+    public Operation getOperation() {
+<span class="nc" id="L103">        return operation;</span>
+    }
+
+    public void setOperation(Operation operation) {
+<span class="nc" id="L107">        this.operation = operation;</span>
+<span class="nc" id="L108">    }</span>
+
+    public TransactionState getState() {
+<span class="nc" id="L111">        return state;</span>
+    }
+
+    public void setState(TransactionState state) {
+<span class="nc" id="L115">        this.state = state;</span>
+<span class="nc" id="L116">    }</span>
+    
+    public String getSendAddress() {
+<span class="nc" id="L119">        return sendAddress;</span>
+    }
+
+    public void setSendAddress(String sendAddress) {
+<span class="nc" id="L123">        this.sendAddress = sendAddress;</span>
+<span class="nc" id="L124">    }</span>
+
+    public static TransactionBuilder builder() {
+<span class="nc" id="L127">        return new TransactionBuilder();</span>
+    }
+
+    public static final class TransactionBuilder {
+        private Transaction transaction;
+
+<span class="nc" id="L133">        private TransactionBuilder() {</span>
+<span class="nc" id="L134">            transaction = new Transaction();</span>
+<span class="nc" id="L135">        }</span>
+        public TransactionBuilder id(Float id) {
+<span class="nc" id="L137">            transaction.setId(id);</span>
+<span class="nc" id="L138">            return this;</span>
+        }
+
+        public TransactionBuilder transaction(TransactionIntent transactionIntent) {
+<span class="nc" id="L142">            transaction.setTransaction(transactionIntent);</span>
+<span class="nc" id="L143">            return this;</span>
+        }
+
+        public TransactionBuilder cryptoactive(Cryptoactive cryptoactive) {
+<span class="nc" id="L147">            transaction.setCryptoactive(cryptoactive);</span>
+<span class="nc" id="L148">            return this;</span>
+        }
+
+        public TransactionBuilder amount(Float amount) {
+<span class="nc" id="L152">            transaction.setAmount(amount);</span>
+<span class="nc" id="L153">            return this;</span>
+        }
+
+        public TransactionBuilder prize(Float prize) {
+<span class="nc" id="L157">            transaction.setPrize(prize);</span>
+<span class="nc" id="L158">            return this;</span>
+        }
+
+        public TransactionBuilder prizePesos(Float prizePesos) {
+<span class="nc" id="L162">            transaction.setPrizePesos(prizePesos);</span>
+<span class="nc" id="L163">            return this;</span>
+        }
+
+        public TransactionBuilder user(User user) {
+<span class="nc" id="L167">            transaction.setUser(user);</span>
+<span class="nc" id="L168">            return this;</span>
+        }
+
+        public TransactionBuilder operation(Operation operation) {
+<span class="nc" id="L172">            transaction.setOperation(operation);</span>
+<span class="nc" id="L173">            return this;</span>
+        }
+
+        public TransactionBuilder state(TransactionState state) {
+<span class="nc" id="L177">            transaction.setState(state);</span>
+<span class="nc" id="L178">            return this;</span>
+        }
+
+        public Transaction build() {
+<span class="nc" id="L182">            return transaction;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
