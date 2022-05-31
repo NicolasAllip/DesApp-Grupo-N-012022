@@ -55,3 +55,4 @@ logs/
 #build/sonar
 .springBeans
 build/reports/tests
+build/test-results/test
