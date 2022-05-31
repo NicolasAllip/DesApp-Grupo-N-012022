@@ -54,7 +54,7 @@ public class CryptoactiveRestController {
         Integer i = 0;
         Long id = 0L;
         Cryptoactive cryptoactiveN;
-        while((!flag || i < allCriptos.size())) {
+        while((!flag && i < allCriptos.size())) {
             flag = (flag || (allCriptos.get(i).getName() == name));
             i += 1;
             id = allCriptos.get(i).getId();
