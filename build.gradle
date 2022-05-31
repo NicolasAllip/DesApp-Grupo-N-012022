@@ -28,7 +28,7 @@ sonarqube {
 		property 'sonar.host.url', "https://sonarcloud.io"
 		property 'sonar.organization', "devapps-grupo"
 		property' sonar.projectKey',"NicolasAllip_DesApp-Grupo-N-012022"
-		//property 'sonar.java.binaries', "build/classes"
+		property 'sonar.java.binaries', "build/classes"
 		property 'sonar.java.coveragePlugin', "jacoco"
 		property 'sonar.coverage.jacoco.xmlReportPaths', "build/reposrts/jacoco/test/jacocoTestReport.xml"
 		property 'sonar.sources', "src/main"
