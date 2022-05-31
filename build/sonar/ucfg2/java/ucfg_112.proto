@@ -1,0 +1,24 @@
+
+úar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder#email(Ljava/lang/String;)Lar/edu/unq/desapp/grupon/backenddesappapi/Model/User$UserBuilder;ê
+É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaè è( "1*è
+1ê
+É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaê ê(®
+•
+ê
+É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaê ê(:
+%04ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"__id*N*LB
+@ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder"
+userÔÏ
+ê
+É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaê ê( 
+
+%1void"Rar.edu.unq.desapp.grupon.backenddesappapi.Model.User#setEmail(Ljava/lang/String;)V*<
+:
+%04ar.edu.unq.desapp.grupon.backenddesappapi.Model.User*
+
+emailjava.lang.String2setEmail(Ljava/lang/String;)"Ÿ
+ê
+É/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.javaë ë(DB
+@ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder:
+emailjava.lang.StringBDB
+@ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder

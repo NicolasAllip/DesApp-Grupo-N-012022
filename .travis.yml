@@ -9,5 +9,5 @@ addons:
     organization: "devapps-grupo"
 
 script:
-  - ./gradlew test sonarqube
+  - ./gradlew build jacocoTestReport sonarqube
   

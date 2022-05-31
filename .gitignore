@@ -52,6 +52,6 @@ logs/
 .texlipse
 
 # STS (Spring Tool Suite)
+#build/sonar
 .springBeans
-build/sonar
 build/reports/tests
