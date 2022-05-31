@@ -19,7 +19,7 @@ jacocoTestReport {
 
 jacoco {
     toolVersion = "0.8.5"
-	reportsDir = file("build/jacoco")
+	//reportsDir = file("build/jacoco")
 }
 
 sonarqube {
@@ -30,9 +30,11 @@ sonarqube {
 		property' sonar.projectKey',"NicolasAllip_DesApp-Grupo-N-012022"
 		property 'sonar.java.binaries', "build/classes"
 		property 'sonar.java.coveragePlugin', "jacoco"
-		property 'sonar.coverage.jacoco.xmlReportPaths', "build/jacoco/test/jacocoTestReport.xml"
-		property 'sonar.branch.name', "Model-final"
-		property 'sonar.jacoco.reportPath', "build/jacoco/test.exec"
+		property 'sonar.coverage.jacoco.xmlReportPaths', "build/reposrts/jacoco/test/jacocoTestReport.xml"
+		property 'sonar.sources', "src/main"
+		property 'sonar.tests', "src/test"
+		// property 'sonar.branch.name', "Model-final"
+		//property 'sonar.jacoco.reportPath', "build/jacoco/test.exec"
 		}
 }
 
@@ -84,6 +86,8 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	//testImplementation 'org.springframework.security:spring-security-test'
+	compileOnly 'org.sonarsource.sonarqube:sonar-plugin-api:7.9'
+    testImplementation 'org.sonarsource.sonarqube:sonar-plugin-api:7.9'
 
 	testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.2')
 	testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.2')
@@ -91,14 +95,18 @@ dependencies {
 }
 
 
-test {
-	useJUnitPlatform()
-}
+//test {
+//	useJUnitPlatform()
+//}
 
 test {
     finalizedBy jacocoTestReport
 }
 
-jacocoTestReport {
-    dependsOn test
+test {
+    useJUnitPlatform()
 }
+
+//jacocoTestReport {
+//    dependsOn test
+//}
