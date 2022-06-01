@@ -55,21 +55,33 @@ public class TransactionService implements ITransactionService {
     public void acceptTransaction(Long id){
         Transaction transaction = transactionDao.findById(id).orElse(null);
         // TODO: generar caso para el null
-        // TODO: generar validacion pending
+
         User senderUser   = transaction.getTransaction().getUser();
         User receiverUser = transaction.getUser();
-        // TODO: validar precio
+
         LocalDateTime transactionDate = transaction.getTransaction().getDate();
-        if(transactionDate.isBefore(LocalDateTime.now().plusMinutes(30))) {
-            senderUser.increaseReputationBy(10L);
-            receiverUser.increaseReputationBy(10L);
-        } else {
-            senderUser.increaseReputationBy(5L);
-            receiverUser.increaseReputationBy(5L);
+
+        Float realPrice        = transaction.getCryptoactive().getPrice();
+        Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
+        Float priceMinusP      = realPrice - ((realPrice * 5) / 100);
+        Float transactionPrice = transaction.getPrize();
+
+        if(transaction.getState() != TransactionState.PENDING) {
+            if(transactionPrice > pricePlusP || transactionPrice < priceMinusP) {   
+                cancelByPrize(id);
+            } else {
+                if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
+                    senderUser.increaseReputationBy(10L);
+                    receiverUser.increaseReputationBy(10L);
+                } else {
+                    senderUser.increaseReputationBy(5L);
+                    receiverUser.increaseReputationBy(5L);
+                }
+                senderUser.increaseOperationAmount();
+                receiverUser.increaseOperationAmount();
+                transaction.setState(TransactionState.COMPLETED);
+            }
         }
-        senderUser.increaseOperationAmount();
-        receiverUser.increaseOperationAmount();
-        // TODO: pasar a completada
     }
 
     @Transactional

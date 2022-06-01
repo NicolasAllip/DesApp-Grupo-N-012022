@@ -9,13 +9,11 @@ public interface ICryptoactiveService {
     
     public List<Cryptoactive> findAll();
 
-    public Cryptoactive findById(Long id);
+    public Cryptoactive findByName(CryptoactiveName name);
 
     public Cryptoactive save(CryptoactiveName name, Float price);
 
-    public Cryptoactive update(Long id, Float price);
-
-    public void delete(Long id);
+    public void delete(CryptoactiveName name);
 
     List<Cryptoactive> getAllCryptos();
 }

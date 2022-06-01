@@ -18,28 +18,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveLog;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
-import ar.edu.unq.desapp.grupon.backenddesappapi.service.ICryptoactiveService;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.ICryptoactiveLogService;
 
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
 @EnableScheduling
-public class CryptoactiveRestController {
+public class CryptoactiveLogRestController {
     
     @Autowired
-    private ICryptoactiveService cryptoactiveService;
+    private ICryptoactiveLogService cryptoactiveLogService;
 
     @GetMapping("/cryptoactives")
-    public List<Cryptoactive> index(){
-        return cryptoactiveService.findAll();
+    public List<CryptoactiveLog> index(){
+        return cryptoactiveLogService.findAll();
     }
 
     @GetMapping("/cryptoactives/{id}")
-    public ResponseEntity<?> showCryptoactive(@PathVariable CryptoactiveName name){
-        Cryptoactive cryptoactive = cryptoactiveService.findByName(name);
+    public ResponseEntity<?> showCryptoactive(@PathVariable Long id){
+        CryptoactiveLog cryptoactive = cryptoactiveLogService.findById(id);
         return new ResponseEntity<>(cryptoactive, HttpStatus.OK);
     }
 
@@ -52,7 +52,7 @@ public class CryptoactiveRestController {
 
         Map cripto = restTemplate.getForObject(URL, HashMap.class);
 
-        Cryptoactive cryptoactiveN = cryptoactiveService.save(name, Float.parseFloat(cripto.get("price").toString()));
+        CryptoactiveLog cryptoactiveN = cryptoactiveLogService.save(name, Float.parseFloat(cripto.get("price").toString()));
         Map<String, Object> response = new HashMap<>();
 
         response.put("message", "The cryptoactive has been succefully created");
@@ -62,7 +62,7 @@ public class CryptoactiveRestController {
 
     @GetMapping("/cryptoactives/get-all")
     @Scheduled(cron = "*/10 * * * *")
-    public List<Cryptoactive> getAllCryptos(){
-        return cryptoactiveService.getAllCryptos();
+    public List<CryptoactiveLog> getAllCryptos(){
+        return cryptoactiveLogService.getAllCryptos();
     }
 }

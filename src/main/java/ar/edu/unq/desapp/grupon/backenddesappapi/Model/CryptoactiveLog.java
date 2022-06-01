@@ -11,11 +11,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="crypto_actives")
-public class Cryptoactive {
+public class CryptoactiveLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private CryptoactiveName name;
     private Float price;
+    private LocalDateTime date;
+
+    public Long getId() {
+        return id;
+    }
 
     public CryptoactiveName getName() {
         return name;
@@ -33,6 +39,14 @@ public class Cryptoactive {
         this.price = price;
     }
 
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
     /*@Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,10 +60,10 @@ public class Cryptoactive {
     }
 
     public static final class CryptoactiveBuilder {
-        private Cryptoactive cryptoactive;
+        private CryptoactiveLog cryptoactive;
 
         private CryptoactiveBuilder() {
-            cryptoactive = new Cryptoactive();
+            cryptoactive = new CryptoactiveLog();
         }
 
         public CryptoactiveBuilder name(CryptoactiveName name) {
@@ -62,7 +76,12 @@ public class Cryptoactive {
             return this;
         }
 
-        public Cryptoactive build() {
+        public CryptoactiveBuilder date(LocalDateTime date) {
+            cryptoactive.setDate(date);
+            return this;
+        }
+
+        public CryptoactiveLog build() {
             return cryptoactive;
         }
     }

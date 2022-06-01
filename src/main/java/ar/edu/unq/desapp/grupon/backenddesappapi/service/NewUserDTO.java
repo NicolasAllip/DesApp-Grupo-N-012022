@@ -23,7 +23,7 @@ public class NewUserDTO {
 
     @NotBlank(message = "User must have an e-mail")
     @Pattern(regexp = "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]|[\\w-]{2,}))@((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9]))|([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$", message = "Must be valid email")
-    private String email; //TODO: va a ser unique
+    private String email;
 
     @NotBlank(message = "User must have an address")
     @Size(min = 10, max = 30, message = "User's address must be between 10 and 30 characters")

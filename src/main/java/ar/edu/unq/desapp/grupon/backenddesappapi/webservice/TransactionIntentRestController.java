@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveLog;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
@@ -43,7 +43,7 @@ public class TransactionIntentRestController {
     }
 
     @PostMapping("/transactionIntents")
-    public ResponseEntity<?> create(@Valid @RequestBody Cryptoactive cryptoactive, 
+    public ResponseEntity<?> create(@Valid @RequestBody CryptoactiveLog cryptoactive, 
                                     @Valid @RequestBody Float amount, 
                                     @Valid @RequestBody User user,
                                     @Valid @RequestBody Operation operation) {

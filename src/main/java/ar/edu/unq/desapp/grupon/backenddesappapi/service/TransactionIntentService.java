@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveLog;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
@@ -38,7 +38,7 @@ public class TransactionIntentService implements ITransactionIntentService {
 
     @Transactional
     @Override
-    public TransactionIntent save(Cryptoactive cryptoactive, Float amount, User user, Operation operation) {
+    public TransactionIntent save(CryptoactiveLog cryptoactive, Float amount, User user, Operation operation) {
         TransactionIntent transaction = TransactionIntent.builder()
                 .cryptoactive(cryptoactive)
                 .amount(amount)

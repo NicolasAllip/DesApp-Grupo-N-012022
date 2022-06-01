@@ -16,7 +16,7 @@ public class TransactionIntent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Float id;
-    private Cryptoactive cryptoactive;
+    private CryptoactiveLog cryptoactive;
     private Float amount;
     private Float prize = cryptoactive.getPrice();
     private Float prizePesos; // TODO: Hay que pegar con la api https://www.dolarsi.com/api/api.php?type=valoresprincipales
@@ -32,11 +32,11 @@ public class TransactionIntent {
         this.id = id;
     }
 
-    public Cryptoactive getCryptoactive() {
+    public CryptoactiveLog getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(Cryptoactive cryptoactive) {
+    public void setCryptoactive(CryptoactiveLog cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
@@ -111,7 +111,7 @@ public class TransactionIntent {
             return this;
         }
 
-        public TransactionIntentBuilder cryptoactive(Cryptoactive cryptoactive) {
+        public TransactionIntentBuilder cryptoactive(CryptoactiveLog cryptoactive) {
             transaction.setCryptoactive(cryptoactive);
             return this;
         }

@@ -23,7 +23,7 @@ public class Transaction {
     @OneToOne
     private TransactionIntent transaction;
     @ManyToOne
-    private Cryptoactive cryptoactive = transaction.getCryptoactive();
+    private CryptoactiveLog cryptoactive = transaction.getCryptoactive();
     private Float amount = transaction.getAmount();
     private Float prize = transaction.getPrize();
     private Float prizePesos = transaction.getPrizePesos();
@@ -63,11 +63,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public Cryptoactive getCryptoactive() {
+    public CryptoactiveLog getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(Cryptoactive cryptoactive) {
+    public void setCryptoactive(CryptoactiveLog cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
@@ -155,7 +155,7 @@ public class Transaction {
             return this;
         }
 
-        public TransactionBuilder cryptoactive(Cryptoactive cryptoactive) {
+        public TransactionBuilder cryptoactive(CryptoactiveLog cryptoactive) {
             transaction.setCryptoactive(cryptoactive);
             return this;
         }
