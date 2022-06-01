@@ -1,16 +1,0 @@
-
-dar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent#getDate()Ljava/time/LocalDateTime;õ
-ê/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/TransactionIntent.javaR R( "1*˝
-1õ
-ê/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/TransactionIntent.javaS S(ó
-î
-õ
-ê/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/TransactionIntent.javaS S(
-%0java.time.LocalDateTime"__id*O*MC
-Aar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent"
-date"ø
-õ
-ê/home/nicolas/Desktop/Estudio/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/TransactionIntent.javaS S(
-
-%0java.time.LocalDateTimeBEC
-Aar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent

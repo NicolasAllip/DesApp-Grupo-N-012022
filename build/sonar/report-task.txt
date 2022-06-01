@@ -1,8 +1,0 @@
-organization=devapps-grupo
-projectKey=NicolasAllip_DesApp-Grupo-N-012022
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.29375
-branch=Model-final
-dashboardUrl=https://sonarcloud.io/dashboard?id=NicolasAllip_DesApp-Grupo-N-012022&branch=Model-final&resolved=false
-ceTaskId=AYEbfF_evAAfS-Y-8FGn
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYEbfF_evAAfS-Y-8FGn
