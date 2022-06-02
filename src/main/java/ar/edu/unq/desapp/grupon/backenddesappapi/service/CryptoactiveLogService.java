@@ -70,9 +70,10 @@ public class CryptoactiveLogService implements ICryptoactiveLogService {
     @Override
     public CryptoactiveLog update(Long id, Float price) {
         CryptoactiveLog cryptoactive = cryptoactiveDao.findById(id).orElse(null);
-        // TODO: validar null
-        cryptoactive.setPrice(price);
-        return cryptoactiveDao.save(cryptoactive);
+        if(cryptoactive != null) {
+            cryptoactive.setPrice(price);
+            return cryptoactiveDao.save(cryptoactive);    
+        }
     }
 
     @Transactional

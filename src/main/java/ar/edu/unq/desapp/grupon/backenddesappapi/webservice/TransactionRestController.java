@@ -54,5 +54,13 @@ public class TransactionRestController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @PostMapping("/transactions/accept")
+    public void accept(Long id) {
+        transactionService.accept(id);
+    }
+    @PostMapping("/transactions/cancel")
+    public void cancel(Long id) {
+        transactionService.cancel(id);
+    }
     // TODO: endpoints para aceptar y cancelar
 }
