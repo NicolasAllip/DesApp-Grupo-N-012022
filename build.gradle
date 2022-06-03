@@ -12,6 +12,8 @@ plugins {
 jacocoTestReport {
     reports {
         xml.enabled true
+        csv.enabled false
+        html.enabled false
     }
 }
 
@@ -22,6 +24,14 @@ jacoco {
 sonarqube {
 	properties {
 		property 'sonar.projectKey', "NicolasAllip_DesApp-Grupo-N-012022"
+		property 'sonar.host.url', "https://sonarcloud.io"
+		property 'sonar.organization', "devapps-grupo"
+		property' sonar.projectKey',"NicolasAllip_DesApp-Grupo-N-012022"
+		property 'sonar.java.binaries', "build/classes"
+		property 'sonar.java.coveragePlugin', "jacoco"
+		property 'sonar.coverage.jacoco.xmlReportPaths', "build/reports/jacoco/test/jacocoTestReport.xml"
+		property 'sonar.sources', "src/main"
+		property 'sonar.tests', "src/test"
 		}
 }
 
@@ -81,14 +91,10 @@ dependencies {
 
 
 
-//test {
-//	useJUnitPlatform()
-//}
-
-
 test {
     finalizedBy jacocoTestReport
 }
-jacocoTestReport {
-    dependsOn test
+
+test {
+    useJUnitPlatform()
 }

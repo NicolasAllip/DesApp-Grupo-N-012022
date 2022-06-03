@@ -9,6 +9,7 @@ addons:
     organization: "devapps-grupo"
 
 script:
-  - sonar-scanner -Dproject.settings=sonar-project.properties
-  - ./gradlew build
+  - ./gradlew clean build
+  - ./gradlew test
+  - sonar-scanner
 
