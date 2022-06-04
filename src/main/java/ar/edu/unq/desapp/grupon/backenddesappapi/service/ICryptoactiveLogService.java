@@ -13,8 +13,6 @@ public interface ICryptoactiveLogService {
 
     public CryptoactiveLog save(CryptoactiveName name, Float price);
 
-    public CryptoactiveLog update(Long id, Float price);
-
     public void delete(Long id);
 
     List<CryptoactiveLog> getAllCryptos();

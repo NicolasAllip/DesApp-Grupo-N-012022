@@ -54,5 +54,7 @@ logs/
 # STS (Spring Tool Suite)
 #build/sonar
 .springBeans
-build/reports/tests
-build/test-results/test
+build
+build/
+.idea
+.idea/

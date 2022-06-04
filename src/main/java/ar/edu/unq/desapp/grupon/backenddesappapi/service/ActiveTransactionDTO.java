@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 //import net.bytebuddy.dynamic.TypeResolutionStrategy.Active;
 
@@ -10,7 +11,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 
 public class ActiveTransactionDTO {
 
-    private CryptoactiveLog cryptoactive;
+    private Cryptoactive cryptoactive;
     private LocalDateTime date;
     private Float amount;
     private Float prize;
@@ -29,10 +30,10 @@ public class ActiveTransactionDTO {
 
     }
 
-    public CryptoactiveLog getCryptoactive() {
+    public Cryptoactive getCryptoactive() {
         return cryptoactive;
     }
-    public void setCryptoactive(CryptoactiveLog cryptoactive) {
+    public void setCryptoactive(Cryptoactive cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 

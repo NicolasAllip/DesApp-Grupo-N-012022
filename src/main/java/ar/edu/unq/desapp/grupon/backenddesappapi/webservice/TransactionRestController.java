@@ -56,12 +56,11 @@ public class TransactionRestController {
 
     @PostMapping("/transactions/accept")
     public void accept(Long id) {
-        transactionService.accept(id);
+        transactionService.acceptTransaction(id);
     }
     
     @PostMapping("/transactions/cancel")
     public void cancel(Long id) {
         transactionService.cancel(id);
     }
-    // TODO: endpoints para aceptar y cancelar
 }

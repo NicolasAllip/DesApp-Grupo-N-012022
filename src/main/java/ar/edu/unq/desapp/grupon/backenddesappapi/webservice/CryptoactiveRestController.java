@@ -43,7 +43,8 @@ public class CryptoactiveRestController {
         return new ResponseEntity<>(cryptoactive, HttpStatus.OK);
     }
 
-    @PostMapping("/cryptoactives")
+    /**
+    // @PostMapping("/cryptoactives") // TODO: debatamos si tiene sentido hacer esto, vamos a crear cryptoactivos?
     public ResponseEntity<?> create(@Valid @RequestBody CryptoactiveName name) {
 
         String URL = "https://api1.binance.com/api/v3/ticker/price?symbol=" + name;
@@ -58,11 +59,16 @@ public class CryptoactiveRestController {
         response.put("message", "The cryptoactive has been succefully created");
         response.put("cryptoactive: ", cryptoactiveN);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
+    } **/
 
     @GetMapping("/cryptoactives/get-all")
-    @Scheduled(cron = "*/10 * * * *")
     public List<Cryptoactive> getAllCryptos(){
         return cryptoactiveService.getAllCryptos();
+    }
+
+    @PostMapping("/cryptoactives/update")
+    @Scheduled(cron = "*/10 * * * *")
+    public List<Cryptoactive> updateAllCryptos(){
+        return cryptoactiveService.updateAllCryptos();
     }
 }

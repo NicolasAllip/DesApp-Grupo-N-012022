@@ -22,6 +22,8 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Autowired
     private ICryptoactiveDao cryptoactiveDao;
     @Autowired
+    private ICryptoactiveLogService cryptoactiveLogService;
+    @Autowired
     private IGetPriceForCryptoRestclient getPriceForCryptoRestclient;
 
     private static List<String> AVAILABLE_CRYPTOS = new ArrayList<>();
@@ -73,10 +75,20 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Transactional
     @Override
     public List<Cryptoactive> getAllCryptos() {
+        return (List<Cryptoactive>) cryptoactiveDao.findAll();
+    }
+
+    @Transactional
+    @Override
+    public List<Cryptoactive> updateAllCryptos() {
         BinanceCryptoDTO[] binanceCryptoDTOS = getPriceForCryptoRestclient.getBatchCryptoPrice(AVAILABLE_CRYPTOS);
         List<Cryptoactive> cryptoactiveList = new ArrayList<>();
 
-        Arrays.stream(binanceCryptoDTOS).forEach(bcrypto -> cryptoactiveList.add(binanceToModelCrypto(bcrypto)));
+        Arrays.stream(binanceCryptoDTOS).forEach(bcrypto -> {
+            Cryptoactive crypto = binanceToModelCrypto(bcrypto);
+            cryptoactiveList.add(crypto);
+            cryptoactiveLogService.save(crypto.getName(), crypto.getPrice());
+        });
 
         return cryptoactiveList;
     }

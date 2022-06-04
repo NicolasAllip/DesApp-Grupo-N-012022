@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="crypto_actives")
+@Table(name="crypto_actives_log")
 public class CryptoactiveLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,13 +47,18 @@ public class CryptoactiveLog {
         this.date = date;
     }
 
-    /*@Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cryptoactive that = (Cryptoactive) o;
-        return name == that.name && Objects.equals(price, that.price) && Objects.equals(date, that.date);
-    }*/
+        CryptoactiveLog that = (CryptoactiveLog) o;
+        return Objects.equals(id, that.id) && name == that.name && Objects.equals(price, that.price) && Objects.equals(date, that.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, date);
+    }
 
     public static CryptoactiveBuilder builder() {
         return new CryptoactiveBuilder();

@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
 //import java.lang.runtime.SwitchBootstraps;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ public class Transaction {
     @OneToOne
     private TransactionIntent transaction;
     @ManyToOne
-    private CryptoactiveLog cryptoactive = transaction.getCryptoactive();
+    private Cryptoactive cryptoactive = transaction.getCryptoactive();
     private Float amount = transaction.getAmount();
     private Float prize = transaction.getPrize();
     private Float prizePesos = transaction.getPrizePesos();
@@ -31,7 +32,9 @@ public class Transaction {
     private Operation operation = transaction.getOperation();
     private TransactionState state;
     private String sendAddress;
-    
+    private LocalDateTime dateCreated;
+    private LocalDateTime lastUpdated;
+
     private void findAddress() {
         switch(operation) {
             case SELL:
@@ -63,11 +66,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public CryptoactiveLog getCryptoactive() {
+    public Cryptoactive getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(CryptoactiveLog cryptoactive) {
+    public void setCryptoactive(Cryptoactive cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
@@ -127,13 +130,34 @@ public class Transaction {
         this.sendAddress = sendAddress;
     }
 
-    /*@Override
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDateTime dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public LocalDateTime getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation;
-    }*/
+        return Objects.equals(id, that.id) && Objects.equals(transaction, that.transaction) && Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation && state == that.state && Objects.equals(sendAddress, that.sendAddress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, transaction, cryptoactive, amount, prize, prizePesos, user, operation, state, sendAddress);
+    }
 
     public static TransactionBuilder builder() {
         return new TransactionBuilder();
@@ -145,6 +169,7 @@ public class Transaction {
         private TransactionBuilder() {
             transaction = new Transaction();
         }
+
         public TransactionBuilder id(Float id) {
             transaction.setId(id);
             return this;
@@ -155,7 +180,7 @@ public class Transaction {
             return this;
         }
 
-        public TransactionBuilder cryptoactive(CryptoactiveLog cryptoactive) {
+        public TransactionBuilder cryptoactive(Cryptoactive cryptoactive) {
             transaction.setCryptoactive(cryptoactive);
             return this;
         }
@@ -187,6 +212,16 @@ public class Transaction {
 
         public TransactionBuilder state(TransactionState state) {
             transaction.setState(state);
+            return this;
+        }
+
+        public TransactionBuilder dateCreated(LocalDateTime dateCreated) {
+            transaction.setDateCreated(dateCreated);
+            return this;
+        }
+
+        public TransactionBuilder lastUpdated(LocalDateTime lastUpdated) {
+            transaction.setLastUpdated(lastUpdated);
             return this;
         }
 

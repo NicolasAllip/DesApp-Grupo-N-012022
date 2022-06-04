@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.IGetPriceForCryptoRestclient;
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.BinanceCryptoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +20,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ICryptoactiveLogDao
 public class CryptoactiveLogService implements ICryptoactiveLogService {
     
     @Autowired
-    private ICryptoactiveLogDao cryptoactiveDao;
-    @Autowired
-    private IGetPriceForCryptoRestclient getPriceForCryptoRestclient;
+    private ICryptoactiveLogDao cryptoactiveLogDao;
 
     private static List<String> AVAILABLE_CRYPTOS = new ArrayList<>();
     static {
@@ -45,13 +43,13 @@ public class CryptoactiveLogService implements ICryptoactiveLogService {
     @Transactional(readOnly = true)
     @Override
     public List<CryptoactiveLog> findAll(){
-        return (List<CryptoactiveLog>) cryptoactiveDao.findAll();
+        return (List<CryptoactiveLog>) cryptoactiveLogDao.findAll();
     }
 
     @Transactional(readOnly = true)
     @Override
     public CryptoactiveLog findById(Long id) {
-        return cryptoactiveDao.findById(id).orElse(null);
+        return cryptoactiveLogDao.findById(id).orElse(null);
     }
 
     @Transactional
@@ -63,10 +61,10 @@ public class CryptoactiveLogService implements ICryptoactiveLogService {
                 .date(LocalDateTime.now())
                 .build();
 
-        return cryptoactiveDao.save(cryptoactive);
+        return cryptoactiveLogDao.save(cryptoactive);
     }
 
-    @Transactional
+    /*@Transactional
     @Override
     public CryptoactiveLog update(Long id, Float price) {
     //public void update(Long id, Float price) {
@@ -75,31 +73,17 @@ public class CryptoactiveLogService implements ICryptoactiveLogService {
             cryptoactive.setPrice(price);
             return cryptoactiveDao.save(cryptoactive);    
         }
-    }
+    }*/
 
     @Transactional
     @Override
     public void delete(Long id) {
-        cryptoactiveDao.deleteById(id);
+        cryptoactiveLogDao.deleteById(id);
     }
 
     @Transactional
     @Override
     public List<CryptoactiveLog> getAllCryptos() {
-        BinanceCryptoDTO[] binanceCryptoDTOS = getPriceForCryptoRestclient.getBatchCryptoPrice(AVAILABLE_CRYPTOS);
-        List<CryptoactiveLog> cryptoactiveList = new ArrayList<>();
-
-        Arrays.stream(binanceCryptoDTOS).forEach(bcrypto -> cryptoactiveList.add(binanceToModelCrypto(bcrypto)));
-
-        return cryptoactiveList;
-    }
-
-    private CryptoactiveLog binanceToModelCrypto(BinanceCryptoDTO binanceCryptoDTO) {
-        CryptoactiveLog cryptoactive = CryptoactiveLog.builder()
-                .name(CryptoactiveName.valueOf(binanceCryptoDTO.getSymbol()))
-                .price(Float.valueOf(binanceCryptoDTO.getPrice()))
-                .date(LocalDateTime.now())
-                .build();
-        return cryptoactiveDao.save(cryptoactive);
+        return (List<CryptoactiveLog>) cryptoactiveLogDao.findAll();
     }
 }

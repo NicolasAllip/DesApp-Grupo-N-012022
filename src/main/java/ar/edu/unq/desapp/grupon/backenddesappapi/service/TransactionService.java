@@ -29,15 +29,18 @@ public class TransactionService implements ITransactionService {
     @Override
     public Transaction findById(Long id) {
         return transactionDao.findById(id).orElse(null);
-    }
+    } // TODO: hacer un not found para la transaccion
 
     @Transactional
     @Override
     public Transaction save(TransactionIntent transactionIntent, User user) {
+        LocalDateTime now = LocalDateTime.now();
         Transaction transaction = Transaction.builder()
                 .transaction(transactionIntent)
                 .user(user)
                 .state(TransactionState.PENDING)
+                .dateCreated(now)
+                .lastUpdated(now)
                 .build();
 
         return transactionDao.save(transaction);
@@ -54,7 +57,7 @@ public class TransactionService implements ITransactionService {
     @Override
     public void acceptTransaction(Long id){
         Transaction transaction = transactionDao.findById(id).orElse(null);
-        if(transaction != null) {
+        if(transaction != null) { // TODO: hacer un not found para la transaccion
 
             User senderUser   = transaction.getTransaction().getUser();
             User receiverUser = transaction.getUser();
@@ -82,7 +85,9 @@ public class TransactionService implements ITransactionService {
                     transaction.setState(TransactionState.COMPLETED);
                 }
             }
-    
+
+            transaction.setLastUpdated(LocalDateTime.now());
+            transactionDao.save(transaction);
         }
     }
 
@@ -90,16 +95,24 @@ public class TransactionService implements ITransactionService {
     @Override
     public void cancel(Long id){
         Transaction transaction  = transactionDao.findById(id).orElse(null);
+        // TODO: hacer un not found para la transaccion
         User senderUser   = transaction.getTransaction().getUser();
         User receiverUser = transaction.getUser();
         transaction.setState(TransactionState.CANCELED);
         senderUser.lowerReputationBy(20L);
         receiverUser.lowerReputationBy(20L);
+        transaction.setLastUpdated(LocalDateTime.now());
+
+        transactionDao.save(transaction);
     }
     @Transactional
     private void cancelByPrize(Long id){
         Transaction transaction  = transactionDao.findById(id).orElse(null);
+        // TODO: hacer un not found para la transaccion
         transaction.setState(TransactionState.CANCELED);
+        transaction.setLastUpdated(LocalDateTime.now());
+
+        transactionDao.save(transaction);
     }
     
 }

@@ -16,10 +16,10 @@ public class TransactionIntent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Float id;
-    private CryptoactiveLog cryptoactive;
+    private Cryptoactive cryptoactive;
     private Float amount;
     private Float prize = cryptoactive.getPrice();
-    private Float prizePesos; // TODO: Hay que pegar con la api https://www.dolarsi.com/api/api.php?type=valoresprincipales
+    private Float prizePesos;
     private User user;
     private Operation operation;
     private LocalDateTime date = LocalDateTime.now();
@@ -32,11 +32,11 @@ public class TransactionIntent {
         this.id = id;
     }
 
-    public CryptoactiveLog getCryptoactive() {
+    public Cryptoactive getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(CryptoactiveLog cryptoactive) {
+    public void setCryptoactive(Cryptoactive cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
@@ -88,13 +88,18 @@ public class TransactionIntent {
         this.date = date;
     }
 
-    /*@Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransactionIntent that = (TransactionIntent) o;
-        return Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation;
-    }*/
+        return Objects.equals(id, that.id) && Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation && Objects.equals(date, that.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, cryptoactive, amount, prize, prizePesos, user, operation, date);
+    }
 
     public static TransactionIntentBuilder builder() {
         return new TransactionIntentBuilder();
@@ -111,7 +116,7 @@ public class TransactionIntent {
             return this;
         }
 
-        public TransactionIntentBuilder cryptoactive(CryptoactiveLog cryptoactive) {
+        public TransactionIntentBuilder cryptoactive(Cryptoactive cryptoactive) {
             transaction.setCryptoactive(cryptoactive);
             return this;
         }

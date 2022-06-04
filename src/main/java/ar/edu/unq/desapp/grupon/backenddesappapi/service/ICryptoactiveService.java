@@ -16,4 +16,6 @@ public interface ICryptoactiveService {
     public void delete(CryptoactiveName name);
 
     List<Cryptoactive> getAllCryptos();
+
+    List<Cryptoactive> updateAllCryptos();
 }
