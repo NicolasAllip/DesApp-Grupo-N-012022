@@ -35,7 +35,13 @@ public class TransactionIntentService implements ITransactionIntentService {
     @Transactional(readOnly = true)
     @Override
     public TransactionIntent findById(Long id) {
-        return transactionIntentDao.findById(id).orElse(null);
+        TransactionIntent transaccion = transactionIntentDao.findById(id).orElse(null);
+        
+        if (transaccion == null) {
+            throw new TransactionIntentDoesNotExistException(id);
+        }
+
+        return transaccion
     }
 
     @Transactional
