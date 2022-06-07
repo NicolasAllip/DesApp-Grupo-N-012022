@@ -36,8 +36,15 @@ public class TransactionService implements ITransactionService {
     @Transactional(readOnly = true)
     @Override
     public Transaction findById(Long id) {
-        return transactionDao.findById(id).orElse(null);
-    } // TODO: hacer un not found para la transaccion
+        Transaction transaction = userDao.findById(id).orElse(null);
+
+        if (transaction == null) {
+            throw new TransactionDoesNotExistException(id);
+        }
+
+        return transaction;
+    }
+
 
     @Transactional
     @Override

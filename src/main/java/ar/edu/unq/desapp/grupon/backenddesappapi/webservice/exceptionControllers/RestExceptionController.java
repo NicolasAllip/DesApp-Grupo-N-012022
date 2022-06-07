@@ -1,6 +1,5 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.webservice;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class UserRestExceptionController {
+public class RestExceptionController {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationExceptions(MethodArgumentNotValidException e) {
@@ -32,15 +31,5 @@ public class UserRestExceptionController {
         response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @ExceptionHandler(UserDoesNotExistException.class)
-    public ResponseEntity<Map<String, Object>> handleUserDoesNotExistExceptions(UserDoesNotExistException e) {
-        Map<String, Object> response = new HashMap<>();
-
-        response.put("error", e.getMessage());
-        response.put("message", "User " + e.getUserId() + " does not exist in the db");
-
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }
