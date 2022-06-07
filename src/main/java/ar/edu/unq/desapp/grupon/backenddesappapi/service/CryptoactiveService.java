@@ -1,13 +1,18 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.time.chrono.ChronoLocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionState;
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.IGetPriceForCryptoRestclient;
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.BinanceCryptoDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesInput;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +28,8 @@ public class CryptoactiveService implements ICryptoactiveService {
     private ICryptoactiveDao cryptoactiveDao;
     @Autowired
     private ICryptoactiveLogService cryptoactiveLogService;
+    @Autowired
+    private ITransactionService transactionService;
     @Autowired
     private IGetPriceForCryptoRestclient getPriceForCryptoRestclient;
 
@@ -99,5 +106,39 @@ public class CryptoactiveService implements ICryptoactiveService {
                 .price(Float.valueOf(binanceCryptoDTO.getPrice()))
                 .build();
         return cryptoactiveDao.save(cryptoactive);
+    }
+
+    @Override
+    public CryptosBetweenTwoDatesOutput getOperatedCryptosInRange(CryptosBetweenTwoDatesInput cryptosBetweenTwoDatesInput) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dateFrom = LocalDate.parse(cryptosBetweenTwoDatesInput.getDateFrom(), formatter);
+        LocalDate dateTo = LocalDate.parse(cryptosBetweenTwoDatesInput.getDateTo(), formatter);
+
+        Map<CryptoactiveName, Float> operatedCryptoactives = new HashMap<>();
+
+        List<Transaction> transactions = transactionService.findAll()
+                .stream().filter(
+                        transaction -> transaction.getState() == TransactionState.COMPLETED && dateIsInRange(transaction.getLastUpdated(), dateFrom, dateTo)
+                ).collect(Collectors.toList());
+
+        for (Transaction transaction : transactions) {
+            CryptoactiveName cryptoactiveName = transaction.getCryptoactive().getName();
+            Float amount = transaction.getAmount();
+            if (operatedCryptoactives.containsKey(cryptoactiveName)) {
+                Float newAmount = amount + operatedCryptoactives.get(cryptoactiveName);
+                operatedCryptoactives.put(cryptoactiveName, newAmount);
+            } else {
+                operatedCryptoactives.put(cryptoactiveName, amount);
+            }
+        }
+
+        return CryptosBetweenTwoDatesOutput.builder()
+                .range(cryptosBetweenTwoDatesInput)
+                .operatedCryptoactives(operatedCryptoactives)
+                .build();
+    }
+
+    private Boolean dateIsInRange(LocalDateTime date, LocalDate dateFrom, LocalDate dateTo) {
+        return date.isAfter(ChronoLocalDateTime.from(dateFrom)) && date.isBefore(ChronoLocalDateTime.from(dateTo));
     }
 }

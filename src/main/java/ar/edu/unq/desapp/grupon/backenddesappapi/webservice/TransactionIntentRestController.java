@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.*;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.TransactionIntentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,13 +40,9 @@ public class TransactionIntentRestController {
     }
 
     @PostMapping("/transactionIntents")
-    public ResponseEntity<?> create(@Valid @RequestBody Cryptoactive cryptoactive,
-                                    @Valid @RequestBody Float amount,
-                                    @Valid @RequestBody User user,
-                                    @Valid @RequestBody Operation operation) {
-                                    //la anotacion RequestBody es necesaria en user?
+    public ResponseEntity<?> create(@Valid @RequestBody TransactionIntentDTO transactionIntentDTO) {
 
-        TransactionIntent transactionN = transactionService.save(cryptoactive, amount, user, operation);
+        TransactionIntent transactionN = transactionService.save(transactionIntentDTO);
         Map<String, Object> response = new HashMap<>();
 
         response.put("message", "The transaction intent has been succefully created");

@@ -5,6 +5,7 @@ import java.util.List;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.*;
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.IGetDolarConversionValueRestclient;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.TransactionIntentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,12 @@ public class TransactionIntentService implements ITransactionIntentService {
     
     @Autowired
     private ITransactionIntentDao transactionIntentDao;
+
+    @Autowired
+    private ICryptoactiveService cryptoactiveService;
+
+    @Autowired
+    private IUserService userService;
 
     @Autowired
     private IGetDolarConversionValueRestclient getDolarConversionValueRestclient;
@@ -39,16 +46,19 @@ public class TransactionIntentService implements ITransactionIntentService {
     }
 
     @Transactional
-    @Override // TODO: debatir si deberiamos mandar objetos enteros o solo IDs
-    public TransactionIntent save(Cryptoactive cryptoactive, Float amount, User user, Operation operation) {
+    @Override
+    public TransactionIntent save(TransactionIntentDTO transactionIntentDTO) {
+        Cryptoactive cryptoactive = cryptoactiveService.findByName(transactionIntentDTO.getCryptoactiveName());
+        User user = userService.findById(transactionIntentDTO.getUserId());
+
         Float pesosConversion = Float.parseFloat(getDolarConversionValueRestclient.getOfficialDolarValue().getCompra());
 
         TransactionIntent transaction = TransactionIntent.builder()
                 .cryptoactive(cryptoactive)
-                .amount(amount)
+                .amount(transactionIntentDTO.getAmount())
                 .user(user)
                 .prizePesos(cryptoactive.getPrice() * pesosConversion)
-                .operation(operation)
+                .operation(transactionIntentDTO.getOperation())
                 .build();
 
         return transactionIntentDao.save(transaction);

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CreateTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -41,12 +42,9 @@ public class TransactionRestController {
     }
 
     @PostMapping("/transactions")
-    public ResponseEntity<?> create(@Valid @RequestBody TransactionIntent transaction, 
-                                    @Valid @RequestBody User user) {
-                                    //la anotacion RequestBody es necesaria en user?
+    public ResponseEntity<?> create(@Valid @RequestBody CreateTransactionDTO createTransactionDTO) {
 
-
-        Transaction transactionN = transactionService.save(transaction, user);
+        Transaction transactionN = transactionService.save(createTransactionDTO);
         Map<String, Object> response = new HashMap<>();
 
         response.put("message", "The transaction has been succefully created");
@@ -63,4 +61,7 @@ public class TransactionRestController {
     public void cancel(Long id) {
         transactionService.cancel(id);
     }
+
+    @GetMapping("/transactions/get-active-transactions")
+    public List<Transaction> getAllActive() { return transactionService.findActiveTransactions(); }
 }

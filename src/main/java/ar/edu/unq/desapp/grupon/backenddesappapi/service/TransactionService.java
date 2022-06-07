@@ -2,23 +2,31 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CreateTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionState;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ITransactionDao;
 
 @Service
 public class TransactionService implements ITransactionService {
-    
+
     @Autowired
     private ITransactionDao transactionDao;
-    
+
+    @Autowired
+    private ITransactionIntentService transactionIntentService;
+
+    @Autowired
+    private IUserService userService;
+
     @Transactional(readOnly = true)
     @Override
     public List<Transaction> findAll(){
@@ -33,7 +41,10 @@ public class TransactionService implements ITransactionService {
 
     @Transactional
     @Override
-    public Transaction save(TransactionIntent transactionIntent, User user) {
+    public Transaction save(CreateTransactionDTO createTransactionDTO) {
+        TransactionIntent transactionIntent = transactionIntentService.findById(createTransactionDTO.getTransactionIntentId());
+        User user = userService.findById(createTransactionDTO.getUserId());
+
         LocalDateTime now = LocalDateTime.now();
         Transaction transaction = Transaction.builder()
                 .transaction(transactionIntent)
@@ -61,16 +72,16 @@ public class TransactionService implements ITransactionService {
 
             User senderUser   = transaction.getTransaction().getUser();
             User receiverUser = transaction.getUser();
-    
+
             LocalDateTime transactionDate = transaction.getTransaction().getDate();
-    
+
             Float realPrice        = transaction.getCryptoactive().getPrice();
             Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
             Float priceMinusP      = realPrice - ((realPrice * 5) / 100);
             Float transactionPrice = transaction.getPrize();
-    
+
             if(transaction.getState() != TransactionState.PENDING) {
-                if(transactionPrice > pricePlusP || transactionPrice < priceMinusP) {   
+                if(transactionPrice > pricePlusP || transactionPrice < priceMinusP) {
                     cancelByPrize(id);
                 } else {
                     if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
@@ -114,5 +125,11 @@ public class TransactionService implements ITransactionService {
 
         transactionDao.save(transaction);
     }
-    
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Transaction> findActiveTransactions(){
+        List<Transaction> transactions = (List<Transaction>) transactionDao.findAll();
+        return transactions.stream().filter(transaction -> transaction.getState() == TransactionState.PENDING).collect(Collectors.toList());
+    }
 }

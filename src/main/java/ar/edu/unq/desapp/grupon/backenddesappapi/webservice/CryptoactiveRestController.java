@@ -1,9 +1,13 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.webservice;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesInput;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -70,5 +74,10 @@ public class CryptoactiveRestController {
     @Scheduled(cron = "*/10 * * * *")
     public List<Cryptoactive> updateAllCryptos(){
         return cryptoactiveService.updateAllCryptos();
+    }
+
+    @GetMapping("/cryptoactives/get-operated-cryptos-in-range")
+    public CryptosBetweenTwoDatesOutput getOperatedCryptosInRange(@Valid @RequestBody CryptosBetweenTwoDatesInput cryptosBetweenTwoDatesInput){
+        return cryptoactiveService.getOperatedCryptosInRange(cryptosBetweenTwoDatesInput);
     }
 }
