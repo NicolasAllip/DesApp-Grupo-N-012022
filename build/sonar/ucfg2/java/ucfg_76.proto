@@ -1,24 +1,0 @@
-
-œar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder#email(Ljava/lang/String;)Lar/edu/unq/desapp/grupon/backenddesappapi/Model/User$UserBuilder;‡
-{/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java¡ ¡( "1*ë
-1‡
-{/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java¢ ¢(Ÿ
-œ
-‡
-{/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java¢ ¢(:
-%04ar.edu.unq.desapp.grupon.backenddesappapi.Model.User"__id*N*LB
-@ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder"
-useræã
-‡
-{/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java¢ ¢( 
-
-%1void"Rar.edu.unq.desapp.grupon.backenddesappapi.Model.User#setEmail(Ljava/lang/String;)V*<
-:
-%04ar.edu.unq.desapp.grupon.backenddesappapi.Model.User*
-
-emailjava.lang.String2setEmail(Ljava/lang/String;)"Ð
-‡
-{/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/Model/User.java£ £(DB
-@ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder:
-emailjava.lang.StringBDB
-@ar.edu.unq.desapp.grupon.backenddesappapi.Model.User$UserBuilder

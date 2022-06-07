@@ -1,49 +1,0 @@
-
-Öar.edu.unq.desapp.grupon.backenddesappapi.BackendDesappApiApplication#productApi()Lspringfox/documentation/spring/web/plugins/Docket;ó
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java ("1*ò
-1ó
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java ((‡
-›
-ó
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java (23
-%0-springfox.documentation.spi.DocumentationType"__id*
-""âÜ
-ó
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java (7
-%11springfox.documentation.spring.web.plugins.Docket"1springfox.documentation.spring.web.plugins.DocketÅ
-˛
-ó
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java (3
-%2"jspringfox.documentation.spring.web.plugins.Docket#<init>(Lspringfox/documentation/spi/DocumentationType;)V*9
-7
-%11springfox.documentation.spring.web.plugins.Docket*5
-3
-%0-springfox.documentation.spi.DocumentationType¢ü
-ó
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java (<C
-%3=springfox.documentation.spring.web.plugins.ApiSelectorBuilder"yspringfox.documentation.spring.web.plugins.Docket#select()Lspringfox/documentation/spring/web/plugins/ApiSelectorBuilder;*9
-7
-%11springfox.documentation.spring.web.plugins.Docket2select()∫
-∑
-ò
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.javaB (ù&
-%4 com.google.common.base.Predicate"zspringfox.documentation.builders.RequestHandlerSelectors#basePackage(Ljava/lang/String;)Lcom/google/common/base/Predicate;*<":
-8springfox.documentation.builders.RequestHandlerSelectors*86
-4ar.edu.unq.desapp.grupon.backenddesappapi.webservice¶£
-ò
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java (ûC
-%5=springfox.documentation.spring.web.plugins.ApiSelectorBuilder"•springfox.documentation.spring.web.plugins.ApiSelectorBuilder#apis(Lcom/google/common/base/Predicate;)Lspringfox/documentation/spring/web/plugins/ApiSelectorBuilder;*E
-C
-%3=springfox.documentation.spring.web.plugins.ApiSelectorBuilder*(
-&
-%4 com.google.common.base.Predicate2(apis(Lcom/google/common/base/Predicate;)°û
-ò
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java (¶7
-%61springfox.documentation.spring.web.plugins.Docket"xspringfox.documentation.spring.web.plugins.ApiSelectorBuilder#build()Lspringfox/documentation/spring/web/plugins/Docket;*E
-C
-%5=springfox.documentation.spring.web.plugins.ApiSelectorBuilder2build()"÷
-ò
-å/home/nicolas/Desktop/DevApps/DesApp-Grupo-N-012022/src/main/java/ar/edu/unq/desapp/grupon/backenddesappapi/BackendDesappApiApplication.java (ß9
-7
-%61springfox.documentation.spring.web.plugins.DocketBIG
-Ear.edu.unq.desapp.grupon.backenddesappapi.BackendDesappApiApplication
