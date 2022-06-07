@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
+import ar.edu.unq.desapp.grupon.backenddesappapi.exception.TransactionDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CreateTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class TransactionService implements ITransactionService {
     @Transactional(readOnly = true)
     @Override
     public Transaction findById(Long id) {
-        Transaction transaction = userDao.findById(id).orElse(null);
+        Transaction transaction = transactionDao.findById(id).orElse(null);
 
         if (transaction == null) {
             throw new TransactionDoesNotExistException(id);
