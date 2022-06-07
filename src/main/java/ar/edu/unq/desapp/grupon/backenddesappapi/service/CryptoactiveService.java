@@ -1,0 +1,144 @@
+package ar.edu.unq.desapp.grupon.backenddesappapi.service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionState;
+import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.IGetPriceForCryptoRestclient;
+import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.BinanceCryptoDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesInput;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesOutput;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
+import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ICryptoactiveDao;
+
+@Service
+public class CryptoactiveService implements ICryptoactiveService {
+    
+    @Autowired
+    private ICryptoactiveDao cryptoactiveDao;
+    @Autowired
+    private ICryptoactiveLogService cryptoactiveLogService;
+    @Autowired
+    private ITransactionService transactionService;
+    @Autowired
+    private IGetPriceForCryptoRestclient getPriceForCryptoRestclient;
+
+    private static List<String> AVAILABLE_CRYPTOS = new ArrayList<>();
+    static {
+        AVAILABLE_CRYPTOS.add("ALICEUSDT");
+        AVAILABLE_CRYPTOS.add("MATICUSDT");
+        AVAILABLE_CRYPTOS.add("AXSUSDT");
+        AVAILABLE_CRYPTOS.add("AAVEUSDT");
+        AVAILABLE_CRYPTOS.add("ATOMUSDT");
+        AVAILABLE_CRYPTOS.add("NEOUSDT");
+        AVAILABLE_CRYPTOS.add("DOTUSDT");
+        AVAILABLE_CRYPTOS.add("ETHUSDT");
+        AVAILABLE_CRYPTOS.add("CAKEUSDT");
+        AVAILABLE_CRYPTOS.add("BTCUSDT");
+        AVAILABLE_CRYPTOS.add("BNBUSDT");
+        AVAILABLE_CRYPTOS.add("ADAUSDT");
+        AVAILABLE_CRYPTOS.add("TRXUSDT");
+        AVAILABLE_CRYPTOS.add("AUDIOUSDT");
+    }
+    
+    @Transactional(readOnly = true)
+    @Override
+    public List<Cryptoactive> findAll(){
+        return (List<Cryptoactive>) cryptoactiveDao.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Cryptoactive findByName(CryptoactiveName name) {
+        return cryptoactiveDao.findById(name).orElse(null);
+    }
+
+    @Transactional
+    @Override
+    public Cryptoactive save(CryptoactiveName name, Float price) {
+        Cryptoactive cryptoactive = cryptoactiveDao.findById(name).orElse(Cryptoactive.builder()
+        .name(name)
+        .build());
+        cryptoactive.setPrice(price);
+        return cryptoactiveDao.save(cryptoactive);
+    }
+
+    @Transactional
+    @Override
+    public void delete(CryptoactiveName name) {
+        cryptoactiveDao.deleteById(name);
+    }
+
+    @Transactional
+    @Override
+    public List<Cryptoactive> getAllCryptos() {
+        return (List<Cryptoactive>) cryptoactiveDao.findAll();
+    }
+
+    @Transactional
+    @Override
+    public List<Cryptoactive> updateAllCryptos() {
+        BinanceCryptoDTO[] binanceCryptoDTOS = getPriceForCryptoRestclient.getBatchCryptoPrice(AVAILABLE_CRYPTOS);
+        List<Cryptoactive> cryptoactiveList = new ArrayList<>();
+
+        Arrays.stream(binanceCryptoDTOS).forEach(bcrypto -> {
+            Cryptoactive crypto = binanceToModelCrypto(bcrypto);
+            cryptoactiveList.add(crypto);
+            cryptoactiveLogService.save(crypto.getName(), crypto.getPrice());
+        });
+
+        return cryptoactiveList;
+    }
+
+    private Cryptoactive binanceToModelCrypto(BinanceCryptoDTO binanceCryptoDTO) {
+        Cryptoactive cryptoactive = Cryptoactive.builder()
+                .name(CryptoactiveName.valueOf(binanceCryptoDTO.getSymbol()))
+                .price(Float.valueOf(binanceCryptoDTO.getPrice()))
+                .build();
+        return cryptoactiveDao.save(cryptoactive);
+    }
+
+    @Override
+    public CryptosBetweenTwoDatesOutput getOperatedCryptosInRange(CryptosBetweenTwoDatesInput cryptosBetweenTwoDatesInput) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dateFrom = LocalDate.parse(cryptosBetweenTwoDatesInput.getDateFrom(), formatter);
+        LocalDate dateTo = LocalDate.parse(cryptosBetweenTwoDatesInput.getDateTo(), formatter);
+
+        Map<CryptoactiveName, Float> operatedCryptoactives = new HashMap<>();
+
+        List<Transaction> transactions = transactionService.findAll()
+                .stream().filter(
+                        transaction -> transaction.getState() == TransactionState.COMPLETED && dateIsInRange(transaction.getLastUpdated(), dateFrom, dateTo)
+                ).collect(Collectors.toList());
+
+        for (Transaction transaction : transactions) {
+            CryptoactiveName cryptoactiveName = transaction.getCryptoactive().getName();
+            Float amount = transaction.getAmount();
+            if (operatedCryptoactives.containsKey(cryptoactiveName)) {
+                Float newAmount = amount + operatedCryptoactives.get(cryptoactiveName);
+                operatedCryptoactives.put(cryptoactiveName, newAmount);
+            } else {
+                operatedCryptoactives.put(cryptoactiveName, amount);
+            }
+        }
+
+        return CryptosBetweenTwoDatesOutput.builder()
+                .range(cryptosBetweenTwoDatesInput)
+                .operatedCryptoactives(operatedCryptoactives)
+                .build();
+    }
+
+    private Boolean dateIsInRange(LocalDateTime date, LocalDate dateFrom, LocalDate dateTo) {
+        return date.isAfter(ChronoLocalDateTime.from(dateFrom)) && date.isBefore(ChronoLocalDateTime.from(dateTo));
+    }
+}

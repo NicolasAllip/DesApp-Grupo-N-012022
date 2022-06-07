@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
+//import java.lang.runtime.SwitchBootstraps;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,12 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name="transactions")
+@Entity
+@Table(name="transactions")
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +24,31 @@ public class Transaction {
     @OneToOne
     private TransactionIntent transaction;
     @ManyToOne
-    private Cryptoactive cryptoactive; // = transaction.getCryptoactive();
+    private Cryptoactive cryptoactive = transaction.getCryptoactive();
     private Float amount = transaction.getAmount();
     private Float prize = transaction.getPrize();
     private Float prizePesos = transaction.getPrizePesos();
     private User user;
     private Operation operation = transaction.getOperation();
     private TransactionState state;
+    private String sendAddress;
+    private LocalDateTime dateCreated;
+    private LocalDateTime lastUpdated;
+
+    private void findAddress() {
+        switch(operation) {
+            case SELL:
+                setSendAddress(user.getCvu());
+                break;
+            case BUY:
+                setSendAddress(user.getWalletAddress());
+                break;
+        }
+    }
+
+    public Transaction() {
+        findAddress();
+    }
 
     public TransactionIntent getTransaction() {
         return transaction;
@@ -101,13 +121,42 @@ public class Transaction {
     public void setState(TransactionState state) {
         this.state = state;
     }
+    
+    public String getSendAddress() {
+        return sendAddress;
+    }
+
+    public void setSendAddress(String sendAddress) {
+        this.sendAddress = sendAddress;
+    }
+
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDateTime dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public LocalDateTime getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation;
+        return Objects.equals(id, that.id) && Objects.equals(transaction, that.transaction) && Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation && state == that.state && Objects.equals(sendAddress, that.sendAddress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, transaction, cryptoactive, amount, prize, prizePesos, user, operation, state, sendAddress);
     }
 
     public static TransactionBuilder builder() {
@@ -120,6 +169,7 @@ public class Transaction {
         private TransactionBuilder() {
             transaction = new Transaction();
         }
+
         public TransactionBuilder id(Float id) {
             transaction.setId(id);
             return this;
@@ -162,6 +212,16 @@ public class Transaction {
 
         public TransactionBuilder state(TransactionState state) {
             transaction.setState(state);
+            return this;
+        }
+
+        public TransactionBuilder dateCreated(LocalDateTime dateCreated) {
+            transaction.setDateCreated(dateCreated);
+            return this;
+        }
+
+        public TransactionBuilder lastUpdated(LocalDateTime lastUpdated) {
+            transaction.setLastUpdated(lastUpdated);
             return this;
         }
 
