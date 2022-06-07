@@ -4,14 +4,14 @@ public class TransactionDoesNotExistException extends RuntimeException {
     Long transactionId;
 
     public TransactionDoesNotExistException(Long transactionId) {
-        this.userId = userId;
+        this.transactionId = transactionId;
     }
 
     public Long getTransactionId() {
-        return TransactionId;
+        return transactionId;
     }
 
     public void setTransactionId(Long transactionId) {
-        this.TransactionId = TransactionId;
+        this.transactionId = transactionId;
     }
 }

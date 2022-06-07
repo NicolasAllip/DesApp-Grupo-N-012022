@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupon.backenddesappapi.webservice;
+package ar.edu.unq.desapp.grupon.backenddesappapi.webservice.exceptionControllers;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.TransactionIntentDoesNotExistException;
 import org.springframework.dao.DataAccessException;
@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class TransactionRestExceptionController extends RestExceptionController {
+public class TransactionIntentRestExceptionController extends ar.edu.unq.desapp.grupon.backenddesappapi.webservice.RestExceptionController {
 
-    @ExceptionHandler(UserDoesNotExistException.class)
+    @ExceptionHandler(TransactionIntentDoesNotExistException.class)
     public ResponseEntity<Map<String, Object>> handleTransactionInentDoesNotExistExceptions(TransactionIntentDoesNotExistException e) {
         Map<String, Object> response = new HashMap<>();
 

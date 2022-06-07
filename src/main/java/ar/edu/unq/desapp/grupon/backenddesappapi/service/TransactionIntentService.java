@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.*;
+import ar.edu.unq.desapp.grupon.backenddesappapi.exception.TransactionDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.IGetDolarConversionValueRestclient;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.TransactionIntentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class TransactionIntentService implements ITransactionIntentService {
     @Transactional(readOnly = true)
     @Override
     public TransactionIntent findById(Long id) {
-        TransactionIntent transaction = userDao.findById(id).orElse(null);
+        TransactionIntent transaction = transactionIntentDao.findById(id).orElse(null);
 
         if (transaction == null) {
             throw new TransactionDoesNotExistException(id);

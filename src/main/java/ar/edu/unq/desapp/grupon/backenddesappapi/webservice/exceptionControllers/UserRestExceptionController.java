@@ -1,6 +1,7 @@
-package ar.edu.unq.desapp.grupon.backenddesappapi.webservice.Exceptions;
+package ar.edu.unq.desapp.grupon.backenddesappapi.webservice.exceptionControllers;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.RestExceptionController;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class UserRestExceptionController extends RestExceptionController{
+public class UserRestExceptionController extends RestExceptionController {
 
     @ExceptionHandler(UserDoesNotExistException.class)
     public ResponseEntity<Map<String, Object>> handleUserDoesNotExistExceptions(UserDoesNotExistException e) {
