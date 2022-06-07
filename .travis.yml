@@ -1,10 +1,14 @@
 language: java
 install: skip
+<<<<<<< HEAD
 
+=======
+>>>>>>> refactor-and-new-features_E2
 os: linux
 dist: trusty
 jdk: oraclejdk8
 
+<<<<<<< HEAD
 
 addons:
   sonarcloud:
@@ -15,3 +19,14 @@ addons:
 script:
   - sonar-scanner
   - ./gradlew build
+=======
+addons:
+  sonarcloud:
+    organization: "devapps-grupo"
+
+script:
+  - ./gradlew clean build
+  - ./gradlew test
+  - sonar-scanner
+
+>>>>>>> refactor-and-new-features_E2

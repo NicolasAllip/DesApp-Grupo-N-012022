@@ -1,7 +1,7 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
-import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestExceptionController;
+import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.exceptionControllers.UserRestExceptionController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

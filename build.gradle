@@ -9,21 +9,31 @@ plugins {
 	id "org.sonarqube" version "3.3"
 }
 
-sonarqube {
-  properties {
-    	property "sonar.projectKey", "NicolasAllip_DesApp-Grupo-N-012022"
-		property "sonar.host.url", "https://sonarcloud.io"
-		property "sonar.organization", "devapps-grupo"
-		property "sonar.login", "9435b0e37e8693670b833f38dda3854532db756d"
-  }
-}
-
 jacocoTestReport {
     reports {
         xml.enabled true
+        csv.enabled false
+        html.enabled false
     }
 }
 
+jacoco {
+    toolVersion = "0.8.5"
+}
+
+sonarqube {
+	properties {
+		property 'sonar.projectKey', "NicolasAllip_DesApp-Grupo-N-012022"
+		property 'sonar.host.url', "https://sonarcloud.io"
+		property 'sonar.organization', "devapps-grupo"
+		property' sonar.projectKey',"NicolasAllip_DesApp-Grupo-N-012022"
+		property 'sonar.java.binaries', "build/classes"
+		property 'sonar.java.coveragePlugin', "jacoco"
+		property 'sonar.coverage.jacoco.xmlReportPaths', "build/reports/jacoco/test/jacocoTestReport.xml"
+		property 'sonar.sources', "src/main"
+		property 'sonar.tests', "src/test"
+		}
+}
 
 eclipseJdt{
 	doLast {
@@ -79,9 +89,12 @@ dependencies {
 	testImplementation('org.mockito:mockito-core:3.+')
 }
 
-/*tasks.named('test') {
-	useJUnitPlatform()
-}*/
+
+
 test {
-	useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -9,15 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name="crypto_actives")
+@Entity
+@Table(name="crypto_actives")
 public class Cryptoactive {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Float id;
     private CryptoactiveName name;
     private Float price;
-    private LocalDateTime date;
 
     public CryptoactiveName getName() {
         return name;
@@ -35,20 +32,17 @@ public class Cryptoactive {
         this.price = price;
     }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cryptoactive that = (Cryptoactive) o;
-        return name == that.name && Objects.equals(price, that.price) && Objects.equals(date, that.date);
+        return name == that.name && Objects.equals(price, that.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price);
     }
 
     public static CryptoactiveBuilder builder() {
@@ -69,11 +63,6 @@ public class Cryptoactive {
 
         public CryptoactiveBuilder price(Float price) {
             cryptoactive.setPrice(price);
-            return this;
-        }
-
-        public CryptoactiveBuilder date(LocalDateTime date) {
-            cryptoactive.setDate(date);
             return this;
         }
 
