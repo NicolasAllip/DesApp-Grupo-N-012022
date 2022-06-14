@@ -15,7 +15,7 @@ public class TransactionIntent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Float id;
+    private Long id;
     private Cryptoactive cryptoactive;
     private Float amount;
     private Float prize = cryptoactive.getPrice();
@@ -24,11 +24,11 @@ public class TransactionIntent {
     private Operation operation;
     private LocalDateTime date = LocalDateTime.now();
 
-    public Float getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Float id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -111,7 +111,7 @@ public class TransactionIntent {
         private TransactionIntentBuilder() {
             transaction = new TransactionIntent();
         }
-        public TransactionIntentBuilder id(Float id) {
+        public TransactionIntentBuilder id(Long id) {
             transaction.setId(id);
             return this;
         }

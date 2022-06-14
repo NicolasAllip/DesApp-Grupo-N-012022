@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Float id;
+    private Long id;
     @Column(nullable = false)
     @OneToOne
     private TransactionIntent transaction;
@@ -58,11 +58,11 @@ public class Transaction {
         this.transaction = transaction;
     }
 
-    public Float getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Float id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -170,7 +170,7 @@ public class Transaction {
             transaction = new Transaction();
         }
 
-        public TransactionBuilder id(Float id) {
+        public TransactionBuilder id(Long id) {
             transaction.setId(id);
             return this;
         }

@@ -76,45 +76,48 @@ public class TransactionService implements ITransactionService {
     @Override
     public void acceptTransaction(Long id){
         Transaction transaction = transactionDao.findById(id).orElse(null);
-        if(transaction != null) { // TODO: hacer un not found para la transaccion
-
-            User senderUser   = transaction.getTransaction().getUser();
-            User receiverUser = transaction.getUser();
-
-            LocalDateTime transactionDate = transaction.getTransaction().getDate();
-
-            Float realPrice        = transaction.getCryptoactive().getPrice();
-            Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
-            Float priceMinusP      = realPrice - ((realPrice * 5) / 100);
-            Float transactionPrice = transaction.getPrize();
-
-            if(transaction.getState() != TransactionState.PENDING) {
-                if(transactionPrice > pricePlusP || transactionPrice < priceMinusP) {
-                    cancelByPrize(id);
-                } else {
-                    if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
-                        senderUser.increaseReputationBy(10L);
-                        receiverUser.increaseReputationBy(10L);
-                    } else {
-                        senderUser.increaseReputationBy(5L);
-                        receiverUser.increaseReputationBy(5L);
-                    }
-                    senderUser.increaseOperationAmount();
-                    receiverUser.increaseOperationAmount();
-                    transaction.setState(TransactionState.COMPLETED);
-                }
-            }
-
-            transaction.setLastUpdated(LocalDateTime.now());
-            transactionDao.save(transaction);
+        if (transaction == null) {
+            throw new TransactionDoesNotExistException(id);
         }
+
+        User senderUser   = transaction.getTransaction().getUser();
+        User receiverUser = transaction.getUser();
+
+        LocalDateTime transactionDate = transaction.getTransaction().getDate();
+
+        Float realPrice        = transaction.getCryptoactive().getPrice();
+        Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
+        Float priceMinusP      = realPrice - ((realPrice * 5) / 100);
+        Float transactionPrice = transaction.getPrize();
+
+        if(transaction.getState() != TransactionState.PENDING) {
+            if(transactionPrice > pricePlusP || transactionPrice < priceMinusP) {
+                cancelByPrize(id);
+            } else {
+                if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
+                    senderUser.increaseReputationBy(10L);
+                    receiverUser.increaseReputationBy(10L);
+                } else {
+                    senderUser.increaseReputationBy(5L);
+                    receiverUser.increaseReputationBy(5L);
+                }
+                senderUser.increaseOperationAmount();
+                receiverUser.increaseOperationAmount();
+                transaction.setState(TransactionState.COMPLETED);
+            }
+        }
+
+        transaction.setLastUpdated(LocalDateTime.now());
+        transactionDao.save(transaction);
     }
 
     @Transactional
     @Override
     public void cancel(Long id){
         Transaction transaction  = transactionDao.findById(id).orElse(null);
-        // TODO: hacer un not found para la transaccion
+        if (transaction == null) {
+            throw new TransactionDoesNotExistException(id);
+        }
         User senderUser   = transaction.getTransaction().getUser();
         User receiverUser = transaction.getUser();
         transaction.setState(TransactionState.CANCELED);
@@ -127,7 +130,9 @@ public class TransactionService implements ITransactionService {
     @Transactional
     private void cancelByPrize(Long id){
         Transaction transaction  = transactionDao.findById(id).orElse(null);
-        // TODO: hacer un not found para la transaccion
+        if (transaction == null) {
+            throw new TransactionDoesNotExistException(id);
+        }
         transaction.setState(TransactionState.CANCELED);
         transaction.setLastUpdated(LocalDateTime.now());
 
