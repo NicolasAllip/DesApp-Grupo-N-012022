@@ -207,6 +207,11 @@ public class User implements Serializable {
             return this;
         }
 
+        public UserBuilder operationAmount(Integer operationAmount) {
+            user.setOperationAmount(operationAmount);
+            return this;
+        }
+
         public User build() {
             return user;
         }
