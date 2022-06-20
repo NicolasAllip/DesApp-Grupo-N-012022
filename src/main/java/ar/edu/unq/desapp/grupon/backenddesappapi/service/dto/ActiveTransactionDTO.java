@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupon.backenddesappapi.service;
+package ar.edu.unq.desapp.grupon.backenddesappapi.service.dto;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
@@ -17,17 +17,18 @@ public class ActiveTransactionDTO {
     private Float prize;
     private Float prizePesos;
     private User user;
-    private Integer operations = user.getOperationAmount();
-    private Float reputation = user.getReputation();
+    private Integer operations;
+    private Float reputation;
 
     public ActiveTransactionDTO(TransactionIntent transaction) {
-        cryptoactive = transaction.getCryptoactive();
-        date = transaction.getDate();
-        amount = transaction.getAmount();
-        prize = transaction.getPrize();
-        prizePesos = transaction.getPrizePesos();
-        user = transaction.getUser();
-
+        this.cryptoactive = transaction.getCryptoactive();
+        this.date = transaction.getDate();
+        this.amount = transaction.getAmount();
+        this.prize = transaction.getPrize();
+        this.prizePesos = transaction.getPrizePesos();
+        this.user = transaction.getUser();
+        this.operations = this.user.getOperationAmount();
+        this.reputation = this.user.getReputation();
     }
 
     public Cryptoactive getCryptoactive() {

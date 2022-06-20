@@ -3,8 +3,9 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 import java.util.List;
 
 
-//import ar.edu.unq.desapp.grupon.backenddesappapi.service.NewUserDTO;
+//import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

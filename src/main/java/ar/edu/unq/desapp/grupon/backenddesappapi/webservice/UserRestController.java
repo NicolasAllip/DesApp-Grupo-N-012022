@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.service.NewUserDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
