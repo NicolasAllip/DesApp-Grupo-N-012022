@@ -80,10 +80,10 @@ public class TransactionService implements ITransactionService {
             throw new TransactionDoesNotExistException(id);
         }
 
-        User senderUser   = transaction.getTransaction().getUser();
+        User senderUser   = transaction.getTransactionIntent().getUser();
         User receiverUser = transaction.getUser();
 
-        LocalDateTime transactionDate = transaction.getTransaction().getDate();
+        LocalDateTime transactionDate = transaction.getTransactionIntent().getDate();
 
         Float realPrice        = transaction.getCryptoactive().getPrice();
         Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
@@ -118,7 +118,7 @@ public class TransactionService implements ITransactionService {
         if (transaction == null) {
             throw new TransactionDoesNotExistException(id);
         }
-        User senderUser   = transaction.getTransaction().getUser();
+        User senderUser   = transaction.getTransactionIntent().getUser();
         User receiverUser = transaction.getUser();
         transaction.setState(TransactionState.CANCELED);
         senderUser.lowerReputationBy(20L);

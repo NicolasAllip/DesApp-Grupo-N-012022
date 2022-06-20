@@ -3,11 +3,7 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="transaction_intents")
@@ -20,6 +16,7 @@ public class TransactionIntent {
     private Float amount;
     private Float prize = cryptoactive.getPrice();
     private Float prizePesos;
+    @ManyToOne
     private User user;
     private Operation operation;
     private LocalDateTime date = LocalDateTime.now();
