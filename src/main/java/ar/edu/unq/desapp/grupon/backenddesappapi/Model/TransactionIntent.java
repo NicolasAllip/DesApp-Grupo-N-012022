@@ -12,14 +12,28 @@ public class TransactionIntent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
     private Cryptoactive cryptoactive;
     private Float amount;
-    private Float prize = cryptoactive.getPrice();
+    private Float prize;
     private Float prizePesos;
     @ManyToOne
     private User user;
     private Operation operation;
-    private LocalDateTime date = LocalDateTime.now();
+    private LocalDateTime date;
+
+    public TransactionIntent(Long id, Cryptoactive cryptoactive, Float amount, Float prizePesos, User user, Operation operation) {
+        this.id = id;
+        this.cryptoactive = cryptoactive;
+        this.amount = amount;
+        this.prize = cryptoactive.getPrice();
+        this.prizePesos = prizePesos;
+        this.user = user;
+        this.operation = operation;
+        this.date = LocalDateTime.now();
+    }
+
+    public TransactionIntent() {}
 
     public Long getId() {
         return id;

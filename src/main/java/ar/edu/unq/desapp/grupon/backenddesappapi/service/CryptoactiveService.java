@@ -14,6 +14,9 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.BinanceCryptoDTO
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesInput;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesOutput;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +25,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ICryptoactiveDao;
 
 @Service
+@EnableScheduling
 public class CryptoactiveService implements ICryptoactiveService {
     
     @Autowired
@@ -29,6 +33,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Autowired
     private ICryptoactiveLogService cryptoactiveLogService;
     @Autowired
+    @Lazy
     private ITransactionService transactionService;
     @Autowired
     private IGetPriceForCryptoRestclient getPriceForCryptoRestclient;
@@ -66,9 +71,8 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Transactional
     @Override
     public Cryptoactive save(CryptoactiveName name, Float price) {
-        Cryptoactive cryptoactive = cryptoactiveDao.findById(name).orElse(Cryptoactive.builder()
-        .name(name)
-        .build());
+        Cryptoactive cryptoactive = cryptoactiveDao.findById(name).orElse(new Cryptoactive(name, null));
+
         cryptoactive.setPrice(price);
         return cryptoactiveDao.save(cryptoactive);
     }
@@ -87,6 +91,7 @@ public class CryptoactiveService implements ICryptoactiveService {
 
     @Transactional
     @Override
+    @Scheduled(cron = "* */10 * * * *")
     public List<Cryptoactive> updateAllCryptos() {
         BinanceCryptoDTO[] binanceCryptoDTOS = getPriceForCryptoRestclient.getBatchCryptoPrice(AVAILABLE_CRYPTOS);
         List<Cryptoactive> cryptoactiveList = new ArrayList<>();
@@ -101,24 +106,24 @@ public class CryptoactiveService implements ICryptoactiveService {
     }
 
     private Cryptoactive binanceToModelCrypto(BinanceCryptoDTO binanceCryptoDTO) {
-        Cryptoactive cryptoactive = Cryptoactive.builder()
-                .name(CryptoactiveName.valueOf(binanceCryptoDTO.getSymbol()))
-                .price(Float.valueOf(binanceCryptoDTO.getPrice()))
-                .build();
+        Cryptoactive cryptoactive = new Cryptoactive(
+                CryptoactiveName.valueOf(binanceCryptoDTO.getSymbol()),
+                Float.valueOf(binanceCryptoDTO.getPrice())
+        );
         return cryptoactiveDao.save(cryptoactive);
     }
 
     @Override
     public CryptosBetweenTwoDatesOutput getOperatedCryptosInRange(CryptosBetweenTwoDatesInput cryptosBetweenTwoDatesInput) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate dateFrom = LocalDate.parse(cryptosBetweenTwoDatesInput.getDateFrom(), formatter);
-        LocalDate dateTo = LocalDate.parse(cryptosBetweenTwoDatesInput.getDateTo(), formatter);
+        LocalDate dateStart = LocalDate.parse(cryptosBetweenTwoDatesInput.getDateStart(), formatter);
+        LocalDate dateEnd = LocalDate.parse(cryptosBetweenTwoDatesInput.getDateEnd(), formatter);
 
         Map<CryptoactiveName, Float> operatedCryptoactives = new HashMap<>();
 
         List<Transaction> transactions = transactionService.findAll()
                 .stream().filter(
-                        transaction -> transaction.getState() == TransactionState.COMPLETED && dateIsInRange(transaction.getLastUpdated(), dateFrom, dateTo)
+                        transaction -> transaction.getState() == TransactionState.COMPLETED && dateIsInRange(transaction.getLastUpdated(), dateStart, dateEnd)
                 ).collect(Collectors.toList());
 
         for (Transaction transaction : transactions) {

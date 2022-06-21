@@ -8,6 +8,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.TransactionDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CreateTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,9 +24,11 @@ public class TransactionService implements ITransactionService {
     private ITransactionDao transactionDao;
 
     @Autowired
+    @Lazy
     private ITransactionIntentService transactionIntentService;
 
     @Autowired
+    @Lazy
     private IUserService userService;
 
     @Transactional(readOnly = true)
@@ -54,13 +57,7 @@ public class TransactionService implements ITransactionService {
         User user = userService.findById(createTransactionDTO.getUserId());
 
         LocalDateTime now = LocalDateTime.now();
-        Transaction transaction = Transaction.builder()
-                .transaction(transactionIntent)
-                .user(user)
-                .state(TransactionState.PENDING)
-                .dateCreated(now)
-                .lastUpdated(now)
-                .build();
+        Transaction transaction = new Transaction(transactionIntent, user, TransactionState.PENDING, now, now);
 
         return transactionDao.save(transaction);
     }

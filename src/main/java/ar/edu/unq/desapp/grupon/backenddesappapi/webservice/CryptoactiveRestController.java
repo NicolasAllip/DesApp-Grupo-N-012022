@@ -1,18 +1,12 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.webservice;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesInput;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesOutput;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
@@ -30,7 +23,6 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
-@EnableScheduling
 public class CryptoactiveRestController {
     
     @Autowired
@@ -71,7 +63,6 @@ public class CryptoactiveRestController {
     }
 
     @PostMapping("/cryptoactives/update")
-    @Scheduled(cron = "*/10 * * * *")
     public List<Cryptoactive> updateAllCryptos(){
         return cryptoactiveService.updateAllCryptos();
     }

@@ -3,23 +3,23 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto;
 import java.util.Objects;
 
 public class CryptosBetweenTwoDatesInput {
-    private String dateFrom;
-    private String dateTo;
+    private String dateStart;
+    private String dateEnd;
 
-    public String getDateFrom() {
-        return dateFrom;
+    public String getDateStart() {
+        return dateStart;
     }
 
-    public void setDateFrom(String dateFrom) {
-        this.dateFrom = dateFrom;
+    public void setDateStart(String dateStart) {
+        this.dateStart = dateStart;
     }
 
-    public String getDateTo() {
-        return dateTo;
+    public String getDateEnd() {
+        return dateEnd;
     }
 
-    public void setDateTo(String dateTo) {
-        this.dateTo = dateTo;
+    public void setDateEnd(String dateEnd) {
+        this.dateEnd = dateEnd;
     }
 
     @Override
@@ -27,12 +27,12 @@ public class CryptosBetweenTwoDatesInput {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CryptosBetweenTwoDatesInput that = (CryptosBetweenTwoDatesInput) o;
-        return Objects.equals(dateFrom, that.dateFrom) && Objects.equals(dateTo, that.dateTo);
+        return Objects.equals(dateStart, that.dateStart) && Objects.equals(dateEnd, that.dateEnd);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateFrom, dateTo);
+        return Objects.hash(dateStart, dateEnd);
     }
 
     public static CryptosBetweenTwoDatesInputBuilder builder() {
@@ -46,13 +46,13 @@ public class CryptosBetweenTwoDatesInput {
             cryptosBetweenTwoDatesInput = new CryptosBetweenTwoDatesInput();
         }
 
-        public CryptosBetweenTwoDatesInputBuilder dateFrom(String dateFrom) {
-            cryptosBetweenTwoDatesInput.setDateFrom(dateFrom);
+        public CryptosBetweenTwoDatesInputBuilder dateStart(String dateStart) {
+            cryptosBetweenTwoDatesInput.setDateStart(dateStart);
             return this;
         }
 
-        public CryptosBetweenTwoDatesInputBuilder dateTo(String dateTo) {
-            cryptosBetweenTwoDatesInput.setDateTo(dateTo);
+        public CryptosBetweenTwoDatesInputBuilder dateEnd(String dateEnd) {
+            cryptosBetweenTwoDatesInput.setDateEnd(dateEnd);
             return this;
         }
 

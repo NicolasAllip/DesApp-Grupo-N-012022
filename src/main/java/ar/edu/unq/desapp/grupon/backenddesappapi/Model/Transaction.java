@@ -14,7 +14,7 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     @OneToOne
     private TransactionIntent transactionIntent;
     @ManyToOne
@@ -39,14 +39,14 @@ public class Transaction {
         this.user = user;
         this.operation = transactionIntent.getOperation();
         this.state = state;
-        determineAddress();
+        determineAddress(user, transactionIntent.getOperation());
         this.dateCreated = dateCreated;
         this.lastUpdated = lastUpdated;
     }
 
     public Transaction() {}
 
-    private void determineAddress() {
+    private void determineAddress(User user, Operation operation) {
         switch(operation) {
             case SELL:
                 setSendAddress(user.getCvu());
@@ -219,6 +219,11 @@ public class Transaction {
 
         public TransactionBuilder state(TransactionState state) {
             transaction.setState(state);
+            return this;
+        }
+
+        public TransactionBuilder sendAddress(String sendAddress) {
+            transaction.setSendAddress(sendAddress);
             return this;
         }
 

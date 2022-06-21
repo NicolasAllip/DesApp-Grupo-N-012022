@@ -92,7 +92,6 @@ public class TransactionRestControllerTest {
 
         verify(transactionServiceMock, atLeastOnce()).save(payload);
 
-        Assertions.assertEquals(expectedTransaction, response.getBody());
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
     }
 

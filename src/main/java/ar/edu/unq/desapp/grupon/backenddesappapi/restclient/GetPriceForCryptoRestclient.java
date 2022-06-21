@@ -1,11 +1,13 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.restclient;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.BinanceCryptoDTO;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class GetPriceForCryptoRestclient implements IGetPriceForCryptoRestclient {
 
     @Override
