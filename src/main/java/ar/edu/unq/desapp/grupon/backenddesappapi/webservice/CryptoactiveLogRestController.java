@@ -26,24 +26,23 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
-@EnableScheduling
 public class CryptoactiveLogRestController {
     
     @Autowired
     private ICryptoactiveLogService cryptoactiveLogService;
 
-    @GetMapping("/cryptoactives")
+    @GetMapping("/cryptoactive-log")
     public List<CryptoactiveLog> index(){
         return cryptoactiveLogService.findAll();
     }
 
-    @GetMapping("/cryptoactives/{id}")
+    @GetMapping("/cryptoactive-log/{id}")
     public ResponseEntity<?> showCryptoactive(@PathVariable Long id){
         CryptoactiveLog cryptoactive = cryptoactiveLogService.findById(id);
         return new ResponseEntity<>(cryptoactive, HttpStatus.OK);
     }
 
-    @PostMapping("/cryptoactives")
+    @PostMapping("/cryptoactive-log")
     public ResponseEntity<?> create(@Valid @RequestBody CryptoactiveName name) {
 
         String URL = "https://api1.binance.com/api/v3/ticker/price?symbol=" + name;
@@ -60,8 +59,7 @@ public class CryptoactiveLogRestController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("/cryptoactives/get-all")
-    @Scheduled(cron = "*/10 * * * *")
+    @GetMapping("/cryptoactive-log/get-all")
     public List<CryptoactiveLog> getAllCryptos(){
         return cryptoactiveLogService.getAllCryptos();
     }

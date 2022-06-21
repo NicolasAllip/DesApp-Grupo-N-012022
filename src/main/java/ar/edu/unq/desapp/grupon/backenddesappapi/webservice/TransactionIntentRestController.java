@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.service.ActiveTransactionDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.ActiveTransactionDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.ITransactionIntentService;
 
 import javax.validation.Valid;

@@ -17,6 +17,13 @@ public class Cryptoactive implements Serializable{
     private CryptoactiveName name;
     private Float price;
 
+    public Cryptoactive(CryptoactiveName name, Float price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public Cryptoactive() {}
+
     public CryptoactiveName getName() {
         return name;
     }

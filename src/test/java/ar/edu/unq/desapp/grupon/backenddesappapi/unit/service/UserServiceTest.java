@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.unit.service;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.service.NewUserDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.IUserDao;

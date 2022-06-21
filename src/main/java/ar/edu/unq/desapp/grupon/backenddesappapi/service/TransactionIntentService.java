@@ -6,8 +6,10 @@ import java.util.List;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.*;
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.TransactionDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.IGetDolarConversionValueRestclient;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.ActiveTransactionDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.TransactionIntentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,9 +22,11 @@ public class TransactionIntentService implements ITransactionIntentService {
     private ITransactionIntentDao transactionIntentDao;
 
     @Autowired
+    @Lazy
     private ICryptoactiveService cryptoactiveService;
 
     @Autowired
+    @Lazy
     private IUserService userService;
 
     @Autowired

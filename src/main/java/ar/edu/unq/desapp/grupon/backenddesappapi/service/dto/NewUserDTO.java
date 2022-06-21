@@ -1,17 +1,8 @@
-package ar.edu.unq.desapp.grupon.backenddesappapi.service;
+package ar.edu.unq.desapp.grupon.backenddesappapi.service.dto;
 
 import javax.validation.constraints.*;
 
 public class NewUserDTO {
-    /*
-    Nombre, Obligatorio, Min:3, Max:30
-    Apellido, Obligatorio, Min:3, Max:30
-    Email, Obligatorio, Formato de email
-    Dirección, Obligatorio, Min:10, Max:30
-    Contraseña
-    CVU MercadoPago, Obligatorio (22 digitos)
-    Dirección Billetera de CriptoActivos, Obligatorio (8 dígitos)
-     */
 
     @NotBlank(message = "User must have a name")
     @Size(min = 3, max = 30, message = "User's name must be between 3 and 30 characters")

@@ -2,10 +2,12 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.restclient;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.DolarsiDolarValueContainerDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.DolarsiDolarValueDTO;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 
+@Component
 public class GetDolarConversionValueRestclient implements IGetDolarConversionValueRestclient {
     @Override
     public DolarsiDolarValueDTO getOfficialDolarValue() {

@@ -20,6 +20,14 @@ public class CryptoactiveLog implements Serializable{
     private Float price;
     private LocalDateTime date;
 
+    public CryptoactiveLog(CryptoactiveName name, Float price, LocalDateTime date) {
+        this.name = name;
+        this.price = price;
+        this.date = date;
+    }
+
+    public CryptoactiveLog() {}
+
     public Long getId() {
         return id;
     }

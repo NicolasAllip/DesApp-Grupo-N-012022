@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 import java.util.List;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.*;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.ActiveTransactionDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.TransactionIntentDTO;
 
 public interface ITransactionIntentService {

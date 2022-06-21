@@ -55,25 +55,8 @@ public class CryptoactiveLogService implements ICryptoactiveLogService {
     @Transactional
     @Override
     public CryptoactiveLog save(CryptoactiveName name, Float price) {
-        CryptoactiveLog cryptoactive = CryptoactiveLog.builder()
-                .name(name)
-                .price(price)
-                .date(LocalDateTime.now())
-                .build();
-
-        return cryptoactiveLogDao.save(cryptoactive);
+        return cryptoactiveLogDao.save(new CryptoactiveLog(name, price, LocalDateTime.now()));
     }
-
-    /*@Transactional
-    @Override
-    public CryptoactiveLog update(Long id, Float price) {
-    //public void update(Long id, Float price) {
-        CryptoactiveLog cryptoactive = cryptoactiveDao.findById(id).orElse(null);
-        if(cryptoactive != null) {
-            cryptoactive.setPrice(price);
-            return cryptoactiveDao.save(cryptoactive);    
-        }
-    }*/
 
     @Transactional
     @Override

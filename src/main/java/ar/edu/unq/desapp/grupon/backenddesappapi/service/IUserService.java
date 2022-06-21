@@ -4,7 +4,8 @@ import java.util.List;
 
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
-//import ar.edu.unq.desapp.grupon.backenddesappapi.service.NewUserDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
+//import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 
 public interface IUserService {
     

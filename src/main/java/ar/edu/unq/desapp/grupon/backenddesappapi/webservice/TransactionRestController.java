@@ -36,7 +36,7 @@ public class TransactionRestController {
     }
 
     @GetMapping("/transactions/{id}")
-    public ResponseEntity<?> showUser(@PathVariable Long id){
+    public ResponseEntity<?> findById(@PathVariable Long id){
         Transaction transaction = transactionService.findById(id);
         return new ResponseEntity<>(transaction, HttpStatus.OK);
     }

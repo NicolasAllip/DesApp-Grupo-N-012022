@@ -3,16 +3,7 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="transaction_intents")
@@ -20,22 +11,35 @@ public class TransactionIntent implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Float id;
-    //@JoinColumn
-    //@ManyToOne
+    private Long id;
+    @ManyToOne
     private Cryptoactive cryptoactive;
     private Float amount;
-    private Float prize = cryptoactive.getPrice();
+    private Float prize;
     private Float prizePesos;
+    @ManyToOne
     private User user;
     private Operation operation;
-    private LocalDateTime date = LocalDateTime.now();
+    private LocalDateTime date;
 
-    public Float getId() {
+    public TransactionIntent(Long id, Cryptoactive cryptoactive, Float amount, Float prizePesos, User user, Operation operation) {
+        this.id = id;
+        this.cryptoactive = cryptoactive;
+        this.amount = amount;
+        this.prize = cryptoactive.getPrice();
+        this.prizePesos = prizePesos;
+        this.user = user;
+        this.operation = operation;
+        this.date = LocalDateTime.now();
+    }
+
+    public TransactionIntent() {}
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Float id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -118,7 +122,7 @@ public class TransactionIntent implements Serializable{
         private TransactionIntentBuilder() {
             transaction = new TransactionIntent();
         }
-        public TransactionIntentBuilder id(Float id) {
+        public TransactionIntentBuilder id(Long id) {
             transaction.setId(id);
             return this;
         }

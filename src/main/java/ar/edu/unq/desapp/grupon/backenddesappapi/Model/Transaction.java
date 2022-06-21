@@ -3,42 +3,46 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.Null;
+import javax.persistence.*;
 
 @Entity
 @Table(name="transactions")
 public class Transaction implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Float id;
-    //@Column(nullable = false)
-    //@JoinColumn
-    //@OneToOne
-    private TransactionIntent transaction;
-    //@JoinColumn
+    private Long id;
+    @OneToOne
+    private TransactionIntent transactionIntent;
     @ManyToOne
-    private Cryptoactive cryptoactive = transaction.getCryptoactive();
-    private Float amount = transaction.getAmount();
-    private Float prize =  transaction.getPrize();
-    private Float prizePesos = transaction.getPrizePesos();
-    private User user ;
-    private Operation operation = transaction.getOperation();
+    private Cryptoactive cryptoactive;
+    private Float amount;
+    private Float prize;
+    private Float prizePesos;
+    @ManyToOne
+    private User user;
+    private Operation operation;
     private TransactionState state;
     private String sendAddress;
     private LocalDateTime dateCreated;
     private LocalDateTime lastUpdated;
 
-    private void findAddress() {
+    public Transaction(TransactionIntent transactionIntent, User user, TransactionState state, LocalDateTime dateCreated, LocalDateTime lastUpdated) {
+        this.transactionIntent = transactionIntent;
+        this.cryptoactive = transactionIntent.getCryptoactive();
+        this.amount = transactionIntent.getAmount();
+        this.prize = transactionIntent.getPrize();
+        this.prizePesos = transactionIntent.getPrizePesos();
+        this.user = user;
+        this.operation = transactionIntent.getOperation();
+        this.state = state;
+        determineAddress(user, transactionIntent.getOperation());
+        this.dateCreated = dateCreated;
+        this.lastUpdated = lastUpdated;
+    }
+
+    public Transaction() {}
+
+    private void determineAddress(User user, Operation operation) {
         switch(operation) {
             case SELL:
                 setSendAddress(user.getCvu());
@@ -49,24 +53,19 @@ public class Transaction implements Serializable{
         }
     }
 
-    public Transaction() {
-        findAddress();
-    }
-    
-
-    public TransactionIntent getTransaction() {
-        return transaction;
+    public TransactionIntent getTransactionIntent() {
+        return transactionIntent;
     }
 
-    public void setTransaction(TransactionIntent transaction) {
-        this.transaction = transaction;
+    public void setTransactionIntent(TransactionIntent transactionIntent) {
+        this.transactionIntent = transactionIntent;
     }
 
-    public Float getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Float id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -155,12 +154,12 @@ public class Transaction implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(id, that.id) && Objects.equals(transaction, that.transaction) && Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation && state == that.state && Objects.equals(sendAddress, that.sendAddress);
+        return Objects.equals(id, that.id) && Objects.equals(transactionIntent, that.transactionIntent) && Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation && state == that.state && Objects.equals(sendAddress, that.sendAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, transaction, cryptoactive, amount, prize, prizePesos, user, operation, state, sendAddress);
+        return Objects.hash(id, transactionIntent, cryptoactive, amount, prize, prizePesos, user, operation, state, sendAddress);
     }
 
     public static TransactionBuilder builder() {
@@ -174,13 +173,13 @@ public class Transaction implements Serializable{
             transaction = new Transaction();
         }
 
-        public TransactionBuilder id(Float id) {
+        public TransactionBuilder id(Long id) {
             transaction.setId(id);
             return this;
         }
 
         public TransactionBuilder transaction(TransactionIntent transactionIntent) {
-            transaction.setTransaction(transactionIntent);
+            transaction.setTransactionIntent(transactionIntent);
             return this;
         }
 
@@ -216,6 +215,11 @@ public class Transaction implements Serializable{
 
         public TransactionBuilder state(TransactionState state) {
             transaction.setState(state);
+            return this;
+        }
+
+        public TransactionBuilder sendAddress(String sendAddress) {
+            transaction.setSendAddress(sendAddress);
             return this;
         }
 
