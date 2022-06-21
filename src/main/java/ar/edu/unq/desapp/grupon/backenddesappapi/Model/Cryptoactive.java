@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="crypto_actives")
-public class Cryptoactive {
+public class Cryptoactive implements Serializable{
     @Id
     private CryptoactiveName name;
     private Float price;

@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-//import java.lang.runtime.SwitchBootstraps;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -9,26 +9,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-//import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Null;
 
 @Entity
 @Table(name="transactions")
-public class Transaction {
+public class Transaction implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Float id;
-    @Column(nullable = false)
-    @OneToOne
+    //@Column(nullable = false)
+    //@JoinColumn
+    //@OneToOne
     private TransactionIntent transaction;
+    //@JoinColumn
     @ManyToOne
     private Cryptoactive cryptoactive = transaction.getCryptoactive();
     private Float amount = transaction.getAmount();
-    private Float prize = transaction.getPrize();
+    private Float prize =  transaction.getPrize();
     private Float prizePesos = transaction.getPrizePesos();
-    private User user;
+    private User user ;
     private Operation operation = transaction.getOperation();
     private TransactionState state;
     private String sendAddress;
@@ -49,6 +52,7 @@ public class Transaction {
     public Transaction() {
         findAddress();
     }
+    
 
     public TransactionIntent getTransaction() {
         return transaction;

@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.NewUserDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
+import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.UserRestController;
 import org.junit.jupiter.api.Assertions;
@@ -30,7 +31,7 @@ public class UserRestControllerTest {
     private UserRestController userRestController;
 
     @Test
-    public void getAllUsers_returnUsers() {
+    public void getAllUsers_returnUsers() throws UserDoesNotExistException {
         // arrange
         User user1 = User.builder()
                 .build();
@@ -55,7 +56,7 @@ public class UserRestControllerTest {
     }
 
     @Test
-    public void getUserById_gotUser() {
+    public void getUserById_gotUser() throws UserDoesNotExistException {
         // arrange
         Long expectedId = 1L;
         User expectedUser = User.builder()
@@ -75,7 +76,7 @@ public class UserRestControllerTest {
     }
 
     @Test
-    public void postNewUser_savesUser() {
+    public void postNewUser_savesUser() throws UserDoesNotExistException {
         // arrange
         Long expectedId = 1L;
         NewUserDTO newUserDTO = NewUserDTO.builder()

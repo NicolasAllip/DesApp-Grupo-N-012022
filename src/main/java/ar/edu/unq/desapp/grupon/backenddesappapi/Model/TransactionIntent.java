@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -7,15 +8,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="transaction_intents")
-public class TransactionIntent {
+public class TransactionIntent implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Float id;
+    //@JoinColumn
+    //@ManyToOne
     private Cryptoactive cryptoactive;
     private Float amount;
     private Float prize = cryptoactive.getPrice();
