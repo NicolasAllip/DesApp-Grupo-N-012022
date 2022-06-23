@@ -63,7 +63,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Override
     public List<Cryptoactive> findAll(){
         ArrayList<Cryptoactive> ret = new ArrayList<Cryptoactive>();
-        for (String criptoName : AVAILABLE_CRYPTOS) {
+        for (CryptoactiveName criptoName : AVAILABLE_CRYPTOS) {
             this.findByName(criptoName);
         }
         return (List<Cryptoactive>) ret;
@@ -72,7 +72,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Transactional(readOnly = true)
     @Override
     public Cryptoactive findByName(CryptoactiveName name) {
-        return jedis.get(name);
+        return jedis.get(str(name));
     }
 
     @Transactional
