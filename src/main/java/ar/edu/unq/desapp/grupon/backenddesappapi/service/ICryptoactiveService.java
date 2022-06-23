@@ -12,7 +12,7 @@ public interface ICryptoactiveService {
     
     public List<Cryptoactive> findAll();
 
-    public Cryptoactive findByName(CryptoactiveName name);
+    public Cryptoactive findByName(String name);
 
     public Cryptoactive save(CryptoactiveName name, Float price);
 
