@@ -63,7 +63,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     public List<Cryptoactive> findAll(){
         ArrayList<Cryptoactive> ret = new ArrayList<Cryptoactive>();
         for (String criptoName : AVAILABLE_CRYPTOS) {
-            self.findByName(criptoName)
+            self.findByName(criptoName);
         }
         return (List<Cryptoactive>) ret;
     }
