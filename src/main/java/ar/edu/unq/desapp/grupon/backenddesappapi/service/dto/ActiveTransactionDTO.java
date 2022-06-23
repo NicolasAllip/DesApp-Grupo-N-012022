@@ -11,7 +11,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 
 public class ActiveTransactionDTO {
 
-    private Cryptoactive cryptoactive;
+    private CryptoactiveName cryptoactive;
     private LocalDateTime date;
     private Float amount;
     private Float prize;

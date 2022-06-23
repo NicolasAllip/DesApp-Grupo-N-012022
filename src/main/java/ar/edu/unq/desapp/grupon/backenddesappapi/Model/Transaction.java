@@ -18,7 +18,7 @@ public class Transaction {
     @OneToOne
     private TransactionIntent transactionIntent;
     @ManyToOne
-    private Cryptoactive cryptoactive;
+    private CryptoactiveName cryptoactive;
     private Float amount;
     private Float prize;
     private Float prizePesos;

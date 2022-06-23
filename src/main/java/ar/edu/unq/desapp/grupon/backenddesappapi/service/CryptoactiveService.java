@@ -61,6 +61,18 @@ public class CryptoactiveService implements ICryptoactiveService {
 
     @Transactional(readOnly = true)
     @Override
+    public List<Cryptoactive> findAll(){
+        return (List<Cryptoactive>) cryptoactiveDao.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Cryptoactive findByName(CryptoactiveName name) {
+        return cryptoactiveDao.findById(name).orElse(null);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
     public List<String> findAllValues(){
         ArrayList<String> ret = new ArrayList<String>();
         for (String criptoName : AVAILABLE_CRYPTOS) {
@@ -73,18 +85,6 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Override
     public String findValueByName(String name) {
         return jedis.get(name);
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public List<Cryptoactive> findAll(){
-        return (List<Cryptoactive>) cryptoactiveDao.findAll();
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public Cryptoactive findByName(CryptoactiveName name) {
-        return cryptoactiveDao.findById(name).orElse(null);
     }
 
     @Transactional
