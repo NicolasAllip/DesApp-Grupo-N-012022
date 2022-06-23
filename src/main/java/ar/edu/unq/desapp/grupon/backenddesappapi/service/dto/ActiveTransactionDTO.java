@@ -32,10 +32,10 @@ public class ActiveTransactionDTO {
         this.reputation = this.user.getReputation();
     }
 
-    public Cryptoactive getCryptoactive() {
+    public CryptoactiveName getCryptoactive() {
         return cryptoactive;
     }
-    public void setCryptoactive(Cryptoactive cryptoactive) {
+    public void setCryptoactive(CryptoactiveName cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
