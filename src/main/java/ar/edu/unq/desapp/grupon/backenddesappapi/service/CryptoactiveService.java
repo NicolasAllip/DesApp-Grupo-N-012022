@@ -19,6 +19,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import redis.clients.jedis.Jedis;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
@@ -63,7 +64,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     public List<Cryptoactive> findAll(){
         ArrayList<Cryptoactive> ret = new ArrayList<Cryptoactive>();
         for (String criptoName : AVAILABLE_CRYPTOS) {
-            self.findByName(criptoName);
+            this.findByName(criptoName);
         }
         return (List<Cryptoactive>) ret;
     }
