@@ -29,6 +29,8 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ICryptoactiveDao;
 public class CryptoactiveService implements ICryptoactiveService {
     
     @Autowired
+    Jedis jedis = new Jedis("localhost");
+    @Autowired
     private ICryptoactiveDao cryptoactiveDao;
     @Autowired
     private ICryptoactiveLogService cryptoactiveLogService;
@@ -59,13 +61,17 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Transactional(readOnly = true)
     @Override
     public List<Cryptoactive> findAll(){
-        return (List<Cryptoactive>) cryptoactiveDao.findAll();
+        ArrayList<Cryptoactive> ret = new ArrayList<Cryptoactive>();
+        for (String criptoName : AVAILABLE_CRYPTOS) {
+            self.findByName(criptoName)
+        }
+        return (List<Cryptoactive>) ret;
     }
 
     @Transactional(readOnly = true)
     @Override
     public Cryptoactive findByName(CryptoactiveName name) {
-        return cryptoactiveDao.findById(name).orElse(null);
+        return jedis.get(name);
     }
 
     @Transactional
@@ -100,6 +106,7 @@ public class CryptoactiveService implements ICryptoactiveService {
             Cryptoactive crypto = binanceToModelCrypto(bcrypto);
             cryptoactiveList.add(crypto);
             cryptoactiveLogService.save(crypto.getName(), crypto.getPrice());
+            jedis.save(crypto.getName(), crypto.getPrice());
         });
 
         return cryptoactiveList;

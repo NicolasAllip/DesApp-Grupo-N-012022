@@ -82,6 +82,8 @@ dependencies {
 	runtimeOnly 'com.h2database:h2:1.4.197'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation('org.springframework.data:spring-data-redis:1.8.0.RELEASE')
+	implementation('redis.clients:jedis:2.9.0')
 	//testImplementation 'org.springframework.security:spring-security-test'
 
 	testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.2')
