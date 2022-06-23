@@ -41,24 +41,24 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Autowired
     private IGetPriceForCryptoRestclient getPriceForCryptoRestclient;
 
-    private static List<CryptoactiveName> AVAILABLE_CRYPTOS = new ArrayList<>();
+    private static List<String> AVAILABLE_CRYPTOS = new ArrayList<>();
     static {
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.ALICEUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.MATICUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.AXSUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.AAVEUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.ATOMUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.NEOUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.DOTUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.ETHUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.CAKEUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.BTCUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.BNBUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.ADAUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.TRXUSDT);
-        AVAILABLE_CRYPTOS.add(CryptoactiveName.AUDIOUSDT);
+        AVAILABLE_CRYPTOS.add("ALICEUSDT");
+        AVAILABLE_CRYPTOS.add("MATICUSDT");
+        AVAILABLE_CRYPTOS.add("AXSUSDT");
+        AVAILABLE_CRYPTOS.add("AAVEUSDT");
+        AVAILABLE_CRYPTOS.add("ATOMUSDT");
+        AVAILABLE_CRYPTOS.add("NEOUSDT");
+        AVAILABLE_CRYPTOS.add("DOTUSDT");
+        AVAILABLE_CRYPTOS.add("ETHUSDT");
+        AVAILABLE_CRYPTOS.add("CAKEUSDT");
+        AVAILABLE_CRYPTOS.add("BTCUSDT");
+        AVAILABLE_CRYPTOS.add("BNBUSDT");
+        AVAILABLE_CRYPTOS.add("ADAUSDT");
+        AVAILABLE_CRYPTOS.add("TRXUSDT");
+        AVAILABLE_CRYPTOS.add("AUDIOUSDT");
     }
-    
+
     @Transactional(readOnly = true)
     @Override
     public List<Cryptoactive> findAll(){
@@ -71,7 +71,7 @@ public class CryptoactiveService implements ICryptoactiveService {
 
     @Transactional(readOnly = true)
     @Override
-    public Cryptoactive findByName(CryptoactiveName name) {
+    public Cryptoactive findByName(String name) {
         return jedis.get(name);
     }
 
