@@ -14,9 +14,9 @@ public interface ICryptoactiveService {
 
     public Cryptoactive findByName(CryptoactiveName name);
 
-    public List<Cryptoactive> findAllValues();
+    public List<String> findAllValues();
 
-    public Cryptoactive findValueByName(String name);
+    public String findValueByName(String name);
 
     public Cryptoactive save(CryptoactiveName name, Float price);
 

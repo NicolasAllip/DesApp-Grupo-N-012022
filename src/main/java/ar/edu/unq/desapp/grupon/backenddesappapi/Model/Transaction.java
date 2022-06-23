@@ -73,11 +73,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public Cryptoactive getCryptoactive() {
+    public CryptoactiveName getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(Cryptoactive cryptoactive) {
+    public void setCryptoactive(CryptoactiveName cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
@@ -187,7 +187,7 @@ public class Transaction {
             return this;
         }
 
-        public TransactionBuilder cryptoactive(Cryptoactive cryptoactive) {
+        public TransactionBuilder cryptoactive(CryptoactiveName cryptoactive) {
             transaction.setCryptoactive(cryptoactive);
             return this;
         }
