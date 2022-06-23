@@ -76,7 +76,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     public List<String> findAllValues(){
         ArrayList<String> ret = new ArrayList<String>();
         for (String criptoName : AVAILABLE_CRYPTOS) {
-            ret.append(this.findValueByName(criptoName));
+            ret.add(this.findValueByName(criptoName));
         }
         return (List<String>) ret;
     }
@@ -147,7 +147,7 @@ public class CryptoactiveService implements ICryptoactiveService {
                 ).collect(Collectors.toList());
 
         for (Transaction transaction : transactions) {
-            CryptoactiveName cryptoactiveName = transaction.getCryptoactive().getName();
+            CryptoactiveName cryptoactiveName = transaction.getCryptoactive();
             Float amount = transaction.getAmount();
             if (operatedCryptoactives.containsKey(cryptoactiveName)) {
                 Float newAmount = amount + operatedCryptoactives.get(cryptoactiveName);
