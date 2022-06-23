@@ -107,7 +107,7 @@ public class CryptoactiveService implements ICryptoactiveService {
             Cryptoactive crypto = binanceToModelCrypto(bcrypto);
             cryptoactiveList.add(crypto);
             cryptoactiveLogService.save(crypto.getName(), crypto.getPrice());
-            jedis.set(crypto.getName().name(), Float.toString(crypto.getPrice()));
+            jedis.set(crypto.getName().name(), crypto);
         });
 
         return cryptoactiveList;

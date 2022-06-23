@@ -35,7 +35,7 @@ public class CryptoactiveRestController {
 
     @GetMapping("/cryptoactives/{id}")
     public ResponseEntity<?> showCryptoactive(@PathVariable CryptoactiveName name){
-        Cryptoactive cryptoactive = cryptoactiveService.findByName(name);
+        Cryptoactive cryptoactive = cryptoactiveService.findByName(name.name());
         return new ResponseEntity<>(cryptoactive, HttpStatus.OK);
     }
 
