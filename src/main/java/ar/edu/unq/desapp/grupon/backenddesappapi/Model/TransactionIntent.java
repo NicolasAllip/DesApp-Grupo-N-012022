@@ -13,7 +13,7 @@ public class TransactionIntent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Cryptoactive cryptoactive;
+    private CryptoactiveName cryptoactive;
     private Float amount;
     private Float prize;
     private Float prizePesos;
@@ -22,11 +22,11 @@ public class TransactionIntent {
     private Operation operation;
     private LocalDateTime date;
 
-    public TransactionIntent(Long id, Cryptoactive cryptoactive, Float amount, Float prizePesos, User user, Operation operation) {
+    public TransactionIntent(Long id, CryptoactiveName cryptoactive, Float amount, Float prize, Float prizePesos, User user, Operation operation) {
         this.id = id;
         this.cryptoactive = cryptoactive;
         this.amount = amount;
-        this.prize = cryptoactive.getPrice();
+        this.prize = prize;
         this.prizePesos = prizePesos;
         this.user = user;
         this.operation = operation;
@@ -43,11 +43,11 @@ public class TransactionIntent {
         this.id = id;
     }
 
-    public Cryptoactive getCryptoactive() {
+    public CryptoactiveName getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(Cryptoactive cryptoactive) {
+    public void setCryptoactive(CryptoactiveName cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
@@ -127,7 +127,7 @@ public class TransactionIntent {
             return this;
         }
 
-        public TransactionIntentBuilder cryptoactive(Cryptoactive cryptoactive) {
+        public TransactionIntentBuilder cryptoactive(CryptoactiveName cryptoactive) {
             transaction.setCryptoactive(cryptoactive);
             return this;
         }

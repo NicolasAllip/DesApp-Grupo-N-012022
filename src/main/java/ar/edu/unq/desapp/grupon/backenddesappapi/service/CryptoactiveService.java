@@ -61,18 +61,30 @@ public class CryptoactiveService implements ICryptoactiveService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Cryptoactive> findAll(){
-        ArrayList<Cryptoactive> ret = new ArrayList<Cryptoactive>();
+    public List<String> findAllValues(){
+        ArrayList<String> ret = new ArrayList<String>();
         for (String criptoName : AVAILABLE_CRYPTOS) {
-            this.findByName(criptoName);
+            ret.append(this.findValueByName(criptoName));
         }
-        return (List<Cryptoactive>) ret;
+        return (List<String>) ret;
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Cryptoactive findByName(String name) {
+    public String findValueByName(String name) {
         return jedis.get(name);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Cryptoactive> findAll(){
+        return (List<Cryptoactive>) cryptoactiveDao.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Cryptoactive findByName(CryptoactiveName name) {
+        return cryptoactiveDao.findById(name).orElse(null);
     }
 
     @Transactional
@@ -107,7 +119,7 @@ public class CryptoactiveService implements ICryptoactiveService {
             Cryptoactive crypto = binanceToModelCrypto(bcrypto);
             cryptoactiveList.add(crypto);
             cryptoactiveLogService.save(crypto.getName(), crypto.getPrice());
-            jedis.set(crypto.getName().name(), crypto);
+            jedis.set(crypto.getName().name(), Float.toString(crypto.getPrice()));
         });
 
         return cryptoactiveList;
