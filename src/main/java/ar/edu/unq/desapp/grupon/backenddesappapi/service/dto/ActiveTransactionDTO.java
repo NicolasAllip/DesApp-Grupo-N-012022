@@ -7,6 +7,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import java.time.LocalDateTime;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveLog;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 
 public class ActiveTransactionDTO {

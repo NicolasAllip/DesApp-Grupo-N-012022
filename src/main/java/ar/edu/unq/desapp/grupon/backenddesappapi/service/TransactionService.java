@@ -87,7 +87,7 @@ public class TransactionService implements ITransactionService {
 
         LocalDateTime transactionDate = transaction.getTransactionIntent().getDate();
 
-        Float realPrice        = criptoService.findValueByName(transaction.getCryptoactive());
+        Float realPrice        = criptoService.findValueByName(transaction.getCryptoactive().name());
         Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
         Float priceMinusP      = realPrice - ((realPrice * 5) / 100);
         Float transactionPrice = transaction.getPrize();

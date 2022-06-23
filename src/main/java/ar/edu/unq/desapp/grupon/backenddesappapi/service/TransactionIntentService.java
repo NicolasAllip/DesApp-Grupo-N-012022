@@ -68,7 +68,7 @@ public class TransactionIntentService implements ITransactionIntentService {
         TransactionIntent transaction = TransactionIntent.builder()
                 .cryptoactive(transactionIntentDTO.getCryptoactiveName())
                 .amount(transactionIntentDTO.getAmount())
-                .price(cryptoactivePrice)
+                .prize(cryptoactivePrice)
                 .user(user)
                 .prizePesos(cryptoactivePrice * pesosConversion)
                 .operation(transactionIntentDTO.getOperation())
