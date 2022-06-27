@@ -124,6 +124,7 @@ public class TransactionService implements ITransactionService {
 
         transactionDao.save(transaction);
     }
+    
     @Transactional
     private void cancelByPrize(Long id){
         Transaction transaction  = transactionDao.findById(id).orElse(null);

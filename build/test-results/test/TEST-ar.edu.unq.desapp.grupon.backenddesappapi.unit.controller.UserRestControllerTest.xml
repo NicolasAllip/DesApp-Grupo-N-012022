@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller.UserRestControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-06-14T03:24:03" hostname="ubuntu-nico" time="0.965">
-  <properties/>
-  <testcase name="postNewUser_savesUser()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller.UserRestControllerTest" time="0.946"/>
-  <testcase name="getAllUsers_returnUsers()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller.UserRestControllerTest" time="0.014"/>
-  <testcase name="getUserById_gotUser()" classname="ar.edu.unq.desapp.grupon.backenddesappapi.unit.controller.UserRestControllerTest" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

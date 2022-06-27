@@ -91,7 +91,7 @@ public class CryptoactiveService implements ICryptoactiveService {
 
     @Transactional
     @Override
-    @Scheduled(cron = "* */10 * * * *")
+    @Scheduled(cron = "0 0/10 * * * *")
     public List<Cryptoactive> updateAllCryptos() {
         BinanceCryptoDTO[] binanceCryptoDTOS = getPriceForCryptoRestclient.getBatchCryptoPrice(AVAILABLE_CRYPTOS);
         List<Cryptoactive> cryptoactiveList = new ArrayList<>();
@@ -113,6 +113,7 @@ public class CryptoactiveService implements ICryptoactiveService {
         return cryptoactiveDao.save(cryptoactive);
     }
 
+    @Transactional
     @Override
     public CryptosBetweenTwoDatesOutput getOperatedCryptosInRange(CryptosBetweenTwoDatesInput cryptosBetweenTwoDatesInput) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
