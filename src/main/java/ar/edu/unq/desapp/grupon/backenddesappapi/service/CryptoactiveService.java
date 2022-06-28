@@ -124,7 +124,7 @@ public class CryptoactiveService implements ICryptoactiveService {
 
         List<Transaction> transactions = transactionService.findAll()
                 .stream().filter(
-                        transaction -> transaction.getState() == TransactionState.COMPLETED && dateIsInRange(transaction.getLastUpdated(), dateStart, dateEnd)
+                        transaction -> (transaction.getState() == TransactionState.TRANSFERED || transaction.getState() == TransactionState.RECEIVED) && dateIsInRange(transaction.getLastUpdated(), dateStart, dateEnd)
                 ).collect(Collectors.toList());
 
         for (Transaction transaction : transactions) {

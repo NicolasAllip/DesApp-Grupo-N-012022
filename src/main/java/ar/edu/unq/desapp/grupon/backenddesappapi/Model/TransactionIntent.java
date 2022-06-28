@@ -15,6 +15,7 @@ public class TransactionIntent implements Serializable{
     @ManyToOne
     private Cryptoactive cryptoactive;
     private Float amount;
+    private Float offer;
     private Float prize;
     private Float prizePesos;
     @ManyToOne
@@ -22,10 +23,10 @@ public class TransactionIntent implements Serializable{
     private Operation operation;
     private LocalDateTime date;
 
-    public TransactionIntent(Long id, Cryptoactive cryptoactive, Float amount, Float prizePesos, User user, Operation operation) {
-        this.id = id;
+    public TransactionIntent(Cryptoactive cryptoactive, Float amount, Float offer, Float prizePesos, User user, Operation operation) {
         this.cryptoactive = cryptoactive;
         this.amount = amount;
+        this.offer = offer;
         this.prize = cryptoactive.getPrice();
         this.prizePesos = prizePesos;
         this.user = user;
@@ -57,6 +58,14 @@ public class TransactionIntent implements Serializable{
 
     public void setAmount(Float amount) {
         this.amount = amount;
+    }
+
+    public Float getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Float offer) {
+        this.offer = offer;
     }
 
     public Float getPrize() {
@@ -104,12 +113,12 @@ public class TransactionIntent implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransactionIntent that = (TransactionIntent) o;
-        return Objects.equals(id, that.id) && Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation && Objects.equals(date, that.date);
+        return Objects.equals(id, that.id) && Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(offer, that.offer) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation && Objects.equals(date, that.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, cryptoactive, amount, prize, prizePesos, user, operation, date);
+        return Objects.hash(id, cryptoactive, amount, offer, prize, prizePesos, user, operation, date);
     }
 
     public static TransactionIntentBuilder builder() {
@@ -134,6 +143,11 @@ public class TransactionIntent implements Serializable{
 
         public TransactionIntentBuilder amount(Float amount) {
             transaction.setAmount(amount);
+            return this;
+        }
+
+        public TransactionIntentBuilder offer(Float offer) {
+            transaction.setOffer(offer);
             return this;
         }
 

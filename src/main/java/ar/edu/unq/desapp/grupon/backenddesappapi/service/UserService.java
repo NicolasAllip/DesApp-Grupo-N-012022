@@ -2,8 +2,8 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
 import java.util.List;
 
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.AuthenticationException;
+//import org.springframework.security.authentication.BadCredentialsException;
+//import org.springframework.security.core.AuthenticationException;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;

@@ -16,6 +16,7 @@ public class Transaction implements Serializable{
     @ManyToOne
     private Cryptoactive cryptoactive;
     private Float amount;
+    private Float offer;
     private Float prize;
     private Float prizePesos;
     @ManyToOne
@@ -30,6 +31,7 @@ public class Transaction implements Serializable{
         this.transactionIntent = transactionIntent;
         this.cryptoactive = transactionIntent.getCryptoactive();
         this.amount = transactionIntent.getAmount();
+        this.offer = transactionIntent.getOffer();
         this.prize = transactionIntent.getPrize();
         this.prizePesos = transactionIntent.getPrizePesos();
         this.user = user;
@@ -83,6 +85,14 @@ public class Transaction implements Serializable{
 
     public void setAmount(Float amount) {
         this.amount = amount;
+    }
+
+    public Float getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Float offer) {
+        this.offer = offer;
     }
 
     public Float getPrize() {
@@ -154,12 +164,12 @@ public class Transaction implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(id, that.id) && Objects.equals(transactionIntent, that.transactionIntent) && Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation && state == that.state && Objects.equals(sendAddress, that.sendAddress);
+        return Objects.equals(id, that.id) && Objects.equals(transactionIntent, that.transactionIntent) && Objects.equals(cryptoactive, that.cryptoactive) && Objects.equals(amount, that.amount) && Objects.equals(offer, that.offer) && Objects.equals(prize, that.prize) && Objects.equals(prizePesos, that.prizePesos) && Objects.equals(user, that.user) && operation == that.operation && state == that.state && Objects.equals(sendAddress, that.sendAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, transactionIntent, cryptoactive, amount, prize, prizePesos, user, operation, state, sendAddress);
+        return Objects.hash(id, transactionIntent, cryptoactive, amount, offer, prize, prizePesos, user, operation, state, sendAddress);
     }
 
     public static TransactionBuilder builder() {
@@ -190,6 +200,11 @@ public class Transaction implements Serializable{
 
         public TransactionBuilder amount(Float amount) {
             transaction.setAmount(amount);
+            return this;
+        }
+
+        public TransactionBuilder offer(Float offer) {
+            transaction.setOffer(offer);
             return this;
         }
 

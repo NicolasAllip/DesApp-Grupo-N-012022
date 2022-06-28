@@ -8,6 +8,7 @@ import java.util.Objects;
 public class TransactionIntentDTO {
     CryptoactiveName cryptoactiveName;
     Float amount;
+    Float offer;
     Long userId;
     Operation operation;
 
@@ -25,6 +26,14 @@ public class TransactionIntentDTO {
 
     public void setAmount(Float amount) {
         this.amount = amount;
+    }
+
+    public Float getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Float offer) {
+        this.offer = offer;
     }
 
     public Long getUserId() {
@@ -48,12 +57,12 @@ public class TransactionIntentDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransactionIntentDTO that = (TransactionIntentDTO) o;
-        return cryptoactiveName == that.cryptoactiveName && Objects.equals(amount, that.amount) && Objects.equals(userId, that.userId) && operation == that.operation;
+        return cryptoactiveName == that.cryptoactiveName && Objects.equals(amount, that.amount) && Objects.equals(offer, that.offer) && Objects.equals(userId, that.userId) && operation == that.operation;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cryptoactiveName, amount, userId, operation);
+        return Objects.hash(cryptoactiveName, amount, offer, userId, operation);
     }
 
     public static TransactionIntentDTOBuilder builder() {
@@ -70,6 +79,11 @@ public class TransactionIntentDTO {
 
         public TransactionIntentDTOBuilder amount(Float amount) {
             transactionIntentDTO.setAmount(amount);
+            return this;
+        }
+
+        public TransactionIntentDTOBuilder offer(Float offer) {
+            transactionIntentDTO.setOffer(offer);
             return this;
         }
 

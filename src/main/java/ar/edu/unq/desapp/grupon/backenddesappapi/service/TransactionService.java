@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.*;
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.TransactionDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CreateTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionState;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ITransactionDao;
 
 @Service
@@ -83,12 +80,11 @@ public class TransactionService implements ITransactionService {
         LocalDateTime transactionDate = transaction.getTransactionIntent().getDate();
 
         Float realPrice        = transaction.getCryptoactive().getPrice();
-        Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
-        Float priceMinusP      = realPrice - ((realPrice * 5) / 100);
         Float transactionPrice = transaction.getPrize();
+        Float transactionOffer = transaction.getOffer();
 
         if(transaction.getState() != TransactionState.PENDING) {
-            if(transactionPrice > pricePlusP || transactionPrice < priceMinusP) {
+            if(validatePriceChangedTooMuch(transactionPrice, realPrice) || validatePriceChangedTooMuch(transactionOffer, realPrice)) {
                 cancelByPrize(id);
             } else {
                 if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
@@ -100,12 +96,23 @@ public class TransactionService implements ITransactionService {
                 }
                 senderUser.increaseOperationAmount();
                 receiverUser.increaseOperationAmount();
-                transaction.setState(TransactionState.COMPLETED);
+                if (transaction.getOperation() == Operation.BUY) {
+                    transaction.setState(TransactionState.TRANSFERED);
+                } else {
+                    transaction.setState(TransactionState.RECEIVED);
+                }
             }
         }
 
         transaction.setLastUpdated(LocalDateTime.now());
         transactionDao.save(transaction);
+    }
+
+    private Boolean validatePriceChangedTooMuch(Float actualPrice, Float realPrice) {
+        Float pricePlus = realPrice + ((realPrice * 5) / 100);
+        Float priceMinus = realPrice - ((realPrice * 5) / 100);
+
+        return (actualPrice > pricePlus || actualPrice < priceMinus);
     }
 
     @Transactional

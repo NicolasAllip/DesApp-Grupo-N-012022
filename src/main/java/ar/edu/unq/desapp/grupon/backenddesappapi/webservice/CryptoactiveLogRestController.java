@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.CryptoactiveHistoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,5 +60,10 @@ public class CryptoactiveLogRestController {
     @GetMapping("/cryptoactive-log/get-all")
     public List<CryptoactiveLog> getAllCryptos(){
         return cryptoactiveLogService.getAllCryptos();
+    }
+
+    @GetMapping("/cryptoactive-log/get-24hr-history/{cryptoName}")
+    public CryptoactiveHistoryDTO getCryptoactive24HourHistory(@PathVariable String cryptoName){
+        return cryptoactiveLogService.getCryptoactive24HourHistory(CryptoactiveName.valueOf(cryptoName));
     }
 }

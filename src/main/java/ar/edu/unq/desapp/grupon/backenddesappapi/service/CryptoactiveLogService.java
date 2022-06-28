@@ -1,13 +1,11 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
-import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.IGetPriceForCryptoRestclient;
-import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.BinanceCryptoDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.CryptoactiveHistoryDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.DatedPriceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,5 +66,22 @@ public class CryptoactiveLogService implements ICryptoactiveLogService {
     @Override
     public List<CryptoactiveLog> getAllCryptos() {
         return (List<CryptoactiveLog>) cryptoactiveLogDao.findAll();
+    }
+
+    @Transactional
+    @Override
+    public CryptoactiveHistoryDTO getCryptoactive24HourHistory(CryptoactiveName cryptoactiveName) {
+        List<CryptoactiveLog> logList = (List<CryptoactiveLog>) cryptoactiveLogDao.findAll();
+        logList = logList.stream().filter(
+                cryptoactiveLog ->
+                        cryptoactiveLog.getName() == cryptoactiveName
+                        && cryptoactiveLog.getDate().isAfter(LocalDateTime.now().minusHours(24)))
+                .collect(Collectors.toList());
+
+        List<DatedPriceDTO> history = logList.stream().map(
+                        cryptoactiveLog -> new DatedPriceDTO(cryptoactiveLog.getPrice(), cryptoactiveLog.getDate())
+                ).collect(Collectors.toList());
+
+        return new CryptoactiveHistoryDTO(cryptoactiveName, history);
     }
 }
