@@ -182,7 +182,7 @@ public class TransactionServiceTest {
                 .build();
         Transaction transaction3 = Transaction.builder()
                 .id(2L)
-                .state(TransactionState.COMPLETED)
+                .state(TransactionState.RECEIVED)
                 .build();
 
         List<Transaction> expectedTransactionList = new ArrayList<>();

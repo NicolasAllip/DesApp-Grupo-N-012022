@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.*;
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.TransactionDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CreateTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionState;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ITransactionDao;
 
 @Service
@@ -99,7 +96,11 @@ public class TransactionService implements ITransactionService {
                 }
                 senderUser.increaseOperationAmount();
                 receiverUser.increaseOperationAmount();
-                transaction.setState(TransactionState.COMPLETED);
+                if (transaction.getOperation() == Operation.BUY) {
+                    transaction.setState(TransactionState.TRANSFERED);
+                } else {
+                    transaction.setState(TransactionState.RECEIVED);
+                }
             }
         }
 
