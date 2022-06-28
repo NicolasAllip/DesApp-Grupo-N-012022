@@ -83,12 +83,11 @@ public class TransactionService implements ITransactionService {
         LocalDateTime transactionDate = transaction.getTransactionIntent().getDate();
 
         Float realPrice        = transaction.getCryptoactive().getPrice();
-        Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
-        Float priceMinusP      = realPrice - ((realPrice * 5) / 100);
         Float transactionPrice = transaction.getPrize();
+        Float transactionOffer = transaction.getOffer();
 
         if(transaction.getState() != TransactionState.PENDING) {
-            if(transactionPrice > pricePlusP || transactionPrice < priceMinusP) {
+            if(validatePriceChangedTooMuch(transactionPrice, realPrice) || validatePriceChangedTooMuch(transactionOffer, realPrice)) {
                 cancelByPrize(id);
             } else {
                 if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {
@@ -108,6 +107,13 @@ public class TransactionService implements ITransactionService {
         transactionDao.save(transaction);
     }
 
+    private Boolean validatePriceChangedTooMuch(Float actualPrice, Float realPrice) {
+        Float pricePlus = realPrice + ((realPrice * 5) / 100);
+        Float priceMinus = realPrice - ((realPrice * 5) / 100);
+
+        return (actualPrice > pricePlus || actualPrice < priceMinus);
+    }
+
     @Transactional
     @Override
     public void cancel(Long id){
@@ -124,6 +130,7 @@ public class TransactionService implements ITransactionService {
 
         transactionDao.save(transaction);
     }
+
     @Transactional
     private void cancelByPrize(Long id){
         Transaction transaction  = transactionDao.findById(id).orElse(null);
