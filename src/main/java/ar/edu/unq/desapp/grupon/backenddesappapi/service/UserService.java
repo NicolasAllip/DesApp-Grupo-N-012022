@@ -2,8 +2,9 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
 import java.util.List;
 
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.AuthenticationException;
 
-//import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.IUserDao;
 
 @Service
-public class UserService implements IUserService {
+public class UserService implements IUserService{
     
     @Autowired
     private IUserDao userDao;
@@ -59,4 +60,13 @@ public class UserService implements IUserService {
     public void delete(Long id) {
         userDao.deleteById(id);
     }
+
+    /* 
+    @Transactional
+    public User login(User user) throws AuthenticationException{
+        User existent = userDao.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        if(existent == null)
+            throw new BadCredentialsException("Invalid Username or Password.");
+        return existent;
+    }*/
 }

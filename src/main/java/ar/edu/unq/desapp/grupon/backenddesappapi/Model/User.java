@@ -218,4 +218,9 @@ public class User implements Serializable {
             return user;
         }
     }
+
+    /* 
+    public Object getAccessLevel() {
+        return "ADMIN";
+    }*/
 }

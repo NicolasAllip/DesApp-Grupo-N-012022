@@ -74,19 +74,23 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	implementation 'io.springfox:springfox-swagger2:2.7.0'
 	implementation 'io.springfox:springfox-swagger-ui:2.7.0'
 	implementation 'org.reflections:reflections:0.9.10'
-	//implementation 'org.audit4j:audit4j-core:2.5.0'
+	//implementation 'javax.servlet:jstl'
+	//implementation 'io.jsonwebtoken:jjwt:0.7.0'
+	//implementation 'com.fasterxml.jackson.core:jackson-core' //:2.8.8'
+	//implementation 'javax.servlet:javax.servlet-api:3.1.0'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2:1.4.197'
 	runtimeOnly 'org.aspectj:aspectjrt:1.7.3'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	//testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 
 	testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.2')
 	testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.2')
