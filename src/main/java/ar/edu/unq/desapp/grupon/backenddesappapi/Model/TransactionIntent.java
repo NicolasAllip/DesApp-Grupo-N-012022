@@ -13,7 +13,7 @@ public class TransactionIntent implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private CryptoactiveName cryptoactive;
+    private Cryptoactive cryptoactive;
     private Float amount;
     private Float offer;
     private Float prize;
