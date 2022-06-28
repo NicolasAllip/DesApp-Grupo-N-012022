@@ -14,7 +14,7 @@ public class Transaction implements Serializable{
     @OneToOne
     private TransactionIntent transactionIntent;
     @ManyToOne
-    private CryptoactiveName cryptoactive;
+    private Cryptoactive cryptoactive;
     private Float amount;
     private Float offer;
     private Float prize;
