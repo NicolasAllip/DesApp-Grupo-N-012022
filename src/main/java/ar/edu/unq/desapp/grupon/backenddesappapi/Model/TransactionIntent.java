@@ -137,7 +137,7 @@ public class TransactionIntent implements Serializable{
             return this;
         }
 
-        public TransactionIntentBuilder cryptoactive(CryptoactiveName cryptoactive) {
+        public TransactionIntentBuilder cryptoactive(Cryptoactive cryptoactive) {
             transaction.setCryptoactive(cryptoactive);
             return this;
         }

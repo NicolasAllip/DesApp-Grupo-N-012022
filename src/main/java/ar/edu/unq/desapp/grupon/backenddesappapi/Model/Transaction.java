@@ -193,7 +193,7 @@ public class Transaction implements Serializable{
             return this;
         }
 
-        public TransactionBuilder cryptoactive(CryptoactiveName cryptoactive) {
+        public TransactionBuilder cryptoactive(Cryptoactive cryptoactive) {
             transaction.setCryptoactive(cryptoactive);
             return this;
         }
