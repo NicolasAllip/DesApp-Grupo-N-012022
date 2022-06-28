@@ -71,11 +71,11 @@ public class Transaction implements Serializable{
         this.id = id;
     }
 
-    public CryptoactiveName getCryptoactive() {
+    public Cryptoactive getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(CryptoactiveName cryptoactive) {
+    public void setCryptoactive(Cryptoactive cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
