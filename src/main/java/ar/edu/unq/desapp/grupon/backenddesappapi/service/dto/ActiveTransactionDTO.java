@@ -12,7 +12,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 
 public class ActiveTransactionDTO {
 
-    private CryptoactiveName cryptoactive;
+    private Cryptoactive cryptoactive;
     private LocalDateTime date;
     private Float amount;
     private Float prize;
@@ -32,10 +32,10 @@ public class ActiveTransactionDTO {
         this.reputation = this.user.getReputation();
     }
 
-    public CryptoactiveName getCryptoactive() {
+    public Cryptoactive getCryptoactive() {
         return cryptoactive;
     }
-    public void setCryptoactive(CryptoactiveName cryptoactive) {
+    public void setCryptoactive(Cryptoactive cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
