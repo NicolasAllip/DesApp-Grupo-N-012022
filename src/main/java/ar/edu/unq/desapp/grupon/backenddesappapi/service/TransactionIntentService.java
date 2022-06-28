@@ -66,7 +66,7 @@ public class TransactionIntentService implements ITransactionIntentService {
 
         Float pesosConversion = Float.parseFloat(getDolarConversionValueRestclient.getOfficialDolarValue().getCompra());
 
-        TransactionIntent transaction = new TransactionIntent(cryptoactive, transactionIntentDTO.getAmount(), transactionIntentDTO.getOffer(), cryptoactive.getPrice() * pesosConversion, user, transactionIntentDTO.getOperation());
+        TransactionIntent transaction = new TransactionIntent(cryptoactive, transactionIntentDTO.getAmount(), transactionIntentDTO.getOffer(), cryptoactivePrice * pesosConversion, user, transactionIntentDTO.getOperation());
 
 
         return transactionIntentDao.save(transaction);

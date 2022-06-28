@@ -148,7 +148,7 @@ public class CryptoactiveService implements ICryptoactiveService {
                 ).collect(Collectors.toList());
 
         for (Transaction transaction : transactions) {
-            CryptoactiveName cryptoactiveName = transaction.getCryptoactive();
+            CryptoactiveName cryptoactiveName = transaction.getCryptoactive().getName();
             Float amount = transaction.getAmount();
             if (operatedCryptoactives.containsKey(cryptoactiveName)) {
                 Float newAmount = amount + operatedCryptoactives.get(cryptoactiveName);
