@@ -62,7 +62,7 @@ public class TransactionIntentService implements ITransactionIntentService {
     public TransactionIntent save(TransactionIntentDTO transactionIntentDTO) {
         Float cryptoactivePrice = Float.parseFloat(cryptoactiveService.findValueByName(transactionIntentDTO.getCryptoactiveName().name()));
         User user = userService.findById(transactionIntentDTO.getUserId());
-        Cryptoactive cryptoactive = cryptoactiveService.findByName(transactionIntentDTO.getCryptoactiveName())
+        Cryptoactive cryptoactive = cryptoactiveService.findByName(transactionIntentDTO.getCryptoactiveName());
 
         Float pesosConversion = Float.parseFloat(getDolarConversionValueRestclient.getOfficialDolarValue().getCompra());
 
