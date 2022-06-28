@@ -14,7 +14,7 @@ public class GetDolarConversionValueRestclient implements IGetDolarConversionVal
         RestTemplate restTemplate = new RestTemplate();
         DolarsiDolarValueContainerDTO[] allValues = restTemplate.getForObject("https://www.dolarsi.com/api/api.php?type=valoresprincipales" , DolarsiDolarValueContainerDTO[].class);
         return Arrays.stream(allValues)
-                .filter(dolarsiDolarValueContainerDTO -> dolarsiDolarValueContainerDTO.getCasa().getNombre() == "Dolar Oficial")
+                .filter(dolarsiDolarValueContainerDTO -> dolarsiDolarValueContainerDTO.getCasa().getNombre().equals("Dolar Oficial"))
                 .findFirst().get().getCasa();
     }
 }
