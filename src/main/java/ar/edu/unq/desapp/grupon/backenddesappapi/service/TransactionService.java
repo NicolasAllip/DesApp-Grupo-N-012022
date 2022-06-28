@@ -84,13 +84,8 @@ public class TransactionService implements ITransactionService {
 
         LocalDateTime transactionDate = transaction.getTransactionIntent().getDate();
 
-<<<<<<< HEAD
+
         Float realPrice        = transaction.getCryptoactive().getPrice();
-=======
-        Float realPrice        = Float.parseFloat(criptoService.findValueByName(transaction.getCryptoactive().name()));
-        Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
-        Float priceMinusP      = realPrice - ((realPrice * 5) / 100);
->>>>>>> cache_entrega-3
         Float transactionPrice = transaction.getPrize();
         Float transactionOffer = transaction.getOffer();
 

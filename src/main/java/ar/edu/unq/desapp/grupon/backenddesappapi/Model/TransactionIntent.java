@@ -23,19 +23,12 @@ public class TransactionIntent implements Serializable{
     private Operation operation;
     private LocalDateTime date;
 
-<<<<<<< HEAD
+
     public TransactionIntent(Cryptoactive cryptoactive, Float amount, Float offer, Float prizePesos, User user, Operation operation) {
         this.cryptoactive = cryptoactive;
         this.amount = amount;
         this.offer = offer;
         this.prize = cryptoactive.getPrice();
-=======
-    public TransactionIntent(Long id, CryptoactiveName cryptoactive, Float amount, Float prize, Float prizePesos, User user, Operation operation) {
-        this.id = id;
-        this.cryptoactive = cryptoactive;
-        this.amount = amount;
-        this.prize = prize;
->>>>>>> cache_entrega-3
         this.prizePesos = prizePesos;
         this.user = user;
         this.operation = operation;
