@@ -6,7 +6,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Operation;
 import java.util.Objects;
 
 public class TransactionIntentDTO {
-    Cryptoactive cryptoactiveName;
+    CryptoactiveName cryptoactiveName;
     Float amount;
     Float offer;
     Long userId;
