@@ -7,11 +7,12 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import java.time.LocalDateTime;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveLog;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
 
 public class ActiveTransactionDTO {
 
-    private Cryptoactive cryptoactive;
+    private CryptoactiveName cryptoactive;
     private LocalDateTime date;
     private Float amount;
     private Float prize;
@@ -31,10 +32,10 @@ public class ActiveTransactionDTO {
         this.reputation = this.user.getReputation();
     }
 
-    public Cryptoactive getCryptoactive() {
+    public CryptoactiveName getCryptoactive() {
         return cryptoactive;
     }
-    public void setCryptoactive(Cryptoactive cryptoactive) {
+    public void setCryptoactive(CryptoactiveName cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 

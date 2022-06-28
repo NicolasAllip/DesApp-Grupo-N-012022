@@ -28,6 +28,10 @@ public class TransactionService implements ITransactionService {
     @Lazy
     private IUserService userService;
 
+    @Autowired
+    @Lazy
+    private ICryptoactiveService criptoService;
+
     @Transactional(readOnly = true)
     @Override
     public List<Transaction> findAll(){
@@ -69,6 +73,7 @@ public class TransactionService implements ITransactionService {
     @Transactional
     @Override
     public void acceptTransaction(Long id){
+
         Transaction transaction = transactionDao.findById(id).orElse(null);
         if (transaction == null) {
             throw new TransactionDoesNotExistException(id);
@@ -79,7 +84,13 @@ public class TransactionService implements ITransactionService {
 
         LocalDateTime transactionDate = transaction.getTransactionIntent().getDate();
 
+<<<<<<< HEAD
         Float realPrice        = transaction.getCryptoactive().getPrice();
+=======
+        Float realPrice        = Float.parseFloat(criptoService.findValueByName(transaction.getCryptoactive().name()));
+        Float pricePlusP       = realPrice + ((realPrice * 5) / 100);
+        Float priceMinusP      = realPrice - ((realPrice * 5) / 100);
+>>>>>>> cache_entrega-3
         Float transactionPrice = transaction.getPrize();
         Float transactionOffer = transaction.getOffer();
 

@@ -60,12 +60,23 @@ public class TransactionIntentService implements ITransactionIntentService {
     @Transactional
     @Override
     public TransactionIntent save(TransactionIntentDTO transactionIntentDTO) {
-        Cryptoactive cryptoactive = cryptoactiveService.findByName(transactionIntentDTO.getCryptoactiveName());
+        Float cryptoactivePrice = Float.parseFloat(cryptoactiveService.findValueByName(transactionIntentDTO.getCryptoactiveName().name()));
         User user = userService.findById(transactionIntentDTO.getUserId());
 
         Float pesosConversion = Float.parseFloat(getDolarConversionValueRestclient.getOfficialDolarValue().getCompra());
 
+<<<<<<< HEAD
         TransactionIntent transaction = new TransactionIntent(cryptoactive, transactionIntentDTO.getAmount(), transactionIntentDTO.getOffer(), cryptoactive.getPrice() * pesosConversion, user, transactionIntentDTO.getOperation());
+=======
+        TransactionIntent transaction = TransactionIntent.builder()
+                .cryptoactive(transactionIntentDTO.getCryptoactiveName())
+                .amount(transactionIntentDTO.getAmount())
+                .prize(cryptoactivePrice)
+                .user(user)
+                .prizePesos(cryptoactivePrice * pesosConversion)
+                .operation(transactionIntentDTO.getOperation())
+                .build();
+>>>>>>> cache_entrega-3
 
         return transactionIntentDao.save(transaction);
     }

@@ -13,7 +13,7 @@ public class TransactionIntent implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Cryptoactive cryptoactive;
+    private CryptoactiveName cryptoactive;
     private Float amount;
     private Float offer;
     private Float prize;
@@ -23,11 +23,19 @@ public class TransactionIntent implements Serializable{
     private Operation operation;
     private LocalDateTime date;
 
+<<<<<<< HEAD
     public TransactionIntent(Cryptoactive cryptoactive, Float amount, Float offer, Float prizePesos, User user, Operation operation) {
         this.cryptoactive = cryptoactive;
         this.amount = amount;
         this.offer = offer;
         this.prize = cryptoactive.getPrice();
+=======
+    public TransactionIntent(Long id, CryptoactiveName cryptoactive, Float amount, Float prize, Float prizePesos, User user, Operation operation) {
+        this.id = id;
+        this.cryptoactive = cryptoactive;
+        this.amount = amount;
+        this.prize = prize;
+>>>>>>> cache_entrega-3
         this.prizePesos = prizePesos;
         this.user = user;
         this.operation = operation;
@@ -44,11 +52,11 @@ public class TransactionIntent implements Serializable{
         this.id = id;
     }
 
-    public Cryptoactive getCryptoactive() {
+    public CryptoactiveName getCryptoactive() {
         return cryptoactive;
     }
 
-    public void setCryptoactive(Cryptoactive cryptoactive) {
+    public void setCryptoactive(CryptoactiveName cryptoactive) {
         this.cryptoactive = cryptoactive;
     }
 
@@ -136,7 +144,7 @@ public class TransactionIntent implements Serializable{
             return this;
         }
 
-        public TransactionIntentBuilder cryptoactive(Cryptoactive cryptoactive) {
+        public TransactionIntentBuilder cryptoactive(CryptoactiveName cryptoactive) {
             transaction.setCryptoactive(cryptoactive);
             return this;
         }
