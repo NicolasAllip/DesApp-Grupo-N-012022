@@ -2,21 +2,19 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.service;
 
 import java.util.List;
 
-//import org.springframework.security.authentication.BadCredentialsException;
-//import org.springframework.security.core.AuthenticationException;
-
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.UserDoesNotExistException;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.IUserDao;
 
 @Service
 public class UserService implements IUserService{
-    
+
     @Autowired
     private IUserDao userDao;
     
