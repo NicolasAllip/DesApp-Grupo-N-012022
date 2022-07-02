@@ -31,7 +31,8 @@ public class User implements Serializable {
     private Float reputation;
     @Column(name="wallet_address", nullable = false, unique = true)
     private String walletAddress;
-    private Integer operationAmount = 0;
+    @Column(name="operation_amount", nullable = false)
+    private Integer operationAmount;
 
     public User(String name, String surname, String email, String address, String password, String cvu, Float reputation, String walletAddress) {
         this.name = name;
@@ -42,6 +43,7 @@ public class User implements Serializable {
         this.cvu = cvu;
         this.reputation = reputation;
         this.walletAddress = walletAddress;
+        this.operationAmount = 0;
     }
 
     public User() {}
