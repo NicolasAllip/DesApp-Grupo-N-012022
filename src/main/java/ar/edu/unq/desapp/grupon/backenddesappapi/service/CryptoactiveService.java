@@ -19,7 +19,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import redis.clients.jedis.Jedis;
+//import redis.clients.jedis.Jedis;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
@@ -29,8 +29,9 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ICryptoactiveDao;
 @EnableScheduling
 public class CryptoactiveService implements ICryptoactiveService {
     
-    @Autowired
-    Jedis jedis = new Jedis("localhost");
+    //@Autowired
+    //Jedis jedis = new Jedis("localhost");
+    
     @Autowired
     private ICryptoactiveDao cryptoactiveDao;
     @Autowired
@@ -81,11 +82,11 @@ public class CryptoactiveService implements ICryptoactiveService {
         return (List<String>) ret;
     }
 
-    @Transactional(readOnly = true)
-    @Override
-    public String findValueByName(String name) {
-        return jedis.get(name);
-    }
+    //@Transactional(readOnly = true)
+    //@Override
+    //public String findValueByName(String name) {
+    //    return jedis.get(name);
+    //}
 
     @Transactional
     @Override
@@ -119,7 +120,7 @@ public class CryptoactiveService implements ICryptoactiveService {
             Cryptoactive crypto = binanceToModelCrypto(bcrypto);
             cryptoactiveList.add(crypto);
             cryptoactiveLogService.save(crypto.getName(), crypto.getPrice());
-            jedis.set(crypto.getName().name(), Float.toString(crypto.getPrice()));
+            //jedis.set(crypto.getName().name(), Float.toString(crypto.getPrice()));
         });
 
         return cryptoactiveList;
