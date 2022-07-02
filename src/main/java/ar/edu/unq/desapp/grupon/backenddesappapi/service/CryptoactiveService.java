@@ -77,16 +77,17 @@ public class CryptoactiveService implements ICryptoactiveService {
     public List<String> findAllValues(){
         ArrayList<String> ret = new ArrayList<String>();
         for (String criptoName : AVAILABLE_CRYPTOS) {
-            ret.add(this.findValueByName(criptoName));
+            //ret.add(this.findValueByName(criptoName));
         }
         return (List<String>) ret;
     }
 
-    //@Transactional(readOnly = true)
-    //@Override
-    //public String findValueByName(String name) {
-    //    return jedis.get(name);
-    //}
+    @Transactional(readOnly = true)
+    @Override
+    public String findValueByName(String name) {
+        return "name";
+        //return jedis.get(name);
+    }
 
     @Transactional
     @Override
