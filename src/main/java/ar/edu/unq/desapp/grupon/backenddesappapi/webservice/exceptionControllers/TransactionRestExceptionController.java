@@ -1,11 +1,8 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.webservice.exceptionControllers;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.exception.TransactionDoesNotExistException;
-import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.RestExceptionController;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 

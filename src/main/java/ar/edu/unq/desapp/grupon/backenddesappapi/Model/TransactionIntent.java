@@ -1,13 +1,13 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name="transaction_intents")
-public class TransactionIntent {
+public class TransactionIntent implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,7 @@ public class TransactionIntent {
     private User user;
     private Operation operation;
     private LocalDateTime date;
+
 
     public TransactionIntent(Cryptoactive cryptoactive, Float amount, Float offer, Float prizePesos, User user, Operation operation) {
         this.cryptoactive = cryptoactive;

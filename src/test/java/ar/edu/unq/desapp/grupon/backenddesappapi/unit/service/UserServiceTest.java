@@ -27,7 +27,7 @@ public class UserServiceTest {
     private UserService userService;
 
     @Test
-    public void getAllUsers_returnsUserList() {
+    public void getAllUsers_returnsUserList() throws UserDoesNotExistException{
         // arrange
         User user1 = User.builder()
                 .id(1L)
@@ -54,7 +54,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void getUserById_returnsUser() {
+    public void getUserById_returnsUser() throws UserDoesNotExistException{
         // arrange
         User expectedUser = User.builder()
                 .id(1L)
@@ -72,7 +72,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void getUserByIdWhenUserDoesntExist_returnsNull() {
+    public void getUserByIdWhenUserDoesntExist_returnsNull() throws UserDoesNotExistException{
         // arrange
 
         // act & assert
@@ -85,7 +85,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void saveUser_transformsDtoIntoModelObject() {
+    public void saveUser_transformsDtoIntoModelObject() throws UserDoesNotExistException{
         // arrange
         NewUserDTO newUserDTO = NewUserDTO.builder()
                 .name("TestName")
@@ -120,7 +120,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void deleteUserById() {
+    public void deleteUserById() throws UserDoesNotExistException{
         // arrange
 
         // act
