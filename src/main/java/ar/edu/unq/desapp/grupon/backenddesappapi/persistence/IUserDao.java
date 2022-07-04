@@ -7,5 +7,5 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import java.util.Optional;
 
 public interface IUserDao extends CrudRepository<User,Long> {
-    Optional<User> findByUsername(String username);
+    Optional<User> findByEmail(String email);
 }
