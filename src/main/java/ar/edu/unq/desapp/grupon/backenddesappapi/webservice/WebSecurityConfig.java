@@ -79,7 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
           .anyMatches("/api/users/register").permitAll()
           .anyMatches(HttpMethod.GET, "/api/**").permitAll()
-          .anyRequest().authenticated();
+          .anyRequest().authenticated()
           // Set up oauth2 resource server
           .and().httpBasic(Customizer.withDefaults())
           .oauth2ResourceServer()

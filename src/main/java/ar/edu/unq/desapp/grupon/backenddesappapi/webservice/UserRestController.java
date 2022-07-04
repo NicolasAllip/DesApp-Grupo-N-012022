@@ -92,4 +92,5 @@ public class UserRestController {
         } catch (BadCredentialsException ex) {
           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
+    }
 }
