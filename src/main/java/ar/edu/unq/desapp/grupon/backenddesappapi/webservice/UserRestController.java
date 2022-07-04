@@ -30,7 +30,7 @@ import org.springframework.security.core.GrantedAuthority;
 import static java.util.stream.Collectors.joining;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
-import lombok.RequiredArgsConstructor;
+//import lombok.RequiredArgsConstructor;
 
 import javax.validation.Valid;
 
