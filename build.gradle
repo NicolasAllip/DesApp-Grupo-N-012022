@@ -90,9 +90,9 @@ dependencies {
     // Uncomment the next line if you want to use RSASSA-PSS (PS256, PS384, PS512) algorithms:
     //'org.bouncycastle:bcprov-jdk15on:1.70',
     //'io.jsonwebtoken:jjwt-jackson:0.11.5' or 'io.jsonwebtoken:jjwt-gson:0.11.5' for gson
-	//implementation 'org.springframework.security:spring-security-oauth2-jwt'
-	//implementation 'org.springframework.security:spring-security-oauth2-server'
-	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.0.RC2'
+	implementation 'org.springframework.security:spring-security-oauth2-jwt'
+	implementation 'org.springframework.security:spring-security-oauth2-server'
+	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.4.5'
 	testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.2')
 	testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.2')
 	testImplementation('org.mockito:mockito-core:3.+')
