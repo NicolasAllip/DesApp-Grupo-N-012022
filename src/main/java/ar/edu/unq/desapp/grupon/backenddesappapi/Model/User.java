@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User implements Serializable {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
