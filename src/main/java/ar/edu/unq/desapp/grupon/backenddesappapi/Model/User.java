@@ -169,6 +169,10 @@ public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
+    public boolean isEnabled() {
+        return true;
+    }
+
     public static final class UserBuilder {
         private User user;
 
