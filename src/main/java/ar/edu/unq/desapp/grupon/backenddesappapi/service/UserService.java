@@ -19,8 +19,8 @@ public class UserService implements IUserService {
     @Autowired
     private IUserDao userDao;
 
-    @Autowired
-    private UsuarioDetailsService userDetails;
+    //@Autowired
+    //private UsuarioDetailsService userDetails;
     
     @Transactional(readOnly = true)
     @Override
@@ -54,7 +54,7 @@ public class UserService implements IUserService {
                 .walletAddress(newUserDTO.getWalletAddress())
                 .build();
         
-        userDetails.addUser(newUserDTO.getName());
+        //userDetails.addUser(newUserDTO.getName());
 
         return userDao.save(user);
     }
