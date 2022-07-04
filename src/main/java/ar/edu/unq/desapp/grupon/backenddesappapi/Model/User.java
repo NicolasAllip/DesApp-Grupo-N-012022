@@ -170,6 +170,16 @@ public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     @Override
+    public String getAuthorities() {
+        return new HashSet<>();
+    }
+    
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
     public boolean isEnabled() {
         return true;
     }
