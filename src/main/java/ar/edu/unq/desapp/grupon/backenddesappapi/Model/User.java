@@ -169,8 +169,24 @@ public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
+    @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+      return true;
+    }
+  
+    @Override
+    public boolean isAccountNonLocked() {
+      return true;
+    }
+  
+    @Override
+    public boolean isCredentialsNonExpired() {
+      return true;
     }
 
     public static final class UserBuilder {
