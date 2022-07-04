@@ -12,7 +12,7 @@ public class UsuarioDetailsService implements UserDetailsService {
     );
 
     public void addUser(String username) {
-        usuarios.put(username, "USER")
+        usuarios.put(username, "USER");
     }
 
     @Override
