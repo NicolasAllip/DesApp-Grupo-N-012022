@@ -50,8 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${jwt.private.key}")
     private RSAPrivateKey rsaPrivateKey;
 
-    @Autowired
-    UsuarioDetailsService usuarioDetailsService;
+    //@Autowired
+    //UsuarioDetailsService usuarioDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
