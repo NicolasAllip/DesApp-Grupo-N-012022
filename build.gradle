@@ -95,6 +95,7 @@ dependencies {
 	//implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-jwt'
 	//implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-server'
 	//implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.4.5'
+	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.2')
 	testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.2')
 	testImplementation('org.mockito:mockito-core:3.+')

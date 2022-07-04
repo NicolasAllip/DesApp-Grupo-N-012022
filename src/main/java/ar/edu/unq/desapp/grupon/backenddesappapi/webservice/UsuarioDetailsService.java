@@ -1,8 +1,6 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.webservice;
 
-
-
-
+/*
 @Service
 public class UsuarioDetailsService implements UserDetailsService {
 
@@ -27,4 +25,4 @@ public class UsuarioDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
     }
-}
+}*/

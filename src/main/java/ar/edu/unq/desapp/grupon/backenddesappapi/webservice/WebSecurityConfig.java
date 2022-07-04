@@ -62,38 +62,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // Enable CORS and disable CSRF
         http = http.cors().and().csrf().disable();
-
+    
         // Set session management to stateless
         http = http
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and();
-
+          .sessionManagement()
+          .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+          .and();
+    
         // Set unauthorized requests exception handler
         http = http
-            .exceptionHandling()
-            .authenticationEntryPoint(
-                (request, response, ex) -> {
-                    response.sendError(
-                        HttpServletResponse.SC_UNAUTHORIZED,
-                        ex.getMessage()
-                    );
-                }
-            )
-            .and();
-
+          .exceptionHandling((exceptions) -> exceptions
+            .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+            .accessDeniedHandler(new BearerTokenAccessDeniedHandler()));
+    
         // Set permissions on endpoints
         http.authorizeRequests()
-            .antMatches("/api/users/register").permitAll()
-            .antMatches(HttpMethod.GET, "/api/**").permitAll()
-            .anyRequest().authenticated();
-
-        // Add JWT token filter
-        http.addFilterBefore(
-            this.jwtTokenFilter,
-            UsernamePasswordAuthenticationFilter.class
-        );
-    }
+          .anyMatches("/api/users/register").permitAll()
+          .anyMatches(HttpMethod.GET, "/api/**").permitAll()
+          .anyRequest().authenticated();
+          // Set up oauth2 resource server
+          .and().httpBasic(Customizer.withDefaults())
+          .oauth2ResourceServer()
+          .jwt();
+      }
 
     // Used by spring security if CORS is enabled.
     @Bean
@@ -135,4 +126,57 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }   
+}
+
+@Component
+public class JwtTokenFilter extends OncePerRequestFilter {
+
+    private final JwtTokenUtil jwtTokenUtil;
+    private final UserRepo userRepo;
+
+    public JwtTokenFilter(JwtTokenUtil jwtTokenUtil,
+                          UserRepo userRepo) {
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.userRepo = userRepo;
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain chain)
+            throws ServletException, IOException {
+        // Get authorization header and validate
+        final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
+        if (isEmpty(header) || !header.startsWith("Bearer ")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        // Get jwt token and validate
+        final String token = header.split(" ")[1].trim();
+        if (!jwtTokenUtil.validate(token)) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        // Get user identity and set it on the spring security context
+        UserDetails userDetails = userRepo
+            .findByUsername(jwtTokenUtil.getUsername(token))
+            .orElse(null);
+
+        UsernamePasswordAuthenticationToken
+            authentication = new UsernamePasswordAuthenticationToken(
+                userDetails, null,
+                userDetails == null ?
+                    List.of() : userDetails.getAuthorities()
+            );
+
+        authentication.setDetails(
+            new WebAuthenticationDetailsSource().buildDetails(request)
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        chain.doFilter(request, response);
+    }
+
 }

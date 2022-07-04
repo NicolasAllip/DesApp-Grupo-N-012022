@@ -16,7 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
+import ar.edu.unq.desapp.grupon.backenddesappapi.Mapper.UserViewMapper;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService;
 
@@ -27,7 +33,7 @@ import javax.validation.Valid;
 public class UserRestController {
     
     private final AuthenticationManager authenticationManager;
-    private final JwtTokenUtil jwtTokenUtil;
+    private final JwtEncoder jwtEncoder;
     private final UserViewMapper userViewMapper;
 
     @Autowired
@@ -56,25 +62,34 @@ public class UserRestController {
     }
 
     @PostMapping("/user/login")
-    public ResponseEntity<UserView> login(@RequestBody @Valid AuthRequest request) {
+    public ResponseEntity<NewUserDTO> login(@RequestBody @Valid AuthRequest request) {
         try {
-            Authentication authenticate = authenticationManager
-                .authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                        request.getUsername(), request.getPassword()
-                    )
-                );
-
-            User user = (User) authenticate.getPrincipal();
-
-            return ResponseEntity.ok()
-                .header(
-                    HttpHeaders.AUTHORIZATION,
-                    jwtTokenUtil.generateAccessToken(user)
-                )
-                .body(userViewMapper.toUserView(user));
+          Authentication authentication = authenticationManager
+            .authenticate(new UsernamePasswordAuthenticationToken(request.username(), request.password()));
+    
+          User user = (User) authentication.getPrincipal();
+    
+          Instant now = Instant.now();
+          long expiry = 36000L;
+    
+          String scope = authentication.getAuthorities().stream()
+            .map(GrantedAuthority::getAuthority)
+            .collect(joining(" "));
+    
+          JwtClaimsSet claims = JwtClaimsSet.builder()
+            .issuer("example.io")
+            .issuedAt(now)
+            .expiresAt(now.plusSeconds(expiry))
+            .subject(format("%s,%s", user.getId(), user.getUsername()))
+            .claim("roles", scope)
+            .build();
+    
+          String token = this.jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+    
+          return ResponseEntity.ok()
+            .header(HttpHeaders.AUTHORIZATION, token)
+            .body(userViewMapper.toUserView(user));
         } catch (BadCredentialsException ex) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+          return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-    }
 }
