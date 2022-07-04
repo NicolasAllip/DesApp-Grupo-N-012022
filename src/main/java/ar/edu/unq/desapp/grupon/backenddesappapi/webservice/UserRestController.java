@@ -30,17 +30,21 @@ import org.springframework.security.core.GrantedAuthority;
 import static java.util.stream.Collectors.joining;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
+import lombok.RequiredArgsConstructor;
 
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
+//@RequiredArgsConstructor
 public class UserRestController {
     
-    private final AuthenticationManager authenticationManager;
-    private final JwtEncoder jwtEncoder;
-    private final UserViewMapper userViewMapper;
-
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private JwtEncoder jwtEncoder;
+    @Autowired
+    private UserViewMapper userViewMapper;
     @Autowired
     private IUserService userService;
 

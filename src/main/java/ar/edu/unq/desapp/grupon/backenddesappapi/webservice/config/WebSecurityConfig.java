@@ -101,11 +101,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(username -> userRepo
+        auth.userDetailsService(String username -> userRepo
           .findByUsername(username)
           .orElseThrow(
             () -> new UsernameNotFoundException(
-                format("User: %s, not found", username))));
+                String.format("User: %s, not found", username))));
     }
 
       // Used by JwtAuthenticationProvider to generate JWT tokens
