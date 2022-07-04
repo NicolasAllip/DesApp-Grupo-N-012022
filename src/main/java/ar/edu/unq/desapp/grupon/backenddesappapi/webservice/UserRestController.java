@@ -25,6 +25,9 @@ import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Mapper.UserViewMapper;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService;
+import java.time.Instant;
+import org.springframework.security.core.GrantedAuthority;
+import static java.util.stream.Collectors.joining;
 
 import javax.validation.Valid;
 
@@ -76,11 +79,11 @@ public class UserRestController {
             .map(GrantedAuthority::getAuthority)
             .collect(joining(" "));
     
-          JwtClaimsSet claims = JwtClaimsSet.builder()
+            JwtClaimsSet claims = JwtClaimsSet.builder()
             .issuer("example.io")
             .issuedAt(now)
             .expiresAt(now.plusSeconds(expiry))
-            .subject(format("%s,%s", user.getId(), user.getUsername()))
+            .subject(format("%s,%s", user.getId(), user.getName()))
             .claim("roles", scope)
             .build();
     

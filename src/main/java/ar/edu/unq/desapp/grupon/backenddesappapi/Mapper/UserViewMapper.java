@@ -4,13 +4,12 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.IUserDao;
 
-import org.bson.types.ObjectId;
 import org.mapstruct.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ObjectIdMapper.class})
+@Mapper(componentModel = "spring")
 public abstract class UserViewMapper {
 
   @Autowired
@@ -20,7 +19,7 @@ public abstract class UserViewMapper {
 
   public abstract List<NewUserDTO> toUserView(List<User> users);
 
-  public NewUserDTO toUserViewById(ObjectId id) {
+  public NewUserDTO toUserViewById(Long id) {
     if (id == null) {
       return null;
     }

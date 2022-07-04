@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupon.backenddesappapi.webservice;
+package ar.edu.unq.desapp.grupon.backenddesappapi.webservice.config;
 
 /*
 @Service

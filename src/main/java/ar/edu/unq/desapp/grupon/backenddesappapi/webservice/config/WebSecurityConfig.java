@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupon.backenddesappapi.webservice;
+package ar.edu.unq.desapp.grupon.backenddesappapi.webservice.config;
 
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
@@ -43,7 +43,7 @@ import java.security.interfaces.RSAPublicKey;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final IUserDao userRepo;
-    private final JwtTokenFilter jwtTokenFilter;
+    //private final JwtTokenFilter jwtTokenFilter;
 
     @Value("${jwt.public.key}")
     private RSAPublicKey rsaPublicKey;
@@ -77,8 +77,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
         // Set permissions on endpoints
         http.authorizeRequests()
-          .anyMatches("/api/users/register").permitAll()
-          .anyMatches(HttpMethod.GET, "/api/**").permitAll()
+          .antMatchers("/api/users/register").permitAll()
+          .antMatchers(HttpMethod.GET, "/api/**").permitAll()
           .anyRequest().authenticated()
           // Set up oauth2 resource server
           .and().httpBasic(Customizer.withDefaults())
@@ -126,57 +126,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }   
-}
-
-@Component
-public class JwtTokenFilter extends OncePerRequestFilter {
-
-    private final JwtTokenUtil jwtTokenUtil;
-    private final UserRepo userRepo;
-
-    public JwtTokenFilter(JwtTokenUtil jwtTokenUtil,
-                          UserRepo userRepo) {
-        this.jwtTokenUtil = jwtTokenUtil;
-        this.userRepo = userRepo;
-    }
-
-    @Override
-    protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain chain)
-            throws ServletException, IOException {
-        // Get authorization header and validate
-        final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (isEmpty(header) || !header.startsWith("Bearer ")) {
-            chain.doFilter(request, response);
-            return;
-        }
-
-        // Get jwt token and validate
-        final String token = header.split(" ")[1].trim();
-        if (!jwtTokenUtil.validate(token)) {
-            chain.doFilter(request, response);
-            return;
-        }
-
-        // Get user identity and set it on the spring security context
-        UserDetails userDetails = userRepo
-            .findByUsername(jwtTokenUtil.getUsername(token))
-            .orElse(null);
-
-        UsernamePasswordAuthenticationToken
-            authentication = new UsernamePasswordAuthenticationToken(
-                userDetails, null,
-                userDetails == null ?
-                    List.of() : userDetails.getAuthorities()
-            );
-
-        authentication.setDetails(
-            new WebAuthenticationDetailsSource().buildDetails(request)
-        );
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        chain.doFilter(request, response);
-    }
-
 }
