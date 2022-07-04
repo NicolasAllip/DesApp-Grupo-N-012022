@@ -170,7 +170,7 @@ public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     @Override
-    public String getAuthorities() {
+    public Set<String> getAuthorities() {
         return new HashSet<>();
     }
     
