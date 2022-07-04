@@ -92,7 +92,7 @@ dependencies {
     //'io.jsonwebtoken:jjwt-jackson:0.11.5' or 'io.jsonwebtoken:jjwt-gson:0.11.5' for gson
 	//implementation 'org.springframework.security.oauth:spring-security-oauth2-jwt'
 	//implementation 'org.springframework.security.oauth:spring-security-oauth2-server'
-	implementation 'org.springframework.security.oauth:spring-security-oauth2:2.5.0'
+	implementation 'org.springframework.security.oauth:spring-security-oauth2:2.5.0.RELEASE'
 	//implementation 'org.springframework.security:spring-security-oauth2-core'
 	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.5.0'
 	testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.2')
