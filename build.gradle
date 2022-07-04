@@ -86,7 +86,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	//testImplementation 'org.springframework.security:spring-security-test'
-	implementation 'org.projectlombok:lombok:true'
+	implementation 'org.projectlombok:lombok'
 	implementation 'com.nimbusds:nimbus-jose-jwt:9.0'
     //implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
     //runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5', 'io.jsonwebtoken:jjwt-jackson:0.11.5'
