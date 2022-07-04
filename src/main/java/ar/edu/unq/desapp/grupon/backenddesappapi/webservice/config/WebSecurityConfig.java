@@ -101,7 +101,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.useDetailsService(username -> userRepo
+        auth.userDetailsService(username -> userRepo
           .findByUsername(username)
           .orElseThrow(
             () -> new UsernameNotFoundException(

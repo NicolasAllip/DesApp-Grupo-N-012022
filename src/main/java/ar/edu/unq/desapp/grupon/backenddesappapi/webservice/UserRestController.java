@@ -28,6 +28,8 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.service.IUserService;
 import java.time.Instant;
 import org.springframework.security.core.GrantedAuthority;
 import static java.util.stream.Collectors.joining;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 
 import javax.validation.Valid;
 
@@ -65,10 +67,10 @@ public class UserRestController {
     }
 
     @PostMapping("/user/login")
-    public ResponseEntity<NewUserDTO> login(@RequestBody @Valid AuthRequest request) {
+    public ResponseEntity<NewUserDTO> login(@RequestBody @Valid String email, @RequestBody @Valid String password) {
         try {
           Authentication authentication = authenticationManager
-            .authenticate(new UsernamePasswordAuthenticationToken(request.username(), request.password()));
+            .authenticate(new UsernamePasswordAuthenticationToken(email, password));
     
           User user = (User) authentication.getPrincipal();
     
@@ -83,7 +85,7 @@ public class UserRestController {
             .issuer("example.io")
             .issuedAt(now)
             .expiresAt(now.plusSeconds(expiry))
-            .subject(format("%s,%s", user.getId(), user.getName()))
+            .subject(String.format("%s,%s", user.getId(), user.getEmail()))
             .claim("roles", scope)
             .build();
     

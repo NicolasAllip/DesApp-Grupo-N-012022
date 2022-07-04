@@ -23,7 +23,7 @@ public abstract class UserViewMapper {
     if (id == null) {
       return null;
     }
-    return toUserView(userRepo.getById(id));
+    return toUserView(userRepo.findById(id).orElse(null));
   }
 
 }
