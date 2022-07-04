@@ -26,6 +26,10 @@ import javax.validation.Valid;
 @RequestMapping("/api")
 public class UserRestController {
     
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenUtil jwtTokenUtil;
+    private final UserViewMapper userViewMapper;
+
     @Autowired
     private IUserService userService;
 
@@ -40,7 +44,7 @@ public class UserRestController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping("/users")
+    @PostMapping("/users/register")
     public ResponseEntity<?> create(@Valid @RequestBody NewUserDTO newUserDTO){
 
         User userN = userService.save(newUserDTO);
@@ -49,5 +53,28 @@ public class UserRestController {
         response.put("message", "The user has been succefully created");
         response.put("User: ", userN);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/user/login")
+    public ResponseEntity<UserView> login(@RequestBody @Valid AuthRequest request) {
+        try {
+            Authentication authenticate = authenticationManager
+                .authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                        request.getUsername(), request.getPassword()
+                    )
+                );
+
+            User user = (User) authenticate.getPrincipal();
+
+            return ResponseEntity.ok()
+                .header(
+                    HttpHeaders.AUTHORIZATION,
+                    jwtTokenUtil.generateAccessToken(user)
+                )
+                .body(userViewMapper.toUserView(user));
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 }

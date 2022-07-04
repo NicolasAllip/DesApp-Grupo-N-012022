@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 
 public interface IUserDao extends CrudRepository<User,Long> {
-    
+    Optional<User> findByUsername(String username);
 }

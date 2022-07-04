@@ -33,6 +33,7 @@ public class User implements Serializable {
     private String walletAddress;
     @Column(name="operation_amount", nullable = false)
     private Integer operationAmount;
+    private String rol;
 
     public User(String name, String surname, String email, String address, String password, String cvu, Float reputation, String walletAddress) {
         this.name = name;
@@ -128,6 +129,14 @@ public class User implements Serializable {
         this.operationAmount = operationAmount;
     }
 
+    public String getRol() {
+        return this.rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -208,6 +217,11 @@ public class User implements Serializable {
 
         public UserBuilder walletAddress(String walletAddress) {
             user.setWalletAddress(walletAddress);
+            return this;
+        }
+
+        public UserBuilder rol(String rol) {
+            user.setRol(rol);
             return this;
         }
 
