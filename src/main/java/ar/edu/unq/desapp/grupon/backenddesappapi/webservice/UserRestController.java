@@ -53,6 +53,13 @@ public class UserRestController {
         return userService.findAll();
     }
 
+    /*@GetMapping("/users/admin")
+    @RolesAllowed(Role.ADMIN)
+    public String esAdmin() {
+        return "es admin"
+    }*/
+
+
     @GetMapping("/users/{id}")
     public ResponseEntity<?> showUser(@PathVariable Long id){
         User user = userService.findById(id);
