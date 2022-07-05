@@ -34,6 +34,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.IUserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
