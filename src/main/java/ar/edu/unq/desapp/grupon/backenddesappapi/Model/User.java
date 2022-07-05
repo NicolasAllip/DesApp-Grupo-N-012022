@@ -1,9 +1,9 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +36,7 @@ public class User implements UserDetails {
     private String walletAddress;
     @Column(name="operation_amount", nullable = false)
     private Integer operationAmount;
-    private String rol;
+    private Role role;
 
     public User(String name, String surname, String email, String address, String password, String cvu, Float reputation, String walletAddress) {
         this.name = name;
@@ -132,12 +132,12 @@ public class User implements UserDetails {
         this.operationAmount = operationAmount;
     }
 
-    public String getRol() {
-        return this.rol;
+    public Role getRole() {
+        return this.role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
@@ -145,12 +145,12 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(password, user.password) && Objects.equals(cvu, user.cvu) && Objects.equals(reputation, user.reputation) && Objects.equals(walletAddress, user.walletAddress) && Objects.equals(operationAmount, user.operationAmount);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(password, user.password) && Objects.equals(cvu, user.cvu) && Objects.equals(reputation, user.reputation) && Objects.equals(walletAddress, user.walletAddress) && Objects.equals(operationAmount, user.operationAmount) && Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, email, address, password, cvu, reputation, walletAddress, operationAmount);
+        return Objects.hash(id, name, surname, email, address, password, cvu, reputation, walletAddress, operationAmount, role);
     }
 
     public void lowerReputationBy(Long x) {
@@ -253,8 +253,8 @@ public class User implements UserDetails {
             return this;
         }
 
-        public UserBuilder rol(String rol) {
-            user.setRol(rol);
+        public UserBuilder role(Role role) {
+            user.setRole(role);
             return this;
         }
 

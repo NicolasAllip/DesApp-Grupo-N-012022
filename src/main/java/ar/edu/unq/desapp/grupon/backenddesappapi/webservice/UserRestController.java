@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 
+import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Role;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
+import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.UserCredentialsDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,11 +38,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import lombok.RequiredArgsConstructor;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 public class UserRestController {
 
     //@Autowired
@@ -73,7 +75,7 @@ public class UserRestController {
     /*@GetMapping("/users/admin")
     @RolesAllowed(Role.ADMIN)
     public String esAdmin() {
-        return "es admin"
+        return "es admin";
     }*/
 
 
@@ -94,11 +96,11 @@ public class UserRestController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PostMapping("/user/login")
-    public ResponseEntity<User> login(@RequestBody @Valid String email, @RequestBody @Valid String password) {
+    @PostMapping("/users/login")
+    public ResponseEntity<User> login(@RequestBody @Valid UserCredentialsDTO userCredentialsDTO) {
         try {
           Authentication authentication = authenticationManager
-            .authenticate(new UsernamePasswordAuthenticationToken(email, password));
+            .authenticate(new UsernamePasswordAuthenticationToken(userCredentialsDTO.getEmail(), userCredentialsDTO.getPassword()));
     
           User user = (User) authentication.getPrincipal();
     
