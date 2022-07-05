@@ -6,6 +6,7 @@ import java.util.Map;
 
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -30,23 +31,24 @@ import org.springframework.security.core.GrantedAuthority;
 import static java.util.stream.Collectors.joining;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
-//import lombok.RequiredArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
+//@AllArgsConstructor
 public class UserRestController {
-    
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private JwtEncoder jwtEncoder;
-    @Autowired
-    private UserViewMapper userViewMapper;
-    @Autowired
-    private IUserService userService;
+
+    //@Autowired
+    private final AuthenticationManager authenticationManager;
+    //@Autowired
+    private final JwtEncoder jwtEncoder;
+    //@Autowired
+    private final UserViewMapper userViewMapper;
+    //@Autowired
+    private final IUserService userService;
 
     @GetMapping("/users")
     public List<User> index(){
