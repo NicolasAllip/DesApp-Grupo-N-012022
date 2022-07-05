@@ -2,7 +2,7 @@ language: java
 install: skip
 os: linux
 dist: trusty
-jdk: oraclejdk11
+jdk: oraclejdk11 #openjdk8
 
 addons:
   sonarcloud:
@@ -12,4 +12,3 @@ script:
   - ./gradlew clean build
   - ./gradlew test
   - sonar-scanner
-

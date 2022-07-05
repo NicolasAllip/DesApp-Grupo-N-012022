@@ -267,4 +267,9 @@ public class User implements UserDetails {
             return user;
         }
     }
+
+    /* 
+    public Object getAccessLevel() {
+        return "ADMIN";
+    }*/
 }

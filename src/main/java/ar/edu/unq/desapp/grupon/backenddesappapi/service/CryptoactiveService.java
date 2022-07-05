@@ -19,6 +19,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+//import redis.clients.jedis.Jedis;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
@@ -27,6 +28,9 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.persistence.ICryptoactiveDao;
 @Service
 @EnableScheduling
 public class CryptoactiveService implements ICryptoactiveService {
+    
+    //@Autowired
+    //Jedis jedis = new Jedis("localhost");
     
     @Autowired
     private ICryptoactiveDao cryptoactiveDao;
@@ -55,7 +59,7 @@ public class CryptoactiveService implements ICryptoactiveService {
         AVAILABLE_CRYPTOS.add("TRXUSDT");
         AVAILABLE_CRYPTOS.add("AUDIOUSDT");
     }
-    
+
     @Transactional(readOnly = true)
     @Override
     public List<Cryptoactive> findAll(){
@@ -66,6 +70,23 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Override
     public Cryptoactive findByName(CryptoactiveName name) {
         return cryptoactiveDao.findById(name).orElse(null);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<String> findAllValues(){
+        ArrayList<String> ret = new ArrayList<String>();
+        for (String criptoName : AVAILABLE_CRYPTOS) {
+            ret.add(this.findValueByName(criptoName));
+        }
+        return (List<String>) ret;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public String findValueByName(String name) {
+        return name;
+        //return jedis.get(name);
     }
 
     @Transactional
@@ -91,7 +112,7 @@ public class CryptoactiveService implements ICryptoactiveService {
 
     @Transactional
     @Override
-    @Scheduled(cron = "* */10 * * * *")
+    @Scheduled(cron = "0 0/10 * * * *")
     public List<Cryptoactive> updateAllCryptos() {
         BinanceCryptoDTO[] binanceCryptoDTOS = getPriceForCryptoRestclient.getBatchCryptoPrice(AVAILABLE_CRYPTOS);
         List<Cryptoactive> cryptoactiveList = new ArrayList<>();
@@ -100,6 +121,7 @@ public class CryptoactiveService implements ICryptoactiveService {
             Cryptoactive crypto = binanceToModelCrypto(bcrypto);
             cryptoactiveList.add(crypto);
             cryptoactiveLogService.save(crypto.getName(), crypto.getPrice());
+            //jedis.set(crypto.getName().name(), Float.toString(crypto.getPrice()));
         });
 
         return cryptoactiveList;
@@ -113,6 +135,7 @@ public class CryptoactiveService implements ICryptoactiveService {
         return cryptoactiveDao.save(cryptoactive);
     }
 
+    @Transactional
     @Override
     public CryptosBetweenTwoDatesOutput getOperatedCryptosInRange(CryptosBetweenTwoDatesInput cryptosBetweenTwoDatesInput) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

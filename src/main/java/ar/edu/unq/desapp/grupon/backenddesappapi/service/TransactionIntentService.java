@@ -60,8 +60,8 @@ public class TransactionIntentService implements ITransactionIntentService {
     @Transactional
     @Override
     public TransactionIntent save(TransactionIntentDTO transactionIntentDTO) {
-        Cryptoactive cryptoactive = cryptoactiveService.findByName(transactionIntentDTO.getCryptoactiveName());
         User user = userService.findById(transactionIntentDTO.getUserId());
+        Cryptoactive cryptoactive = cryptoactiveService.findByName(transactionIntentDTO.getCryptoactiveName());
 
         pesosConversion = Float.parseFloat(getDolarConversionValueRestclient.getOfficialDolarValue().getCompra().replace(',', '.'));
 

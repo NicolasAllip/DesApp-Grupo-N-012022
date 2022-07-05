@@ -20,7 +20,7 @@ public class UserRestExceptionControllerTest {
     private UserRestExceptionController userRestExceptionController = new UserRestExceptionController();
 
     @Test
-    public void handleDataAccessException() {
+    public void handleDataAccessException() throws UserDoesNotExistException {
         UserDoesNotExistException exception = new UserDoesNotExistException(1L);
 
         Map<String, Object> expectedResponse = new HashMap<>();

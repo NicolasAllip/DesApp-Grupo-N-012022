@@ -1,20 +1,16 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-//import java.lang.runtime.SwitchBootstraps;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
 import javax.persistence.*;
-//import javax.persistence.OneToMany;
-
 
 @Entity
 @Table(name="transactions")
-public class Transaction {
+public class Transaction implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@Column(nullable = false)
     @OneToOne
     private TransactionIntent transactionIntent;
     @ManyToOne

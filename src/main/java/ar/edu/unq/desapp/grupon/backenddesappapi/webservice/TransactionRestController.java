@@ -6,7 +6,6 @@ import java.util.Map;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CreateTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.TransactionIntent;
-import ar.edu.unq.desapp.grupon.backenddesappapi.Model.User;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.ITransactionService;
 
 import javax.validation.Valid;

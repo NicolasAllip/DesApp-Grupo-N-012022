@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class TransactionIntentRestExceptionController extends ar.edu.unq.desapp.grupon.backenddesappapi.webservice.exceptionControllers.RestExceptionController {
+public class TransactionIntentRestExceptionController extends RestExceptionController {
 
     @ExceptionHandler(TransactionIntentDoesNotExistException.class)
     public ResponseEntity<Map<String, Object>> handleTransactionInentDoesNotExistExceptions(TransactionIntentDoesNotExistException e) {

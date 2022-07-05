@@ -7,7 +7,6 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTw
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,16 +41,11 @@ public class CryptoactiveRestController {
     /**
     // @PostMapping("/cryptoactives") // TODO: debatamos si tiene sentido hacer esto, vamos a crear cryptoactivos?
     public ResponseEntity<?> create(@Valid @RequestBody CryptoactiveName name) {
-
         String URL = "https://api1.binance.com/api/v3/ticker/price?symbol=" + name;
-
         RestTemplate restTemplate = new RestTemplate();
-
         Map cripto = restTemplate.getForObject(URL, HashMap.class);
-
         Cryptoactive cryptoactiveN = cryptoactiveService.save(name, Float.parseFloat(cripto.get("price").toString()));
         Map<String, Object> response = new HashMap<>();
-
         response.put("message", "The cryptoactive has been succefully created");
         response.put("cryptoactive: ", cryptoactiveN);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
