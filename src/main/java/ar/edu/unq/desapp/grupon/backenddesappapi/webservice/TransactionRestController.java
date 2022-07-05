@@ -49,13 +49,13 @@ public class TransactionRestController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PostMapping("/transactions/accept")
-    public void accept(Long id) {
+    @PostMapping("/transactions/accept/{id}")
+    public void accept(@PathVariable Long id) {
         transactionService.acceptTransaction(id);
     }
     
-    @PostMapping("/transactions/cancel")
-    public void cancel(Long id) {
+    @PostMapping("/transactions/cancel/{id}")
+    public void cancel(@PathVariable Long id) {
         transactionService.cancel(id);
     }
 

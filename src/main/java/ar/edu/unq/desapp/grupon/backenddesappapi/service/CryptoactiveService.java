@@ -13,7 +13,11 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.IGetPriceForCryptoRe
 import ar.edu.unq.desapp.grupon.backenddesappapi.restclient.dto.BinanceCryptoDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesInput;
 import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTwoDatesOutput;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -41,6 +45,8 @@ public class CryptoactiveService implements ICryptoactiveService {
     private ITransactionService transactionService;
     @Autowired
     private IGetPriceForCryptoRestclient getPriceForCryptoRestclient;
+
+    final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static List<String> AVAILABLE_CRYPTOS = new ArrayList<>();
     static {
@@ -77,7 +83,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     public List<String> findAllValues(){
         ArrayList<String> ret = new ArrayList<String>();
         for (String criptoName : AVAILABLE_CRYPTOS) {
-            //ret.add(this.findValueByName(criptoName));
+            ret.add(this.findValueByName(criptoName));
         }
         return (List<String>) ret;
     }
@@ -85,7 +91,7 @@ public class CryptoactiveService implements ICryptoactiveService {
     @Transactional(readOnly = true)
     @Override
     public String findValueByName(String name) {
-        return "name";
+        return name;
         //return jedis.get(name);
     }
 
@@ -106,13 +112,16 @@ public class CryptoactiveService implements ICryptoactiveService {
 
     @Transactional
     @Override
+    @Cacheable(value = "cryptos")
     public List<Cryptoactive> getAllCryptos() {
+        logger.info("All values crypto ");
         return (List<Cryptoactive>) cryptoactiveDao.findAll();
     }
 
     @Transactional
     @Override
     @Scheduled(cron = "0 0/10 * * * *")
+    @CachePut(value = "cryptos")
     public List<Cryptoactive> updateAllCryptos() {
         BinanceCryptoDTO[] binanceCryptoDTOS = getPriceForCryptoRestclient.getBatchCryptoPrice(AVAILABLE_CRYPTOS);
         List<Cryptoactive> cryptoactiveList = new ArrayList<>();

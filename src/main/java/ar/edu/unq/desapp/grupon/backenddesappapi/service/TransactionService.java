@@ -88,9 +88,10 @@ public class TransactionService implements ITransactionService {
         Float realPrice        = transaction.getCryptoactive().getPrice();
         Float transactionPrice = transaction.getPrize();
         Float transactionOffer = transaction.getOffer();
+        Float transtactionAmount = transaction.getAmount();
 
-        if(transaction.getState() != TransactionState.PENDING) {
-            if(validatePriceChangedTooMuch(transactionPrice, realPrice) || validatePriceChangedTooMuch(transactionOffer, realPrice)) {
+        if(transaction.getState() == TransactionState.PENDING) {
+            if(validatePriceChangedTooMuch(transactionPrice * transtactionAmount, realPrice * transtactionAmount) || validatePriceChangedTooMuch(transactionOffer, realPrice * transtactionAmount)) {
                 cancelByPrize(id);
             } else {
                 if(transactionDate.isAfter(LocalDateTime.now().minusMinutes(30))) {

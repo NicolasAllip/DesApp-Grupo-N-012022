@@ -1,7 +1,8 @@
 package ar.edu.unq.desapp.grupon.backenddesappapi.Model;
 
-import java.io.Serializable;
 import java.util.Objects;
+
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
-public class User implements Serializable {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +34,9 @@ public class User implements Serializable {
     private Float reputation;
     @Column(name="wallet_address", nullable = false, unique = true)
     private String walletAddress;
-    private Integer operationAmount = 0;
+    @Column(name="operation_amount", nullable = false)
+    private Integer operationAmount;
+    private Role role;
 
     public User(String name, String surname, String email, String address, String password, String cvu, Float reputation, String walletAddress) {
         this.name = name;
@@ -42,6 +47,7 @@ public class User implements Serializable {
         this.cvu = cvu;
         this.reputation = reputation;
         this.walletAddress = walletAddress;
+        this.operationAmount = 0;
     }
 
     public User() {}
@@ -126,17 +132,25 @@ public class User implements Serializable {
         this.operationAmount = operationAmount;
     }
 
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(password, user.password) && Objects.equals(cvu, user.cvu) && Objects.equals(reputation, user.reputation) && Objects.equals(walletAddress, user.walletAddress) && Objects.equals(operationAmount, user.operationAmount);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(password, user.password) && Objects.equals(cvu, user.cvu) && Objects.equals(reputation, user.reputation) && Objects.equals(walletAddress, user.walletAddress) && Objects.equals(operationAmount, user.operationAmount) && Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, email, address, password, cvu, reputation, walletAddress, operationAmount);
+        return Objects.hash(id, name, surname, email, address, password, cvu, reputation, walletAddress, operationAmount, role);
     }
 
     public void lowerReputationBy(Long x) {
@@ -156,6 +170,36 @@ public class User implements Serializable {
     }
 
     private static final long serialVersionUID = 1L;
+
+    @Override
+    public Set<Role> getAuthorities() {
+        return new HashSet<>();
+    }
+    
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+      return true;
+    }
+  
+    @Override
+    public boolean isAccountNonLocked() {
+      return true;
+    }
+  
+    @Override
+    public boolean isCredentialsNonExpired() {
+      return true;
+    }
 
     public static final class UserBuilder {
         private User user;
@@ -206,6 +250,11 @@ public class User implements Serializable {
 
         public UserBuilder walletAddress(String walletAddress) {
             user.setWalletAddress(walletAddress);
+            return this;
+        }
+
+        public UserBuilder role(Role role) {
+            user.setRole(role);
             return this;
         }
 
