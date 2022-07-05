@@ -8,12 +8,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CreateTransactio
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Transaction;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.ITransactionService;
@@ -38,7 +33,8 @@ public class TransactionRestController {
         return new ResponseEntity<>(transaction, HttpStatus.OK);
     }
 
-    @PostMapping("/transactions")
+    //@PostMapping("/transactions")
+    @RequestMapping(value = "/transactions", method = RequestMethod.POST)
     public ResponseEntity<?> create(@Valid @RequestBody CreateTransactionDTO createTransactionDTO) {
 
         Transaction transactionN = transactionService.save(createTransactionDTO);
@@ -49,12 +45,14 @@ public class TransactionRestController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PostMapping("/transactions/accept/{id}")
+    //@PostMapping("/transactions/accept/{id}")
+    @RequestMapping(value = "/transactions/accept/{id}", method = RequestMethod.POST)
     public void accept(@PathVariable Long id) {
         transactionService.acceptTransaction(id);
     }
     
-    @PostMapping("/transactions/cancel/{id}")
+    //@PostMapping("/transactions/cancel/{id}")
+    @RequestMapping(value = "/transactions/cancel/{id}", method = RequestMethod.POST)
     public void cancel(@PathVariable Long id) {
         transactionService.cancel(id);
     }

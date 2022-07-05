@@ -8,12 +8,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.CryptoactiveHistory
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveLog;
@@ -40,7 +35,8 @@ public class CryptoactiveLogRestController {
         return new ResponseEntity<>(cryptoactive, HttpStatus.OK);
     }
 
-    @PostMapping("/cryptoactive-log")
+    //@PostMapping("/cryptoactive-log")
+    @RequestMapping(value = "/cryptoactive-log", method = RequestMethod.POST)
     public ResponseEntity<?> create(@Valid @RequestBody CryptoactiveName name) {
 
         String URL = "https://api1.binance.com/api/v3/ticker/price?symbol=" + name;

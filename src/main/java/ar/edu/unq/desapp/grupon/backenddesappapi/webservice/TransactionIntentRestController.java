@@ -9,12 +9,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.TransactionInten
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.ActiveTransactionDTO;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.ITransactionIntentService;
@@ -39,7 +34,8 @@ public class TransactionIntentRestController {
         return new ResponseEntity<>(transaction, HttpStatus.OK);
     }
 
-    @PostMapping("/transactionIntents")
+    //@PostMapping("/transactionIntents")
+    @RequestMapping(value = "/transactionIntents", method = RequestMethod.POST)
     public ResponseEntity<?> create(@Valid @RequestBody TransactionIntentDTO transactionIntentDTO) {
 
         TransactionIntent transactionN = transactionService.save(transactionIntentDTO);

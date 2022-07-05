@@ -7,12 +7,7 @@ import ar.edu.unq.desapp.grupon.backenddesappapi.webservice.dto.CryptosBetweenTw
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.Cryptoactive;
 import ar.edu.unq.desapp.grupon.backenddesappapi.Model.CryptoactiveName;
@@ -56,7 +51,8 @@ public class CryptoactiveRestController {
         return cryptoactiveService.getAllCryptos();
     }
 
-    @PostMapping("/cryptoactives/update")
+    //@PostMapping("/cryptoactives/update")
+    @RequestMapping(value = "/cryptoactives/update", method = RequestMethod.POST)
     public List<Cryptoactive> updateAllCryptos(){
         return cryptoactiveService.updateAllCryptos();
     }
