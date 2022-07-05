@@ -43,6 +43,7 @@ import java.security.interfaces.RSAPublicKey;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
     private final IUserDao userRepo;
     //private final JwtTokenFilter jwtTokenFilter;
 
