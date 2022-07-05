@@ -8,6 +8,9 @@ import java.util.Map;
 import ar.edu.unq.desapp.grupon.backenddesappapi.service.dto.NewUserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 //import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +41,6 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-//@AllArgsConstructor
 public class UserRestController {
 
     //@Autowired
@@ -46,9 +48,22 @@ public class UserRestController {
     //@Autowired
     private final JwtEncoder jwtEncoder;
     //@Autowired
-    private final UserViewMapper userViewMapper;
+    //private final UserViewMapper userViewMapper;
     //@Autowired
     private final IUserService userService;
+
+    @Lazy
+    public UserRestController(AuthenticationManager authenticationManager, JwtEncoder jwtEncoder, /*UserViewMapper userViewMapper,*/ IUserService userService) {
+      this.authenticationManager = authenticationManager;
+      this.jwtEncoder = jwtEncoder;
+      //this.userViewMapper = userViewMapper;
+      this.userService = userService;
+    }
+
+    /*@Bean
+    public UserViewMapper getUserViewMapper(UserViewMapper userViewMapper) {
+        return userViewMapper;
+    }*/
 
     @GetMapping("/users")
     public List<User> index(){
@@ -80,7 +95,7 @@ public class UserRestController {
     }
 
     @PostMapping("/user/login")
-    public ResponseEntity<NewUserDTO> login(@RequestBody @Valid String email, @RequestBody @Valid String password) {
+    public ResponseEntity<User> login(@RequestBody @Valid String email, @RequestBody @Valid String password) {
         try {
           Authentication authentication = authenticationManager
             .authenticate(new UsernamePasswordAuthenticationToken(email, password));
@@ -106,7 +121,7 @@ public class UserRestController {
     
           return ResponseEntity.ok()
             .header(HttpHeaders.AUTHORIZATION, token)
-            .body(userViewMapper.toUserView(user));
+            .body(user);
         } catch (BadCredentialsException ex) {
           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
